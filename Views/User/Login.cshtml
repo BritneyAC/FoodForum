@@ -1,0 +1,21 @@
+@model FoodForum.Models.User
+
+<div class="header">
+  <h1>Register</h1>
+  <a asp-action="Index" asp-controller="Home">Home</a>
+</div>
+<div class="LoginSection">
+  <form asp-action="UserMaker" asp-controller="User" method="post" id="RegForm">
+    <span asp-validation-for="Username" id="UsernameMsg"></span><br>
+    <label asp-for="Username">Username</label><br>
+    <input asp-for="Username" required id="Username"><br>
+    <span asp-validation-for="Password"></span><br>
+    <label asp-for="Password">Password</label><br>
+    <input asp-for="Password" required><br>
+    <span asp-validation-for="ConfirmPassword"></span><br>
+    <label asp-for="ConfirmPassword">Confirm Password</label><br>
+    <input asp-for="ConfirmPassword"><br><br>
+    <input type="submit" value="Submit"><br><br>
+  </form>
+</div>
+<partial name="LoginPartial"/>

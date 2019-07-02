@@ -1,0 +1,56 @@
+@model FoodForum.Models.AdminRecipe
+
+<div class="header">
+  <h1>@ViewBag.Recipe.Title</h1>
+  <a asp-action="Index" asp-controller="Home">Home</a>
+</div>
+<div class="Recipe">
+    <h5>By @ViewBag.Recipe.User.Username</h5>
+    <ul>
+      @foreach(var ingredient in ViewBag.Recipe.GetIngredients()){
+        <li>@ingredient</li>
+      }
+    </ul>
+    <p>@ViewBag.Recipe.Content</p>
+    <table class="RecipeStatsTable">
+      <thead>
+        <tr>
+          <td><p class="Rating">Rating: @ViewBag.Recipe.GetRating()</p></td>
+          <td><p class="Likes">Likes: @ViewBag.Recipe.Likes.Count</p></td>
+          <td><p class="PostDate">Date Posted: @ViewBag.Recipe.CreatedAt.ToString("MM/dd/yyyy")</p></td>
+        </tr>
+      </thead>
+      @if(ViewBag.User != null  &&  ViewBag.User != ViewBag.Recipe.User){
+        <tbody>
+          <tr>
+            <td><partial name="RecipeRatePartial" view-data="ViewData"/></td>
+            <td><partial name="RecipeLikePartial" view-data="ViewData"/></td>
+            @if(ViewBag.User.AdminState == 1){
+              <td><partial name="RecipeDeleteParial" view-data="ViewData"/></td>
+            }
+          </tr>
+        </tbody>
+      }
+    </table>
+    @if(ViewBag.User != null){
+      <div class="PostAComment">
+        <h4>Post A Comment: </h4>
+        <partial name="RecipeCommentPartial" view-data="ViewData"/>
+      </div>
+    }
+    <div class="comments">
+      @foreach(var comment in ViewBag.Recipe.Comments){
+        <div class="comment">
+          <h4>@comment.User.UserName</h4>
+          <p>@comment.Content</p>
+          @if(comment.UserId == ViewBag.User.UserId || comment.User.AdminStatus == 1){
+            <form asp-action="DeleteComment" asp-controller="Home" method="post">
+              <input type="number" name="CommentId" value="@comment.CommentId" readonly hidden required>
+              <input type="submit" value="Delete">
+            </form>
+          }
+          <p>@comment.CreatedAt.ToString("MM/dd/yyyy")</p>
+        </div>
+      }
+    </div>
+</div>

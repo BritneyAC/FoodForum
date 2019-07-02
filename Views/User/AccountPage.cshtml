@@ -1,0 +1,21 @@
+<div class="header">
+  <h1>@ViewBag.User.UserName's Account Page</h1>
+  <a asp-action="Logout" asp-controller="User">Logout</a>
+</div>
+<div class="recipeList">
+    <h2>Here you can find all of Your liked recipes</h2>
+    @foreach(var recipe in ViewBag.RecipesByRating){
+      <div class="recipe">
+        <h3>@recipe.Title</h3>
+        <ul>
+          @foreach(var ingredient in recipe.Ingredients){
+            <li>@ingredient</li>
+          }
+        </ul>
+        <p>@recipe.Content</p>
+        <p class="Rating">Rating: @recipe.GetRating()</p>
+        <p class="Likes">Likes: @recipe.Likes.Count</p>
+        <p class="postDate">Date Posted: @recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
+      </div>  
+    }
+  </div>

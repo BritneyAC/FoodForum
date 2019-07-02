@@ -1,0 +1,68 @@
+@model FoodForum.Models.Recipe
+
+<h1>Post A New Recipe</h1>
+<a asp-action="Index" asp-controller="Home">Home</a>
+<form asp-action="PostAdminRecipe" asp-controller="Admin" method="post">
+  <div class="FormSection">
+    <span asp-validation-for="Title"></span><br>
+    <label asp-for="Title">Title</label><br>
+    <input asp-for="Title" required minlength="2" maxlength="45"><br>
+  </div>
+  <div class="IngredientsSection">
+    <span asp-validation-for="IngredientOne"></span><br>
+    <label asp-for="IngredientOne">Ingredient #1(Required): </label>
+    <input asp-for="IngredientOne" required minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientTwo"></span><br>
+    <label asp-for="IngredientTwo">Ingredient #2(Required): </label>
+    <input asp-for="IngredientTwo" required minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientThree"></span><br>
+    <label asp-for="IngredientThree">Ingredient #3(Required): </label>
+    <input asp-for="IngredientThree" required minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientFour"></span><br>
+    <label asp-for="IngredientFour">Ingredient #4(Optional): </label>
+    <input asp-for="IngredientFour" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientFive"></span><br>
+    <label asp-for="IngredientFive">Ingredient #5(Optional): </label>
+    <input asp-for="IngredientFive" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientSix"></span><br>
+    <label asp-for="IngredientSix">Ingredient #6(Optional): </label>
+    <input asp-for="IngredientSix" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientSeven"></span><br>
+    <label asp-for="IngredientSeven">Ingredient #7(Optional): </label>
+    <input asp-for="IngredientSeven" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientEight"></span><br>
+    <label asp-for="IngredientEight">Ingredient #8(Optional): </label>
+    <input asp-for="IngredientEight" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientNine"></span><br>
+    <label asp-for="IngredientNine">Ingredient #9(Optional): </label>
+    <input asp-for="IngredientNine" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientTen"></span><br>
+    <label asp-for="IngredientTen">Ingredient #10(Optional): </label>
+    <input asp-for="IngredientTen" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientEleven"></span><br>
+    <label asp-for="IngredientEleven">Ingredient #11(Optional): </label>
+    <input asp-for="IngredientEleven" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientTwelve"></span><br>
+    <label asp-for="IngredientTwelve">Ingredient #12(Optional): </label>
+    <input asp-for="IngredientTwelve" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientThirteen"></span><br>
+    <label asp-for="IngredientThirteen">Ingredient #13(Optional): </label>
+    <input asp-for="IngredientThirteen" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientFourteen"></span><br>
+    <label asp-for="IngredientFourteen">Ingredient #14(Optional): </label>
+    <input asp-for="IngredientFourteen" minlength="2" maxlength="45"><br>
+    <span asp-validation-for="IngredientFifteen"></span><br>
+    <label asp-for="IngredientFifteen">Ingredient #15(Optional): </label>
+    <input asp-for="IngredientFifteen" minlength="2" maxlength="45">
+  </div>
+  <div class="FormSection">
+    <span asp-validation-for="Content"></span><br>
+    <Label asp-for="Content">Recipe</Label><br>
+    <textarea asp-for="Content" cols="30" rows="10" required minlength="10" maxlength="255"></textarea>
+    <span asp-validation-for="PictureUrl"></span>
+    <label asp-for="PictureUrl">Picture(Optional)</label>
+    <input asp-for="PictureUrl">
+  </div>
+  <input asp-for="UserId" value="@ViewBag.User.UserId" readonly hidden required>
+  <input type="submit" value="Post">
+</form>

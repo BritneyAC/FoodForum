@@ -1,0 +1,13 @@
+@model FoodForum.Models.Like
+
+@if(ViewBag.Liked){
+  <form asp-action="UnLikeUserRecipe" asp-controller="Home" method="get">
+    <input asp-for="RecipeId" value="@ViewBag.Like.LikeId" readonly hidden required>
+    <input type="submit" value="UnLike">
+  </form>
+} else{
+  <form asp-action="LikeUserRecipe" asp-controller="Home" method="get">
+    <input asp-for="RecipeId" value="@ViewBag.Recipe.RecipeId" readonly hidden required><br>
+    <input type="submit" value="Like">
+  </form>
+}

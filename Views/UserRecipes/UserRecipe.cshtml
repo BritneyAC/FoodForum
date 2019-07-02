@@ -1,0 +1,47 @@
+@model FoodForum.Models.Recipe
+
+<div class="header">
+  <h1>@ViewBag.Recipe.Title</h1>
+  <a asp-action="Index" asp-controller="Home">Home</a>
+</div>
+<div class="Recipe">
+    <h5>By @ViewBag.Recipe.User.Username</h5>
+    <ul>
+      @foreach(var ingredient in ViewBag.Recipe.GetIngredients()){
+        <li>@ingredient</li>
+      }
+    </ul>
+    <p>@ViewBag.Recipe.Content</p>
+    <p class="Rating">Rating: @ViewBag.Recipe.GetRating()</p>
+    <p class="Likes">Likes: @ViewBag.Recipe.Likes.Count</p>
+    <p class="postDate">Date Posted: @ViewBag.Recipe.CreatedAt.ToString("MM/dd/yyyy")</p><br>
+    @if(ViewBag.User != null){
+      <partial name="RecipeRatePartial" view-data="ViewData"/>
+      <partial name="RecipeLikePartial" view-data="ViewData"/>
+      @if(ViewBag.User.AdminStatus == 1){
+        <form asp-action="DeleteRecipe" asp-controller="Admin" method="post">
+          <input type="number" name="RecipeId" value="@ViewBag.Recipe.RecipeId" readonly hidden required>
+          <input type="submit" value="Delete">
+        </form>
+      }
+      <div class="postAComment">
+        <h4>Post A Comment: </h4>
+        <partial name="RecipeCommentPartial" view-data="ViewData"/>
+      </div>
+    }
+    <div class="comments">
+      @foreach(var comment in ViewBag.Recipe.Comments){
+        <div class="comment">
+          <h4>@comment.User.UserName</h4>
+          <p>@comment.Content</p>
+          @if(comment.UserId == ViewBag.User.UserId || comment.User.AdminStatus == 1){
+            <form asp-action="DeleteComment" asp-controller="Home" method="post">
+              <input type="number" name="CommentId" value="@comment.CommentId" readonly hidden required>
+              <input type="submit" value="Delete">
+            </form>
+          }
+          <p>@comment.CreatedAt.ToString("MM/dd/yyyy")</p>
+        </div>
+      }
+    </div>
+</div>

@@ -1,0 +1,16 @@
+@model FoodForum.Models.LoginUser
+
+<div class="header">
+  <h1>Login</h1>
+</div>
+<div class="LoginSection">
+  <form asp-action="LogUserIn" asp-controller="User" method="post" id="LoginForm">
+    <span asp-validation-for="Username" id="LoginUsernameMsg"></span><br>
+    <label asp-for="Username">Username</label><br>
+    <input asp-for="Username" required id="LoginUsername"><br>
+    <span asp-validation-for="Password"></span><br>
+    <label asp-for="Password">Password</label><br>
+    <input asp-for="Password" required><br><br>
+    <input type="submit" value="Login"><br><br>
+  </form>
+</div>

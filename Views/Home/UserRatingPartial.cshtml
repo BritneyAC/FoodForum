@@ -1,0 +1,23 @@
+  <table class="SortingTbl">
+    <thead class="SortingThead">
+      <tr class="SortingTR">
+        <td class="SortingBtn" id="UserRating">Sort By Rating ↑</td>
+        <td class="SortingBtn" id="UserLikes">Sort By Likes ↓</td>
+      </tr>
+    </thead>
+  </table>
+  @foreach(var recipe in ViewBag.RecipesByRating){
+    <div class="Recipe">
+      <h3><a asp-action="Recipe" asp-controller="Recipes" asp-route-Title="@recipe.Title">@recipe.Title</a></h3>
+      <h5>By @recipe.User.Username</h5>
+      <ul>
+        @foreach(var ingredient in recipe.GetIngredients()){
+          <li>@ingredient</li>
+        }
+      </ul>
+      <p>@recipe.Content</p>
+      <p class="Rating">Rating: @recipe.GetRating()</p>
+      <p class="Likes">Likes: @recipe.Likes.Count</p>
+      <p class="postDate">Date Posted: @recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
+    </div>  
+  }
