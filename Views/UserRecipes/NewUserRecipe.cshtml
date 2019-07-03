@@ -1,12 +1,16 @@
-@model FoodForum.Models.Recipe
+@model FoodForum.Models.UserRecipe
 
-<h1>Post A New Recipe</h1>
-<a asp-action="Index" asp-controller="Home">Home</a>
-<form asp-action="PostAdminRecipe" asp-controller="Admin" method="post">
+<div class="Header">
+  <h1>Post A New Recipe</h1>
+  <div class="HeaderLinks">
+    <a asp-action="Index" asp-controller="Home">Home</a>
+  </div>
+</div>
+<form asp-action="PostUserRecipe" asp-controller="UserRecipes" method="post" id="UserRecipeForm">
   <div class="FormSection">
-    <span asp-validation-for="Title"></span><br>
+    <span asp-validation-for="Title" id="UserRecipeMsg"></span><br>
     <label asp-for="Title">Title</label><br>
-    <input asp-for="Title" required minlength="2" maxlength="45"><br>
+    <input asp-for="Title" required minlength="2" maxlength="45" id="UserRecipeTitle"><br>
   </div>
   <div class="IngredientsSection">
     <span asp-validation-for="IngredientOne"></span><br>

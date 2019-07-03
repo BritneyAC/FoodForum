@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FoodForum.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace FoodForum.Controllers
 {
@@ -26,18 +22,19 @@ namespace FoodForum.Controllers
       AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Likes).Include(recipe => recipe.Comments).Include(recipe => recipe.Ratings).FirstOrDefault(recipe => recipe.Title == Title);
       if(User != null)
       {
-        if(Recipe.Ratings.FirstOrDefault(rating => rating.UserId == User.UserId) != null){
-          Rating Rating = User.Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId);
-          ViewBag.Rating = Rating;
-        }
+        Rating Rating = User.Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId);
+        ViewBag.Rating = Rating;
       }
       
       bool Liked = false;
-      if (Recipe.Likes.Contains(ViewBag.User))
+      if (Recipe.Likes.FirstOrDefault(like => like.UserId == UserId) != null)
       {
         Liked = true;
         ViewBag.Like = Recipe.Likes.FirstOrDefault(like => like.UserId == UserId);
       }
+      List<Comment> Comments = dbContext.Comments.Include(comment => comment.Recipe).Include(comment => comment.User).Where(comment => comment.RecipeId == Recipe.RecipeId).ToList();
+      Comments.Reverse();
+      ViewBag.Comments = Comments;
       ViewBag.User = User;
       ViewBag.Liked = Liked;
       ViewBag.Recipe = Recipe;
@@ -50,85 +47,122 @@ namespace FoodForum.Controllers
 
       if (ModelState.IsValid)
       {
-        dbContext.Add(Recipe);
-        dbContext.SaveChanges();
-        return RedirectToAction("UserRecipes");
+        if (dbContext.AdminRecipes.Any(recipe => recipe.Title == Recipe.Title) || dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
+        {
+          dbContext.Add(Recipe);
+          dbContext.SaveChanges();
+          return RedirectToAction("Index");
+        }
+        ModelState.AddModelError("Title", "A recipe already has that title");
       }
-      return View("NewRecipe");
+      return View("NewAdminRecipe");
     }
-    [HttpGet("/Recipe/Like")]
-    public IActionResult LikeRecipe(Like Like)
+    [HttpPost("/Recipe/Like/{RecipeId}")]
+    public IActionResult LikeRecipe(int RecipeId)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
-      if (UserId != null)
+      AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.Likes).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+      if (User != null)
       {
-        Recipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == Like.RecipeId);
-        Like.UserId = UserId.Value;
-        Like.User = User;
-        Like.Recipe = Recipe;
-        dbContext.Add(Like);
-        dbContext.SaveChanges();
+        if (Recipe.Likes.FirstOrDefault(like => like.UserId == UserId) == null)
+        {
+          Like Like = new Like();
+          Like.RecipeId = RecipeId;
+          Like.Recipe = Recipe;
+          Like.UserId = UserId.Value;
+          Like.User = User;
+          dbContext.Add(Like);
+          dbContext.SaveChanges();
+        }
       }
-      return RedirectToAction("Recipe", new { RecipeId = Like.RecipeId });
+      return RedirectToAction("Recipe", new { Title = Recipe.Title });
     }
-    [HttpPost("/Recipe/Unlike")]
-    public IActionResult UnLikeRecipe(int LikeId)
+    [HttpPost("/Recipe/Unlike/{RecipeId}")]
+    public IActionResult UnLikeRecipe(int RecipeId)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
-      Like Like = dbContext.Likes.FirstOrDefault(like => like.LikeId == LikeId);
-      int RecipeId = Like.RecipeId;
-      dbContext.Remove(Like);
-      dbContext.SaveChanges();
-      return RedirectToAction("Recipe", new { RecipeId = RecipeId });
+      User User = dbContext.Users.Include(user => user.Likes).FirstOrDefault(user => user.UserId == UserId);
+      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+      if (User != null)
+      {
+        Like Like = User.Likes.FirstOrDefault(like => like.RecipeId == RecipeId);
+        dbContext.Remove(Like);
+        dbContext.SaveChanges();
+      }
+      return RedirectToAction("Recipe", new { Title = Recipe.Title });
     }
-    [HttpPost("/Recipe/Comment")]
-    public IActionResult Comment(Comment Comment)
+    [HttpPost("/Recipe/{RecipeId}/Comment")]
+    public IActionResult CommentOnRecipe(int RecipeId, Comment Comment)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
       if (UserId != null)
       {
-        Recipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == Comment.RecipeId);
         Comment.UserId = UserId.Value;
         Comment.User = User;
         Comment.Recipe = Recipe;
         dbContext.Add(Comment);
         dbContext.SaveChanges();
       }
-      return RedirectToAction("Recipe", new { RecipeId = Comment.RecipeId });
+      return RedirectToAction("Recipe", new { Title = Recipe.Title });
     }
-    [HttpPost("/Recipe/Rate")]
-    public IActionResult RateRecipe(Rating Rating)
+    [HttpPost("/Recipe/{RecipeId}/DeleteComment/{CommentId}")]
+    public IActionResult DeleteCommentOnRecipe(int RecipeId, int CommentId)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
-      if (UserId != null)
+      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+      Comment Comment = dbContext.Comments.FirstOrDefault(comment => comment.CommentId == CommentId);
+      if (UserId != Comment.UserId || User.AdminState != 1)
       {
-        Recipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == Rating.RecipeId);
-        List<Rating> Ratings = User.Ratings;
-        if(Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId) == null){
-          Rating.UserId = UserId.Value;
-          Rating.User = User;
-          Rating.Recipe = Recipe;
-          dbContext.Add(Rating);
-          dbContext.SaveChanges();
-        }
-      }
-      return RedirectToAction("Recipe", new { RecipeId = Rating.RecipeId });
-    }
-    [HttpPost("/Recipe/UpdateRating")]
-    public IActionResult UpdateRating(int RatingId, int Rate)
-    {
-      int? UserId = HttpContext.Session.GetInt32("UserId");
-      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
-      Rating Rating = dbContext.Ratings.FirstOrDefault(rating => rating.RatingId == RatingId);
-      if (UserId == Rating.UserId)
-      {
-        Rating.Rate = Rate;
+        dbContext.Remove(Comment);
         dbContext.SaveChanges();
       }
-      return RedirectToAction("Recipe", new { RecipeId = Rating.RecipeId });
+      return RedirectToAction("Recipe", new { Title = Recipe.Title });
+    }
+    [HttpPost("/Recipe/Rate/{RecipeId}")]
+    public IActionResult RateRecipe(Rating Rating, int RecipeId)
+    {
+      int? UserId = HttpContext.Session.GetInt32("UserId");
+      User User = dbContext.Users.Include(user => user.Ratings).FirstOrDefault(user => user.UserId == UserId);
+      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == Rating.RecipeId);
+      if (UserId != null)
+      {
+        if(User.Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId) == null)
+        {
+          if (Rating.Rate > 0 && Rating.Rate < 6)
+          {
+            Rating.UserId = UserId.Value;
+            Rating.User = User;
+            Rating.Recipe = Recipe;
+            dbContext.Add(Rating);
+            dbContext.SaveChanges();
+          }
+        }
+      }
+      return RedirectToAction("Recipe", new { Title = Recipe.Title });
+    }
+    [HttpPost("/Recipe/UpdateRating/{RecipeId}")]
+    public IActionResult UpdateRateRecipe(Rating Rating, int RecipeId)
+    {
+      int? UserId = HttpContext.Session.GetInt32("UserId");
+      User User = dbContext.Users.Include(user => user.Ratings).FirstOrDefault(user => user.UserId == UserId);
+      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+      Rating UserRating = User.Ratings.FirstOrDefault(rating => rating.RecipeId == RecipeId);
+      if (UserRating != null)
+      {
+        if (UserId == UserRating.UserId)
+        {
+          if (Rating.Rate > 0 && Rating.Rate < 6)
+          {
+            UserRating.Rate = Rating.Rate;
+            dbContext.SaveChanges();
+          }
+        }
+      }
+      return RedirectToAction("Recipe", new { Title = Recipe.Title });
     }
   }
 }

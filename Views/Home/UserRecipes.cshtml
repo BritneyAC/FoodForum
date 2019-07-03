@@ -1,11 +1,17 @@
 @model FoodForum.Models.Recipe
 
-<div class="header">
+<div class="Header">
   <h1>Hello And Welcome To Britney And Sam's Food Blog/Recipe Forum</h1>
-  <p>
-    <a asp-action="Index" asp-controller="Home">Back to our curated list</a>  |  
-    <a asp-action="NewUserRecipe" asp-controller="UserRecipe">Post A New Recipe</a>
-  </p>
+  <div class="HeaterLink">
+    <p>
+      <a asp-action="Index" asp-controller="Home">Back to our curated list</a>  |  
+      @if (ViewBag.User != null){
+        <a asp-action="NewUserRecipe" asp-controller="UserRecipes">Post A New Recipe</a>
+      } else{
+        <a asp-action="Login" asp-controller="User">Login</a>
+      }
+    </p>
+  </div>
 </div>
   <div class="RecipeList">
     <h2>Here you can find all of the User Submitted Recipes</h2>
@@ -20,7 +26,7 @@
       </table>
     @foreach(var recipe in ViewBag.RecipesByRating){
       <div class="Recipe">
-        <h3><a asp-action="Recipe" asp-controller="Recipes" asp-route-Title="@recipe.Title">@recipe.Title</a></h3>
+        <h3><a asp-action="UserRecipe" asp-controller="UserRecipes" asp-route-Title="@recipe.Title">@recipe.Title</a></h3>
         <h5>By @recipe.User.Username</h5>
         <ul>
           @foreach(var ingredient in recipe.GetIngredients()){

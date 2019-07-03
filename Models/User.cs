@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using FoodForum.Models;
 
-namespace FoodForum.Models{
+namespace FoodForum.Models
+{
   public class User{
     [Key]
     [Required]

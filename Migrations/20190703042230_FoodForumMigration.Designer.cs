@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodForum.Migrations
 {
     [DbContext(typeof(FoodForumContext))]
-    [Migration("20190628091741_FoodForumMigration")]
+    [Migration("20190703042230_FoodForumMigration")]
     partial class FoodForumMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,11 @@ namespace FoodForum.Migrations
                     b.Property<string>("Content")
                         .IsRequired();
 
+                    b.Property<DateTime>("CreatedAt");
+
                     b.Property<int>("RecipeId");
+
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.Property<int>("UserId");
 
@@ -137,7 +141,7 @@ namespace FoodForum.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Recipes");
+                    b.ToTable("Recipe");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Recipe");
                 });
@@ -170,6 +174,16 @@ namespace FoodForum.Migrations
                     b.ToTable("AdminRecipe");
 
                     b.HasDiscriminator().HasValue("AdminRecipe");
+                });
+
+            modelBuilder.Entity("FoodForum.Models.UserRecipe", b =>
+                {
+                    b.HasBaseType("FoodForum.Models.Recipe");
+
+
+                    b.ToTable("UserRecipe");
+
+                    b.HasDiscriminator().HasValue("UserRecipe");
                 });
 
             modelBuilder.Entity("FoodForum.Models.Comment", b =>

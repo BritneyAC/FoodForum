@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using FoodForum.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace FoodForum.Models{    
-    public class Recipe{
+namespace FoodForum.Models
+{
+  public abstract class Recipe{
         private FoodForumContext dbContext;
         public Recipe(FoodForumContext context)
         {
@@ -48,14 +47,16 @@ namespace FoodForum.Models{
         public List<Comment> Comments{get;set;}
         public List<Rating> Ratings{get;set;}
         public double GetRating(){
-            if(Ratings.Count < 1){
-                return 0;
-            }
-            double avg = 1;
+            double avg = 0;
             foreach(var rating in Ratings){
                 avg += rating.Rate;
             } 
-            return avg / Ratings.Count;
+            avg = avg / Ratings.Count;
+            if (double.IsNaN(avg))
+            {
+                return 0;
+            }
+            return avg;
         }
         public DateTime CreatedAt{get;set;} = DateTime.Now;
         public DateTime UpdatedAt{get;set;} = DateTime.Now;

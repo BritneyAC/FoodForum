@@ -24,7 +24,7 @@ namespace FoodForum.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Recipes",
+                name: "Recipe",
                 columns: table => new
                 {
                     RecipeId = table.Column<int>(nullable: false)
@@ -55,9 +55,9 @@ namespace FoodForum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recipes", x => x.RecipeId);
+                    table.PrimaryKey("PK_Recipe", x => x.RecipeId);
                     table.ForeignKey(
-                        name: "FK_Recipes_Users_UserId",
+                        name: "FK_Recipe_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -72,15 +72,17 @@ namespace FoodForum.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: false),
                     RecipeId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.CommentId);
                     table.ForeignKey(
-                        name: "FK_Comments_Recipes_RecipeId",
+                        name: "FK_Comments_Recipe_RecipeId",
                         column: x => x.RecipeId,
-                        principalTable: "Recipes",
+                        principalTable: "Recipe",
                         principalColumn: "RecipeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -104,9 +106,9 @@ namespace FoodForum.Migrations
                 {
                     table.PrimaryKey("PK_Likes", x => x.LikeId);
                     table.ForeignKey(
-                        name: "FK_Likes_Recipes_RecipeId",
+                        name: "FK_Likes_Recipe_RecipeId",
                         column: x => x.RecipeId,
-                        principalTable: "Recipes",
+                        principalTable: "Recipe",
                         principalColumn: "RecipeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -131,9 +133,9 @@ namespace FoodForum.Migrations
                 {
                     table.PrimaryKey("PK_Ratings", x => x.RatingId);
                     table.ForeignKey(
-                        name: "FK_Ratings_Recipes_RecipeId",
+                        name: "FK_Ratings_Recipe_RecipeId",
                         column: x => x.RecipeId,
-                        principalTable: "Recipes",
+                        principalTable: "Recipe",
                         principalColumn: "RecipeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -175,8 +177,8 @@ namespace FoodForum.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recipes_UserId",
-                table: "Recipes",
+                name: "IX_Recipe_UserId",
+                table: "Recipe",
                 column: "UserId");
         }
 
@@ -192,7 +194,7 @@ namespace FoodForum.Migrations
                 name: "Ratings");
 
             migrationBuilder.DropTable(
-                name: "Recipes");
+                name: "Recipe");
 
             migrationBuilder.DropTable(
                 name: "Users");

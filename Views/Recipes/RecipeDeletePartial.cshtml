@@ -1,4 +1,3 @@
-<form asp-action="DeleteRecipe" asp-controller="Admin" method="post">
-  <input type="number" name="RecipeId" value="@ViewBag.Recipe.RecipeId" readonly hidden required>
+<form asp-action="DeleteRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post">
   <input type="submit" value="Delete">
 </form>

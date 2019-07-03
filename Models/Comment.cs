@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using FoodForum.Models;
 
-namespace FoodForum.Models{
+namespace FoodForum.Models
+{
   public class Comment{
     [Key]
     public int CommentId{get;set;}
@@ -18,5 +16,9 @@ namespace FoodForum.Models{
     public Recipe Recipe{get;set;}
     [Required]
     public User User{get;set;}
+    [Required]
+    public DateTime CreatedAt{get;set;} = DateTime.Now;
+    [Required]
+    public DateTime UpdatedAt{get;set;} = DateTime.Now;
   }
 }

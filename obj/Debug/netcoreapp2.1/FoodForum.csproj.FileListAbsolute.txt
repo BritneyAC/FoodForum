@@ -50,3 +50,8 @@ C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\R
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\UserRatingPartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\UserRatingReversePartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Recipes\RecipeDeletePartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Recipes\RecipeUpdateRatePartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeDeletePartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeUpdateRatePartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Admin\RecipeTitlePartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeTitlePartial.g.cshtml.cs

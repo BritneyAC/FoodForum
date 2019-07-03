@@ -1,8 +1,10 @@
 @model FoodForum.Models.User
 
-<div class="header">
+<div class="Header">
   <h1>Register</h1>
-  <a asp-action="Index" asp-controller="Home">Home</a>
+  <div class="HeaderLinks">
+    <a asp-action="Index" asp-controller="Home">Home</a>
+  </div>
 </div>
 <div class="LoginSection">
   <form asp-action="UserMaker" asp-controller="User" method="post" id="RegForm">

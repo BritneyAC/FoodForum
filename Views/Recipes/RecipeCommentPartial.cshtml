@@ -1,7 +1,6 @@
 @model FoodForum.Models.Comment
 
-<form asp-action="CommentOnRecipe" asp-controller="Home" method="post">
-  <textarea asp-for="Content"required></textarea>
-  <input asp-for="RecipeId" value="@ViewBag.Recipe.RecipeId" readonly hidden required>
+<form asp-action="CommentOnRecipe" asp-controller="Recipes" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post">
+  <textarea asp-for="Content" required></textarea>
   <input type="submit" value="Comment">
 </form>

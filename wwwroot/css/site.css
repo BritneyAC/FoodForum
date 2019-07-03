@@ -70,26 +70,43 @@ h3{
         text-align: center;
     }
 
+h4{
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+}
+
 h5{
     text-align: center;
 }
 
-.header{
+.Header{
     background-color: rgba(17, 17, 17, 0.95);
     border-radius: 4px;
     width: 100%;
     
 }
 
-    .header h1{
+    .Header h1{
         margin: 0px auto;
     }
 
-    .header a{
-        display: inline-block;
-        width: 100%;
+.HeaderLinks{
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+    margin: 5px auto;
+    padding-right: 30px;
+}
+    
+    .HeaderLinks a{
+        display: inline;
         text-align: right;
-        margin-right: 50px;
+    }
+
+    .HeaderLinks p{
+        display: inline;
+        text-align: right;
     }
 
 #Sorting{
@@ -136,10 +153,11 @@ h5{
     border: 1px solid black;
     background-color: rgba(17, 17, 17, 0.95);
     border-radius: 4px;
+    padding: 10px 0px;
 }
 
 .Recipe{
-    width: 80%;
+    width: 85%;
     margin: 5px auto;
     padding: 0px 30px;
     border: 1px solid black;
@@ -157,6 +175,7 @@ h5{
         border: solid 1px black;
         width: 50%;
         text-align: center;
+        background-color: rgba(17, 17, 17, 0.95); 
     }
 
 .LoginSection{
@@ -198,6 +217,32 @@ h5{
         display: inline-block;
     }
 
+#RecipeTitleMsg{
+    width: 100%;
+    margin: 0px auto;
+    display: inline-block;
+}
+
+    #RecipeTitleMsg .container.body-content{
+        width: 100%;
+        margin: 0px auto;
+        padding: 0px;
+        display: inline-block;
+    }
+
+#UserRecipeTitleMsg{
+    width: 100%;
+    margin: 0px auto;
+    display: inline-block;
+}
+
+    #UserRecipeTitleMsg .container.body-content{
+        width: 100%;
+        margin: 0px auto;
+        padding: 0px;
+        display: inline-block;
+    }
+
 .FormSection{
     display: inline-block;
     width: 30%;
@@ -205,6 +250,8 @@ h5{
     margin: 5px auto;
     text-align: center;
     padding: 10px;
+    background-color: rgba(17, 17, 17, 0.95);
+    border-radius: 4px;
 }
 
     .FormSection textarea{
@@ -220,6 +267,8 @@ h5{
     margin: 5px auto;
     text-align: center;
     padding: 5px;
+    background-color: rgba(17, 17, 17, 0.95);
+    border-radius: 4px;
 }
 
 .RecipeStatsTable{
@@ -256,3 +305,21 @@ h5{
 .PostAComment input{
     vertical-align: text-bottom;
 }
+
+.Comments{
+    margin: 10px auto;
+}
+
+.Comment{
+    border: rgb(10, 100, 0) 1px solid;
+    margin: 10px auto;
+}
+
+    .Comment p{
+        padding-left: 20px; 
+    }
+
+    .CommentCreatedAt{
+        padding-right: 20px;
+        text-align: right;
+    }

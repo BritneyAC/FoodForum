@@ -21,6 +21,28 @@
       $('#LoginUsernameMsg').html(res)
     })
   })
+  $('#RecipeTitle').keyup(function(){
+    var data = $("#RecipeTitle").serialize()
+    $.ajax({
+      method: "POST",
+      url: "/RecipeTitle",
+      data: data
+    })
+    .done(function(res){
+      $('#RecipeTitleMsg').html(res)
+    })
+  })
+  $('#UserRecipeTitle').keyup(function(){
+    var data = $("#UserRecipeTitle").serialize()
+    $.ajax({
+      method: "POST",
+      url: "/UserRecipeTitle",
+      data: data
+    })
+    .done(function(res){
+      $('#UserRecipeTitleMsg').html(res)
+    })
+  })
   $('#IndexRating').click(function(){
     $.ajax({
       method: "GET",
