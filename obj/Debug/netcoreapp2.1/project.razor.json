@@ -2857,5 +2857,206 @@
     "CSharpLanguageVersion": 703
   },
   "RootNamespace": "FoodForum",
-  "Documents": []
+  "Documents": [
+    {
+      "FilePath": "Views\\Recipes\\RecipeDeletePartial.cshtml",
+      "TargetPath": "Views\\Recipes\\RecipeDeletePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\IndexRatingReversePartial.cshtml",
+      "TargetPath": "Views\\Home\\IndexRatingReversePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\IndexOldestPartial.cshtml",
+      "TargetPath": "Views\\Home\\IndexOldestPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\User\\UsernamePartial.cshtml",
+      "TargetPath": "Views\\User\\UsernamePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\NewUserRecipe.cshtml",
+      "TargetPath": "Views\\UserRecipes\\NewUserRecipe.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Recipes\\RecipeLikePartial.cshtml",
+      "TargetPath": "Views\\Recipes\\RecipeLikePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Admin\\AdminPage.cshtml",
+      "TargetPath": "Views\\Admin\\AdminPage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\UserRecipe.cshtml",
+      "TargetPath": "Views\\UserRecipes\\UserRecipe.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Recipes\\RecipeUpdateRatePartial.cshtml",
+      "TargetPath": "Views\\Recipes\\RecipeUpdateRatePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UserRecipes.cshtml",
+      "TargetPath": "Views\\Home\\UserRecipes.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Recipes\\RecipeCommentPartial.cshtml",
+      "TargetPath": "Views\\Recipes\\RecipeCommentPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\IndexNewestPartial.cshtml",
+      "TargetPath": "Views\\Home\\IndexNewestPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\UserRecipeLikePartial.cshtml",
+      "TargetPath": "Views\\UserRecipes\\UserRecipeLikePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\User\\ProfilePage.cshtml",
+      "TargetPath": "Views\\User\\ProfilePage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\IndexLikesPartial.cshtml",
+      "TargetPath": "Views\\Home\\IndexLikesPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\IndexRatingPartial.cshtml",
+      "TargetPath": "Views\\Home\\IndexRatingPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\IndexLikesReversePartial.cshtml",
+      "TargetPath": "Views\\Home\\IndexLikesReversePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UserRatingPartial.cshtml",
+      "TargetPath": "Views\\Home\\UserRatingPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UserLikesPartial.cshtml",
+      "TargetPath": "Views\\Home\\UserLikesPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\UserRecipeTitlePartial.cshtml",
+      "TargetPath": "Views\\UserRecipes\\UserRecipeTitlePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\User\\Login.cshtml",
+      "TargetPath": "Views\\User\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\UserRecipeDeletePartial.cshtml",
+      "TargetPath": "Views\\UserRecipes\\UserRecipeDeletePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UserRatingReversePartial.cshtml",
+      "TargetPath": "Views\\Home\\UserRatingReversePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Admin\\AdminifyRecipe.cshtml",
+      "TargetPath": "Views\\Admin\\AdminifyRecipe.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\User\\LoginUsernamePartial.cshtml",
+      "TargetPath": "Views\\User\\LoginUsernamePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Recipes\\RecipeRatePartial.cshtml",
+      "TargetPath": "Views\\Recipes\\RecipeRatePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Admin\\RecipeTitlePartial.cshtml",
+      "TargetPath": "Views\\Admin\\RecipeTitlePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UserOldestPartial.cshtml",
+      "TargetPath": "Views\\Home\\UserOldestPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UserNewestPartial.cshtml",
+      "TargetPath": "Views\\Home\\UserNewestPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Recipes\\Recipe.cshtml",
+      "TargetPath": "Views\\Recipes\\Recipe.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Admin\\NewAdminRecipe.cshtml",
+      "TargetPath": "Views\\Admin\\NewAdminRecipe.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\UserRecipeRatePartial.cshtml",
+      "TargetPath": "Views\\UserRecipes\\UserRecipeRatePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\UserRecipeUpdateRatePartial.cshtml",
+      "TargetPath": "Views\\UserRecipes\\UserRecipeUpdateRatePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UserLikesReversePartial.cshtml",
+      "TargetPath": "Views\\Home\\UserLikesReversePartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\UserRecipes\\UserRecipeCommentPartial.cshtml",
+      "TargetPath": "Views\\UserRecipes\\UserRecipeCommentPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\User\\LoginPartial.cshtml",
+      "TargetPath": "Views\\User\\LoginPartial.cshtml",
+      "FileKind": "mvc"
+    }
+  ]
 }

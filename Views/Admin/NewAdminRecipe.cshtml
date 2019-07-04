@@ -6,7 +6,7 @@
     <a asp-action="AdminPage" asp-controller="Admin">Back To Admin Page</a>
   </div>
 </div>
-<form asp-action="PostAdminRecipe" asp-controller="Admin" method="post" id="RecipeForm">
+<form asp-action="PostAdminRecipeAsync" asp-controller="Admin" method="post" id="RecipeForm" enctype="multipart/form-data">
   <div class="FormSection">
     <span asp-validation-for="Title" id="RecipeTitleMsg"></span><br>
     <label asp-for="Title">Title</label><br>
@@ -66,9 +66,9 @@
     <span asp-validation-for="Content"></span><br>
     <Label asp-for="Content">Recipe</Label><br>
     <textarea asp-for="Content" cols="30" rows="10" required minlength="10" maxlength="255"></textarea>
-    <span asp-validation-for="PictureUrl"></span>
-    <label asp-for="PictureUrl">Picture(Optional)</label>
-    <input asp-for="PictureUrl">
+    <span asp-validation-for="UploadPicture"></span><br>
+    <label asp-for="UploadPicture">Picture(Optional)</label><br>
+    <input asp-for="UploadPicture">
   </div><br>
   <input type="submit" value="Post">
 </form>

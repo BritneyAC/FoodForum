@@ -29,28 +29,40 @@ namespace FoodForum.Controllers
       return View();
     }
     [HttpGet("/IndexRating")]
-    public IActionResult IndexRating(){
-      List<AdminRecipe> RecipesByRating = dbContext.AdminRecipes.Include(recipe => recipe.Likes).Include(recipe => recipe.Ratings).Include(recipe => recipe.User).ToList();
+    public async Task<IActionResult> IndexRatingAsync(){
+      List<AdminRecipe> RecipesByRating = await dbContext.AdminRecipes.Include(recipe => recipe.Likes).Include(recipe => recipe.Ratings).Include(recipe => recipe.User).ToListAsync();
       ViewBag.RecipesByRating = RecipesByRating.OrderByDescending(recipe => recipe.GetRating());
       return View("IndexRatingPartial");
     }
     [HttpGet("/IndexRatingReverse")]
-    public IActionResult IndexRatingReverse(){
-      List<AdminRecipe> RecipesByRatingReverse = dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToList();
+    public async Task<IActionResult> IndexRatingReverseAsync(){
+      List<AdminRecipe> RecipesByRatingReverse = await dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
       ViewBag.RecipesByRatingReverse = RecipesByRatingReverse.OrderBy(recipe => recipe.GetRating());
       return View("IndexRatingReversePartial");
     }
     [HttpGet("/IndexLikes")]
-    public IActionResult IndexLikes(){
-      List<AdminRecipe> RecipesByLikes = dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToList();
+    public async Task<IActionResult> IndexLikesAsync(){
+      List<AdminRecipe> RecipesByLikes = await dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
       ViewBag.RecipesByLikes = RecipesByLikes.OrderByDescending(recipe => recipe.Likes.Count);
       return View("IndexLikesPartial");
     }
     [HttpGet("/IndexLikesReverse")]
-    public IActionResult IndexLikesReverse(){
-      List<AdminRecipe> RecipesByLikesReverse = dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToList();
+    public async Task<IActionResult> IndexLikesReverseAsync(){
+      List<AdminRecipe> RecipesByLikesReverse = await dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
       ViewBag.RecipesByLikesReverse = RecipesByLikesReverse.OrderBy(recipe => recipe.Likes.Count);
       return View("IndexLikesReversePartial");
+    }
+    [HttpGet("/IndexTime")]
+    public async Task<IActionResult> IndexTimeAsync(){
+      List<AdminRecipe> RecipesByTime = await dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).Reverse().ToListAsync();
+      ViewBag.RecipesByLikesReverse = RecipesByTime;
+      return View("IndexTimePartial");
+    }
+    [HttpGet("/IndexTimeReverse")]
+    public async Task<IActionResult> IndexTimeReverseAsync(){
+      List<AdminRecipe> RecipesByTimeReverse = await dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
+      ViewBag.RecipesByLikesReverse = RecipesByTimeReverse;
+      return View("IndexTimeReversePartial");
     }
     [HttpGet("/UserRecipes")]
     public IActionResult UserRecipes()
@@ -66,28 +78,40 @@ namespace FoodForum.Controllers
       return View();
     }
     [HttpGet("/UserRating")]
-    public IActionResult UserRating(){
-      List<UserRecipe> RecipesByRating = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToList();
+    public async Task<IActionResult> UserRatingAsync(){
+      List<UserRecipe> RecipesByRating = await dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
       ViewBag.RecipesByRating = RecipesByRating.OrderByDescending(recipe => recipe.GetRating());
       return View("UserRatingPartial");
     }
     [HttpGet("/UserRatingReverse")]
-    public IActionResult UserRatingReverse(){
-      List<UserRecipe> RecipesByRatingReverse = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToList();
+    public async Task<IActionResult> UserRatingReverseAsync(){
+      List<UserRecipe> RecipesByRatingReverse = await dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
       ViewBag.RecipesByRatingReverse = RecipesByRatingReverse.OrderBy(recipe => recipe.GetRating());
       return View("UserRatingReversePartial");
     }
     [HttpGet("/UserLikes")]
-    public IActionResult UserLikes(){
-      List<UserRecipe> RecipesByLikes = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToList();
+    public async Task<IActionResult> UserLikesAsync(){
+      List<UserRecipe> RecipesByLikes = await dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
       ViewBag.RecipesByLikes = RecipesByLikes.OrderByDescending(recipe => recipe.Likes.Count);
       return View("UserLikesPartial");
     }
     [HttpGet("/UserLikesReverse")]
-    public IActionResult UserLikesReverse(){
-      List<UserRecipe> RecipesByLikesReverse = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToList();
+    public async Task<IActionResult> UserLikesReverseAsync(){
+      List<UserRecipe> RecipesByLikesReverse = await dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
       ViewBag.RecipesByLikesReverse = RecipesByLikesReverse.OrderBy(recipe => recipe.Likes.Count);
-      return View("UserLikesReverse");
+      return View("UserLikesReversePartial");
+    }
+    [HttpGet("/UserTime")]
+    public async Task<IActionResult> UserTimeAsync(){
+      List<UserRecipe> RecipesByTime = await dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).Reverse().ToListAsync();
+      ViewBag.RecipesByLikesReverse = RecipesByTime;
+      return View("UserTimePartial");
+    }
+    [HttpGet("/UserTimeReverse")]
+    public async Task<IActionResult> UserTimeReverseAsync(){
+      List<UserRecipe> RecipesByTimeReverse = await dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).ToListAsync();
+      ViewBag.RecipesByLikesReverse = RecipesByTimeReverse;
+      return View("UserTimeReversePartial");
     }
   }
 }

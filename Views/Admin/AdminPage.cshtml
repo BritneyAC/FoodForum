@@ -16,7 +16,7 @@
     @foreach(var user in ViewBag.Users){
       <tr>
         <td>
-          <a href="/user/@user.Username">@user.Username</a>
+          <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@user.Username">@user.Username</a>
         </td>
         <td>
           @if(user.AdminState == 1 && user.UserId != ViewBag.User.UserId){

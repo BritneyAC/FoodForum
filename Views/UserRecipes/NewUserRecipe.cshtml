@@ -3,6 +3,7 @@
 <div class="Header">
   <h1>Post A New Recipe</h1>
   <div class="HeaderLinks">
+    <a asp-action="UserRecipes" asp-controller="Home">Back To User Submitted Recipes</a>
     <a asp-action="Index" asp-controller="Home">Home</a>
   </div>
 </div>
@@ -63,9 +64,9 @@
     <span asp-validation-for="Content"></span><br>
     <Label asp-for="Content">Recipe</Label><br>
     <textarea asp-for="Content" cols="30" rows="10" required minlength="10" maxlength="255"></textarea>
-    <span asp-validation-for="PictureUrl"></span>
-    <label asp-for="PictureUrl">Picture(Optional)</label>
-    <input asp-for="PictureUrl">
+    <span asp-validation-for="UploadPicture"></span>
+    <label asp-for="UploadPicture">Picture(Optional)</label>
+    <input asp-for="UploadPicture">
   </div>
   <input asp-for="UserId" value="@ViewBag.User.UserId" readonly hidden required>
   <input type="submit" value="Post">

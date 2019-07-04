@@ -3,11 +3,19 @@
 <div class="Header">
   <h1>@ViewBag.Recipe.Title</h1>
   <div class="HeaderLinks">
-    <a asp-action="Index" asp-controller="Home">Home</a>
+    <a asp-action="Index" asp-controller="Home">Home</a>  |  
+    @if(ViewBag.User == null){
+      <a asp-action="Login" asp-controller="User">Login</a>
+    } else{
+      <a asp-action="Logout" asp-controller="User">Logout</a>
+    }
   </div>
 </div>
 <div class="Recipe">
-    <h5>By @ViewBag.Recipe.User.Username</h5>
+    <h5>By <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.Recipe.User.Username">@ViewBag.Recipe.User.Username</a></h5>
+    @if(ViewBag.Recipe.PictureURL != null){
+      <div class="RecipeListPicture" style="background-image: url(@ViewBag.Recipe.PictureURL)";></div>
+    }
     <ul>
       @foreach(var ingredient in ViewBag.Recipe.GetIngredients()){
         <li>@ingredient</li>
@@ -32,7 +40,7 @@
             }
             <td><partial name="RecipeLikePartial" view-data="ViewData"/></td>
           }
-          @if(ViewBag.User.AdminState == 1){
+          @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
             <td><partial name="RecipeDeletePartial" view-data="ViewData"/></td>
           }
         </tr>

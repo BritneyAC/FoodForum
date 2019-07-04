@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace FoodForum.Models
 {
@@ -19,7 +22,11 @@ namespace FoodForum.Models
         public string Title{get;set;}
         [Required]
         public string Content{get;set;}
-        public string PictureUrl{get;set;}
+        [DataType(DataType.Upload)]
+        [NotMapped]
+        public IFormFile UploadPicture{get;set;}
+        [FileExtensions(Extensions = "jpg, png, jpeg, bmp")]
+        public string PictureURL{get;set;}
         [Required]
         public string IngredientOne{get;set;}
         [Required]
@@ -113,5 +120,12 @@ namespace FoodForum.Models
             }
             return Ingredients;
         }
+        public CloudBlobContainer GetBlobContainer(string azureConnectionString, string containerName)
+        {
+            var storageAccount = CloudStorageAccount.Parse(azureConnectionString);
+            var blobClient = storageAccount.CreateCloudBlobClient();
+            return blobClient.GetContainerReference(containerName);
+        }
+
     }
 }

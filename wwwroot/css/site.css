@@ -140,15 +140,15 @@ h5{
     }
 
 .SortingBtn{
-    width: 50%;
+    width: 33%;
     margin: 0px auto;
-    padding: 0px;
+    padding: 2px;
     border: 1px solid black;
     text-align: center;
 }
 
 .RecipeList{
-    width: 80%;
+    width: 95%;
     margin: 10px auto;
     border: 1px solid black;
     background-color: rgba(17, 17, 17, 0.95);
@@ -156,14 +156,23 @@ h5{
     padding: 10px 0px;
 }
 
-.Recipe{
+.RecipeListPicture{
+    text-align: center;
     width: 85%;
+    min-height: 50vh;
+    margin: 10px auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.Recipe{
+    width: 95%;
     margin: 5px auto;
     padding: 0px 30px;
     border: 1px solid black;
     border-radius: 4px;
     background-color: rgba(17, 17, 17, 0.95);
-
 }
 
 
@@ -257,7 +266,12 @@ h5{
     .FormSection textarea{
         width: 90%;
         resize: vertical;
-        margin-left: 10px;
+        margin: 5px auto;
+    }
+
+    .FormSection input{
+        width: 90%;
+        margin: 5px auto;
     }
 
 .IngredientsSection{

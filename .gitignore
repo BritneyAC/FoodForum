@@ -1,1 +1,3 @@
 appsettings.json
+Migrations/
+db.lock

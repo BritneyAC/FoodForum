@@ -36,7 +36,6 @@ C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\R
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeCommentPartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeLikePartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeRatePartial.g.cshtml.cs
-C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\User\AccountPage.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\User\Login.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\User\LoginPartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\User\LoginUsernamePartial.g.cshtml.cs
@@ -55,3 +54,10 @@ C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\R
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeUpdateRatePartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Admin\RecipeTitlePartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeTitlePartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AdminifyRecipe.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\User\ProfilePage.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexNewestPartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexOldestPartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\UserNewestPartial.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\UserOldestPartial.g.cshtml.cs

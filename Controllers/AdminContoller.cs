@@ -8,15 +8,21 @@ using FoodForum.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 
 namespace FoodForum.Controllers
 {
   public class AdminController : Controller
   {
+    private IConfiguration _config;
+    private string AzureConnectionString { get; }
     private FoodForumContext dbContext;
-    public AdminController(FoodForumContext context)
+    public AdminController(FoodForumContext context, IConfiguration config)
     {
       dbContext = context;
+      _config = config;
+      AzureConnectionString = _config["AzureStorageConnectionString"];
     }
     [HttpGet("/AdminPage")]
     public IActionResult AdminPage()
@@ -63,7 +69,7 @@ namespace FoodForum.Controllers
       return View("RecipeTitlePartial");
     }
     [HttpPost("/PostAdminRecipe")]
-    public IActionResult PostAdminRecipe(AdminRecipe Recipe)
+    public async Task<IActionResult> PostAdminRecipeAsync(AdminRecipe Recipe)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       if (UserId != null)
@@ -72,15 +78,29 @@ namespace FoodForum.Controllers
         if (User.AdminState == 1)
         {
           Recipe.UserId = User.UserId;
+          if (dbContext.AdminRecipes.Any(recipe => recipe.Title == Recipe.Title) || dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
+          {
+            ModelState.AddModelError("Title", "A recipe already has that title");
+            return View("NewAdminRecipe");
+          }
+          if(Recipe.UploadPicture != null)
+          {
+            var container = Recipe.GetBlobContainer(AzureConnectionString, "foodforumpictures");
+            var Content = ContentDispositionHeaderValue.Parse(Recipe.UploadPicture.ContentDisposition);
+            var FileName = Content.FileName.ToString().Trim('"');
+            var blockBlob = container.GetBlockBlobReference(FileName);
+            await blockBlob.UploadFromStreamAsync(Recipe.UploadPicture.OpenReadStream());
+            Recipe.PictureURL = blockBlob.Uri.AbsoluteUri;
+          }
           if (ModelState.IsValid)
           {
-            if (!dbContext.AdminRecipes.Any(recipe => recipe.Title == Recipe.Title) || !dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
+            if(!dbContext.AdminRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL) || !dbContext.UserRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
             {
               dbContext.Add(Recipe);
               dbContext.SaveChanges();
               return RedirectToAction("Index", "Home");
             }
-            ModelState.AddModelError("Title", "A recipe already has that title");
+            ModelState.AddModelError("UploadPicture", "A recipe already has a picture with that file name, please rename it and try again");
           }
           return View("NewAdminRecipe");
         }
@@ -117,8 +137,8 @@ namespace FoodForum.Controllers
       }
       return RedirectToAction("Index", "Home");
     }
-    [HttpPost("/AdminifyRecipe")]
-    public IActionResult AdminifyRecipe(AdminRecipe AdminRecipe)
+    [HttpPost("/AdminifyRecipe/{RecipeId}")]
+    public IActionResult AdminifyRecipe(AdminRecipe Recipe, int RecipeId)
     {
       int? AdminId = HttpContext.Session.GetInt32("UserId");
       User Admin = dbContext.Users.FirstOrDefault(user => user.UserId == AdminId);
@@ -126,15 +146,41 @@ namespace FoodForum.Controllers
       {
         if (ModelState.IsValid)
         {
-          UserRecipe Recipe = dbContext.UserRecipes.FirstOrDefault(recipe => recipe.RecipeId == AdminRecipe.RecipeId);
-          AdminRecipe.CreatedAt = Recipe.CreatedAt;
-          dbContext.Remove(Recipe);
-          dbContext.Add(AdminRecipe);
+          UserRecipe UserRecipe = dbContext.UserRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+          Recipe.Title = UserRecipe.Title;
+          Recipe.Content = UserRecipe.Content;
+          Recipe.PictureURL = UserRecipe.PictureURL;
+          Recipe.IngredientOne = UserRecipe.IngredientOne;
+          Recipe.IngredientTwo = UserRecipe.IngredientOne;
+          Recipe.IngredientTwo = UserRecipe.IngredientThree;
+          Recipe.IngredientFour = UserRecipe.IngredientFour;
+          Recipe.IngredientFive = UserRecipe.IngredientFive;
+          Recipe.IngredientSix = UserRecipe.IngredientOne;
+          Recipe.IngredientSix = UserRecipe.IngredientSeven;
+          Recipe.IngredientEight = UserRecipe.IngredientEight;
+          Recipe.IngredientNine = UserRecipe.IngredientNine;
+          Recipe.IngredientTen = UserRecipe.IngredientTen;
+          Recipe.IngredientEleven = UserRecipe.IngredientEleven;
+          Recipe.IngredientTwelve = UserRecipe.IngredientTwelve;
+          Recipe.IngredientThirteen = UserRecipe.IngredientThirteen;
+          Recipe.IngredientFourteen = UserRecipe.IngredientFourteen;
+          Recipe.IngredientFifteen = UserRecipe.IngredientFifteen;
+          Recipe.Ingredients = UserRecipe.Ingredients;
+          Recipe.UserId = UserRecipe.UserId;
+          Recipe.User = UserRecipe.User;
+          Recipe.Likes = UserRecipe.Likes;
+          Recipe.Comments = UserRecipe.Comments;
+          Recipe.Ratings = UserRecipe.Ratings;
+          Recipe.CreatedAt = UserRecipe.CreatedAt;
+          UserRecipe.CreatedAt = Recipe.CreatedAt;
+          dbContext.Remove(UserRecipe);
+          dbContext.Add(Recipe);
           dbContext.SaveChanges();
           return RedirectToAction("Index", "Home");
         }
+        return View("MakeRecipeAdminRecipe", new { Title = Recipe.Title });
       }
-      return View("MakeRecipeAdminRecipe", new { RecipeId = AdminRecipe.RecipeId });
+      return RedirectToAction("Index", "Home");
     }
     [HttpGet("/AdminifyUser/{UserId}")]
     public IActionResult AdminifyUser(int UserId)
@@ -160,7 +206,7 @@ namespace FoodForum.Controllers
         UserRecipe Recipe = new UserRecipe();
         Recipe.Title = AdminRecipe.Title;
         Recipe.Content = AdminRecipe.Content;
-        Recipe.PictureUrl = AdminRecipe.PictureUrl;
+        Recipe.PictureURL = AdminRecipe.PictureURL;
         Recipe.IngredientOne = AdminRecipe.IngredientOne;
         Recipe.IngredientTwo = AdminRecipe.IngredientOne;
         Recipe.IngredientTwo = AdminRecipe.IngredientThree;

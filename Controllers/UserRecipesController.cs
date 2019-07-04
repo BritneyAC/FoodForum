@@ -4,15 +4,21 @@ using FoodForum.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Microsoft.Net.Http.Headers;
+using Microsoft.Extensions.Configuration;
 
 namespace FoodForum.Controllers
 {
   public class UserRecipesController : Controller
   {
+    private IConfiguration _config;
+    private string AzureConnectionString { get; }
     private FoodForumContext dbContext;
-    public UserRecipesController(FoodForumContext context)
+    public UserRecipesController(FoodForumContext context, IConfiguration config)
     {
       dbContext = context;
+      _config = config;
+      AzureConnectionString = _config["AzureStorageConnectionString"];
     }
     [HttpGet("/UserRecipe/{Title}")]
     public IActionResult UserRecipe(string Title)
@@ -68,7 +74,7 @@ namespace FoodForum.Controllers
       return View("UserRecipeTitlePartial");
     }
     [HttpPost("/PostUserRecipe")]
-    public IActionResult PostUserRecipe(UserRecipe Recipe)
+    public async System.Threading.Tasks.Task<IActionResult> PostUserRecipeAsync(UserRecipe Recipe)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
@@ -81,6 +87,15 @@ namespace FoodForum.Controllers
           {
             if (!dbContext.AdminRecipes.Any(recipe => recipe.Title == Recipe.Title) || !dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
             {
+              if(Recipe.UploadPicture != null)
+              {
+                var container = Recipe.GetBlobContainer(AzureConnectionString, "foodforumpictures");
+                var Content = ContentDispositionHeaderValue.Parse(Recipe.UploadPicture.ContentDisposition);
+                var FileName = Content.FileName.ToString().Trim('"');
+                var blockBlob = container.GetBlockBlobReference(FileName);
+                await blockBlob.UploadFromStreamAsync(Recipe.UploadPicture.OpenReadStream());
+                Recipe.PictureURL = blockBlob.Uri.AbsoluteUri;
+              }
               dbContext.Add(Recipe);
               dbContext.SaveChanges();
               return RedirectToAction("Index", "Home");

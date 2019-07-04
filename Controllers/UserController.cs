@@ -6,6 +6,7 @@ using FoodForum.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace FoodForum.Controllers
 {
@@ -27,10 +28,10 @@ namespace FoodForum.Controllers
       return View();
     }
     [HttpPost("/Username")]
-    public IActionResult UserName(string Username)
+    public async Task<IActionResult> UserNameAsync(string Username)
     {
       bool found = false;
-      User User = dbContext.Users.FirstOrDefault(user => user.Username == Username);
+      User User = await dbContext.Users.FirstOrDefaultAsync(user => user.Username == Username);
       if (User != null)
       {
         found = true;
@@ -39,10 +40,10 @@ namespace FoodForum.Controllers
       return View("UsernamePartial");
     }
     [HttpPost("/LoginUsername")]
-    public IActionResult LoginUserName(string Username)
+    public async Task<IActionResult> LoginUserName(string Username)
     {
       bool found = false;
-      User User = dbContext.Users.FirstOrDefault(user => user.Username == Username);
+      User User = await dbContext.Users.FirstOrDefaultAsync(user => user.Username == Username);
       if (User != null)
       {
         found = true;
@@ -102,11 +103,15 @@ namespace FoodForum.Controllers
     }
     
     [HttpGet("/ProfilePage/{Username}")]
-    public IActionResult LikedRecipes(string Username)
+    public IActionResult ProfilePage(string Username)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
+      User CurrentUser = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+      ViewBag.CurrentUser = CurrentUser;
       User User = dbContext.Users.FirstOrDefault(user => user.Username == Username);
-      List<Like> LikedRecipes = dbContext.Likes.Include(like => like.Recipe).Where(likes => likes.UserId == UserId).Reverse().ToList();
+      List<Like> LikedRecipes = dbContext.Likes.Where(like => like.UserId == User.UserId).Include(like => like.User).Include(like => like.Recipe).ThenInclude(recipe => recipe.Ratings).ToList();
+      ViewBag.User = User;
+      LikedRecipes.OrderByDescending(recipe => recipe.User.Ratings.OrderByDescending(rating => rating.Rate));
       ViewBag.LikedRecipes = LikedRecipes;
       return View();
     }
