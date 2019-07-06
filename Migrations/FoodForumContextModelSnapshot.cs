@@ -3,6 +3,7 @@ using System;
 using FoodForum.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FoodForum.Migrations
@@ -15,27 +16,27 @@ namespace FoodForum.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("FoodForum.Models.Comment", b =>
                 {
-                    b.Property<int>("CommentId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("RecipeId");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<int>("CommentId");
 
                     b.Property<string>("Content")
                         .IsRequired();
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<int>("RecipeId");
-
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.Property<int>("UserId");
+                    b.HasKey("RecipeId", "UserId");
 
-                    b.HasKey("CommentId");
-
-                    b.HasIndex("RecipeId");
+                    b.HasAlternateKey("CommentId");
 
                     b.HasIndex("UserId");
 
@@ -44,16 +45,15 @@ namespace FoodForum.Migrations
 
             modelBuilder.Entity("FoodForum.Models.Like", b =>
                 {
-                    b.Property<int>("LikeId")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("RecipeId");
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("LikeId");
+                    b.Property<int>("LikeId");
 
-                    b.HasIndex("RecipeId");
+                    b.HasKey("RecipeId", "UserId");
+
+                    b.HasAlternateKey("LikeId");
 
                     b.HasIndex("UserId");
 
@@ -62,18 +62,17 @@ namespace FoodForum.Migrations
 
             modelBuilder.Entity("FoodForum.Models.Rating", b =>
                 {
-                    b.Property<int>("RatingId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Rate");
-
                     b.Property<int>("RecipeId");
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("RatingId");
+                    b.Property<int>("Rate");
 
-                    b.HasIndex("RecipeId");
+                    b.Property<int>("RatingId");
+
+                    b.HasKey("RecipeId", "UserId");
+
+                    b.HasAlternateKey("RatingId");
 
                     b.HasIndex("UserId");
 
@@ -83,7 +82,8 @@ namespace FoodForum.Migrations
             modelBuilder.Entity("FoodForum.Models.Recipe", b =>
                 {
                     b.Property<int>("RecipeId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content")
                         .IsRequired();
@@ -147,7 +147,8 @@ namespace FoodForum.Migrations
             modelBuilder.Entity("FoodForum.Models.User", b =>
                 {
                     b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AdminState");
 
@@ -194,7 +195,7 @@ namespace FoodForum.Migrations
                     b.HasOne("FoodForum.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("FoodForum.Models.Like", b =>
@@ -207,7 +208,7 @@ namespace FoodForum.Migrations
                     b.HasOne("FoodForum.Models.User", "User")
                         .WithMany("Likes")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("FoodForum.Models.Rating", b =>
@@ -220,7 +221,7 @@ namespace FoodForum.Migrations
                     b.HasOne("FoodForum.Models.User", "User")
                         .WithMany("Ratings")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("FoodForum.Models.Recipe", b =>

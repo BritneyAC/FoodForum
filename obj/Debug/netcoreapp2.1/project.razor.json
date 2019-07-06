@@ -2894,6 +2894,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Admin\\MakeRecipeAdminRecipe.cshtml",
+      "TargetPath": "Views\\Admin\\MakeRecipeAdminRecipe.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -2991,11 +2996,6 @@
     {
       "FilePath": "Views\\Home\\UserRatingReversePartial.cshtml",
       "TargetPath": "Views\\Home\\UserRatingReversePartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Views\\Admin\\AdminifyRecipe.cshtml",
-      "TargetPath": "Views\\Admin\\AdminifyRecipe.cshtml",
       "FileKind": "mvc"
     },
     {

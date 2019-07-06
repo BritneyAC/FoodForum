@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FoodForum.Models;
+using System.Data.SqlClient;
 
 namespace FoodForum{
     public class Startup{
@@ -17,7 +18,7 @@ namespace FoodForum{
 
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services){
-            services.AddDbContext<FoodForumContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
+            services.AddDbContext<FoodForumContext>(options => options.UseSqlServer(Configuration["DBInfo:ConnectionString"]));
             services.AddSession();            
             services.AddMvc();
         }

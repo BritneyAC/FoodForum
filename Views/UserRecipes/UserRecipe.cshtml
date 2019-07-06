@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class="Recipe">
-    <h5>By @ViewBag.Recipe.User.Username</h5>
+    <h5>By <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.Recipe.User.Username">@ViewBag.Recipe.User.Username</a></h5>
     @if(ViewBag.Recipe.PictureURL != null){
       <div class="RecipeListPicture" style="background-image: url(@ViewBag.Recipe.PictureURL)";></div>
     }
@@ -23,6 +23,9 @@
       }
     </ul>
     <p>@ViewBag.Recipe.Content</p>
+    @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
+      <a asp-action="MakeRecipeAdminRecipe" asp-controller="Admin" asp-route-Title="@ViewBag.Recipe.Title">Add this recipe to the curated list</a>
+    }
     <table class="RecipeStatsTable">
       <thead>
         <tr>
@@ -32,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+          <tr>
           @if(ViewBag.User != null  &&  ViewBag.User != ViewBag.Recipe.User){
             @if (ViewBag.Rating == null){
               <td><partial name="UserRecipeRatePartial" view-data="ViewData"/></td>

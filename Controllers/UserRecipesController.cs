@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace FoodForum.Controllers
 {
@@ -25,7 +26,7 @@ namespace FoodForum.Controllers
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.Include(user => user.Ratings).FirstOrDefault(user => user.UserId == UserId);
-      UserRecipe Recipe = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Likes).Include(recipe => recipe.Comments).FirstOrDefault(recipe => recipe.Title == Title);
+      UserRecipe Recipe = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).Include(recipe => recipe.Comments).FirstOrDefault(recipe => recipe.Title == Title);
       if(User != null)
       {
         Rating Rating = User.Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId);
@@ -74,39 +75,43 @@ namespace FoodForum.Controllers
       return View("UserRecipeTitlePartial");
     }
     [HttpPost("/PostUserRecipe")]
-    public async System.Threading.Tasks.Task<IActionResult> PostUserRecipeAsync(UserRecipe Recipe)
+    public async Task<IActionResult> PostUserRecipeAsync(UserRecipe Recipe)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
-      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
-      if (User != null)
+      if (UserId != null)
       {
+        User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
         if (User.AdminState != 1)
         {
           Recipe.UserId = User.UserId;
+          if (dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title) || dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
+          {
+            ModelState.AddModelError("Title", "A recipe already has that title");
+            return View("NewUserRecipe");
+          }
+          if(Recipe.UploadPicture != null)
+          {
+            var container = Recipe.GetBlobContainer(AzureConnectionString, "foodforumpictures");
+            var Content = ContentDispositionHeaderValue.Parse(Recipe.UploadPicture.ContentDisposition);
+            var FileName = Content.FileName.ToString().Trim('"');
+            var blockBlob = container.GetBlockBlobReference(FileName);
+            await blockBlob.UploadFromStreamAsync(Recipe.UploadPicture.OpenReadStream());
+            Recipe.PictureURL = blockBlob.Uri.AbsoluteUri;
+          }
           if (ModelState.IsValid)
           {
-            if (!dbContext.AdminRecipes.Any(recipe => recipe.Title == Recipe.Title) || !dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
+            if(!dbContext.AdminRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL) || !dbContext.UserRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
             {
-              if(Recipe.UploadPicture != null)
-              {
-                var container = Recipe.GetBlobContainer(AzureConnectionString, "foodforumpictures");
-                var Content = ContentDispositionHeaderValue.Parse(Recipe.UploadPicture.ContentDisposition);
-                var FileName = Content.FileName.ToString().Trim('"');
-                var blockBlob = container.GetBlockBlobReference(FileName);
-                await blockBlob.UploadFromStreamAsync(Recipe.UploadPicture.OpenReadStream());
-                Recipe.PictureURL = blockBlob.Uri.AbsoluteUri;
-              }
               dbContext.Add(Recipe);
               dbContext.SaveChanges();
-              return RedirectToAction("Index", "Home");
+              return RedirectToAction("UserRecipes", "Home");
             }
-            ModelState.AddModelError("Title", "A recipe already has that title");
+            ModelState.AddModelError("UploadPicture", "A recipe already has a picture with that file name, please rename it and try again");
           }
           return View("NewUserRecipe");
         }
-        return View("NewAdminRecipe");
       }
-      return RedirectToAction("Index", "Home");
+      return RedirectToAction("UserRecipes", "Home");
     }
     [HttpPost("/UserRecipe/{RecipeId}/Delete")]
     public IActionResult DeleteUserRecipe(int RecipeId)

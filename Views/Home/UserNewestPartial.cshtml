@@ -7,7 +7,7 @@
       </tr>
     </thead>
   </table>
-  @foreach(var recipe in ViewBag.RecipesByRating){
+  @foreach(var recipe in ViewBag.RecipesByNewest){
     <div class="Recipe">
       <h3><a asp-action="Recipe" asp-controller="Recipes" asp-route-Title="@recipe.Title">@recipe.Title</a></h3>
       <h5>By @recipe.User.Username</h5>

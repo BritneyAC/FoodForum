@@ -18,13 +18,15 @@
         <td>
           <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@user.Username">@user.Username</a>
         </td>
-        <td>
-          @if(user.AdminState == 1 && user.UserId != ViewBag.User.UserId){
-            <a href="/UnAdminifyUser">UnAdmin User</a>
-          } @if(user.AdminState == 0 && user.UserId != ViewBag.User.UserId){
-            <a href="/AdminifyUser">Admin User</a>
-          } @if(user.UserId != 1){
-            <a href="/DeleteUser">Delete User</a>
+        <td class="AdminActions">
+          @if(user.UserId != 1){
+            @if(user.AdminState == 1 && user.UserId != ViewBag.User.UserId){
+              <p><a asp-action="UnAdminifyUser" asp-controller="Admin" asp-route-UserId="@user.UserId">UnAdmin User</a></p>
+            } @if(user.AdminState == 0 && user.UserId != ViewBag.User.UserId){
+              <p><a asp-action="AdminifyUser" asp-controller="Admin" asp-route-UserId="@user.UserId">Admin User</a>  |  </p>
+            } @if(user.AdminState != 1){
+              <a asp-action="DeleteUser" asp-controller="Admin" asp-route-UserId="@user.UserId">Delete User</a>
+            }
           }
         </td>
       </tr>

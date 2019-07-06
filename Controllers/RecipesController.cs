@@ -24,19 +24,19 @@ namespace FoodForum.Controllers
       {
         Rating Rating = User.Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId);
         ViewBag.Rating = Rating;
-      }
-      
-      bool Liked = false;
-      if (Recipe.Likes.FirstOrDefault(like => like.UserId == UserId) != null)
-      {
-        Liked = true;
-        ViewBag.Like = Recipe.Likes.FirstOrDefault(like => like.UserId == UserId);
+        bool Liked = false;
+        if (Recipe.Likes.FirstOrDefault(like => like.UserId == UserId) != null)
+        {
+          Liked = true;
+          ViewBag.Like = Recipe.Likes.FirstOrDefault(like => like.UserId == UserId);
+        }
+        ViewBag.Liked = Liked;
       }
       List<Comment> Comments = dbContext.Comments.Include(comment => comment.Recipe).Include(comment => comment.User).Where(comment => comment.RecipeId == Recipe.RecipeId).ToList();
       Comments.Reverse();
       ViewBag.Comments = Comments;
       ViewBag.User = User;
-      ViewBag.Liked = Liked;
+      
       ViewBag.Recipe = Recipe;
       
       return View();

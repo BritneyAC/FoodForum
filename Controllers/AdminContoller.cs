@@ -105,7 +105,7 @@ namespace FoodForum.Controllers
           return View("NewAdminRecipe");
         }
       }
-      return RedirectToAction("Index", "Home");
+      return RedirectToAction("UserRecipes", "Home");
     }
     [HttpPost("/Recipe/{RecipeId}/Delete")]
     public IActionResult DeleteRecipe(int RecipeId)
@@ -129,7 +129,7 @@ namespace FoodForum.Controllers
     {
       int? AdminId = HttpContext.Session.GetInt32("UserId");
       User Admin = dbContext.Users.FirstOrDefault(user => user.UserId == AdminId);
-      if (Admin.AdminState == 1)
+      if (Admin != null && Admin.AdminState == 1)
       {
         UserRecipe Recipe = dbContext.UserRecipes.FirstOrDefault(recipe => recipe.Title == Title);
         ViewBag.Recipe = Recipe;
@@ -142,43 +142,40 @@ namespace FoodForum.Controllers
     {
       int? AdminId = HttpContext.Session.GetInt32("UserId");
       User Admin = dbContext.Users.FirstOrDefault(user => user.UserId == AdminId);
-      if (Admin.AdminState == 1)
+      if (Admin != null && Admin.AdminState == 1)
       {
-        if (ModelState.IsValid)
-        {
-          UserRecipe UserRecipe = dbContext.UserRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
-          Recipe.Title = UserRecipe.Title;
-          Recipe.Content = UserRecipe.Content;
-          Recipe.PictureURL = UserRecipe.PictureURL;
-          Recipe.IngredientOne = UserRecipe.IngredientOne;
-          Recipe.IngredientTwo = UserRecipe.IngredientOne;
-          Recipe.IngredientTwo = UserRecipe.IngredientThree;
-          Recipe.IngredientFour = UserRecipe.IngredientFour;
-          Recipe.IngredientFive = UserRecipe.IngredientFive;
-          Recipe.IngredientSix = UserRecipe.IngredientOne;
-          Recipe.IngredientSix = UserRecipe.IngredientSeven;
-          Recipe.IngredientEight = UserRecipe.IngredientEight;
-          Recipe.IngredientNine = UserRecipe.IngredientNine;
-          Recipe.IngredientTen = UserRecipe.IngredientTen;
-          Recipe.IngredientEleven = UserRecipe.IngredientEleven;
-          Recipe.IngredientTwelve = UserRecipe.IngredientTwelve;
-          Recipe.IngredientThirteen = UserRecipe.IngredientThirteen;
-          Recipe.IngredientFourteen = UserRecipe.IngredientFourteen;
-          Recipe.IngredientFifteen = UserRecipe.IngredientFifteen;
-          Recipe.Ingredients = UserRecipe.Ingredients;
-          Recipe.UserId = UserRecipe.UserId;
-          Recipe.User = UserRecipe.User;
-          Recipe.Likes = UserRecipe.Likes;
-          Recipe.Comments = UserRecipe.Comments;
-          Recipe.Ratings = UserRecipe.Ratings;
-          Recipe.CreatedAt = UserRecipe.CreatedAt;
-          UserRecipe.CreatedAt = Recipe.CreatedAt;
-          dbContext.Remove(UserRecipe);
-          dbContext.Add(Recipe);
-          dbContext.SaveChanges();
-          return RedirectToAction("Index", "Home");
-        }
-        return View("MakeRecipeAdminRecipe", new { Title = Recipe.Title });
+        UserRecipe UserRecipe = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Likes).Include(recipe => recipe.Ratings).Include(recipe => recipe.Comments).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+        Recipe.Content = UserRecipe.Content;
+        Recipe.PictureURL = UserRecipe.PictureURL;
+        Recipe.IngredientOne = UserRecipe.IngredientOne;
+        Recipe.IngredientTwo = UserRecipe.IngredientOne;
+        Recipe.IngredientThree = UserRecipe.IngredientThree;
+        Recipe.IngredientFour = UserRecipe.IngredientFour;
+        Recipe.IngredientFive = UserRecipe.IngredientFive;
+        Recipe.IngredientSix = UserRecipe.IngredientOne;
+        Recipe.IngredientSix = UserRecipe.IngredientSeven;
+        Recipe.IngredientEight = UserRecipe.IngredientEight;
+        Recipe.IngredientNine = UserRecipe.IngredientNine;
+        Recipe.IngredientTen = UserRecipe.IngredientTen;
+        Recipe.IngredientEleven = UserRecipe.IngredientEleven;
+        Recipe.IngredientTwelve = UserRecipe.IngredientTwelve;
+        Recipe.IngredientThirteen = UserRecipe.IngredientThirteen;
+        Recipe.IngredientFourteen = UserRecipe.IngredientFourteen;
+        Recipe.IngredientFifteen = UserRecipe.IngredientFifteen;
+        UserRecipe.RecipeId = 9999999;
+        Recipe.RecipeId = RecipeId;
+        Recipe.Ingredients = UserRecipe.Ingredients;
+        Recipe.UserId = UserRecipe.UserId;
+        Recipe.User = UserRecipe.User;
+        Recipe.Likes = UserRecipe.Likes;
+        Recipe.Comments = UserRecipe.Comments;
+        Recipe.Ratings = UserRecipe.Ratings;
+        Recipe.CreatedAt = UserRecipe.CreatedAt;
+        dbContext.Remove(UserRecipe);
+        dbContext.Add(Recipe);
+        dbContext.SaveChanges();
+        return RedirectToAction("Index", "Home");
+        // return View("MakeRecipeAdminRecipe", new { Title = Recipe.Title });
       }
       return RedirectToAction("Index", "Home");
     }
@@ -187,11 +184,32 @@ namespace FoodForum.Controllers
     {
       int? AdminId = HttpContext.Session.GetInt32("UserId");
       User Admin = dbContext.Users.FirstOrDefault(user => user.UserId == AdminId);
-      if (Admin.AdminState == 1)
+      if (Admin != null)
       {
-        User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
-        User.AdminState = 1;
-        dbContext.SaveChanges();
+        if (Admin.AdminState == 1)
+        {
+          User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+          User.AdminState = 1;
+          dbContext.SaveChanges();
+          return RedirectToAction("AdminPage");
+        }
+      }
+      return RedirectToAction("Index", "Home");
+    }
+    [HttpGet("/UnAdminifyUser/{UserId}")]
+    public IActionResult UnAdminifyUser(int UserId)
+    {
+      int? AdminId = HttpContext.Session.GetInt32("UserId");
+      User Admin = dbContext.Users.FirstOrDefault(user => user.UserId == AdminId);
+      if (Admin != null)
+      {
+        if (Admin.AdminState == 1)
+        {
+          User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+          User.AdminState = 0;
+          dbContext.SaveChanges();   
+          return RedirectToAction("AdminPage");
+        }
       }
       return RedirectToAction("Index", "Home");
     }
@@ -200,7 +218,7 @@ namespace FoodForum.Controllers
     {
       int? AdminId = HttpContext.Session.GetInt32("UserId");
       User Admin = dbContext.Users.FirstOrDefault(user => user.UserId == AdminId);
-      if (Admin.AdminState == 1)
+      if (Admin != null && Admin.AdminState == 1)
       {
         AdminRecipe AdminRecipe = dbContext.AdminRecipes.Include(recipe => recipe.Likes).Include(recipe => recipe.Comments).Include(recipe => recipe.Ratings).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
         UserRecipe Recipe = new UserRecipe();
@@ -209,7 +227,7 @@ namespace FoodForum.Controllers
         Recipe.PictureURL = AdminRecipe.PictureURL;
         Recipe.IngredientOne = AdminRecipe.IngredientOne;
         Recipe.IngredientTwo = AdminRecipe.IngredientOne;
-        Recipe.IngredientTwo = AdminRecipe.IngredientThree;
+        Recipe.IngredientThree = AdminRecipe.IngredientThree;
         Recipe.IngredientFour = AdminRecipe.IngredientFour;
         Recipe.IngredientFive = AdminRecipe.IngredientFive;
         Recipe.IngredientSix = AdminRecipe.IngredientOne;
@@ -222,6 +240,8 @@ namespace FoodForum.Controllers
         Recipe.IngredientThirteen = AdminRecipe.IngredientThirteen;
         Recipe.IngredientFourteen = AdminRecipe.IngredientFourteen;
         Recipe.IngredientFifteen = AdminRecipe.IngredientFifteen;
+        AdminRecipe.RecipeId = 99999;
+        Recipe.RecipeId = RecipeId;
         Recipe.Ingredients = AdminRecipe.Ingredients;
         Recipe.UserId = AdminRecipe.UserId;
         Recipe.User = AdminRecipe.User;

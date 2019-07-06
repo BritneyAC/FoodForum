@@ -149,7 +149,7 @@ h5{
 
 .RecipeList{
     width: 95%;
-    margin: 10px auto;
+    margin: 5px auto;
     border: 1px solid black;
     background-color: rgba(17, 17, 17, 0.95);
     border-radius: 4px;
@@ -186,6 +186,10 @@ h5{
         text-align: center;
         background-color: rgba(17, 17, 17, 0.95); 
     }
+
+.AdminActions p{
+    display: inline;
+}
 
 .LoginSection{
     display: inline-block;
@@ -274,7 +278,7 @@ h5{
         margin: 5px auto;
     }
 
-.IngredientsSection{
+.MiddleFormSection{
     display: inline-block;
     width: 38%;
     vertical-align: top;

@@ -1,4 +1,4 @@
-@model FoodForum.Models.Recipe
+@model FoodForum.Models.UserRecipe
 
 <div class="Header">
   <h1>Welcome To Britney, Sam, and Hank's Mostly Vegan Food Blog/Forum</h1>
@@ -29,7 +29,7 @@
       </table>
       @foreach(var recipe in ViewBag.RecipesByRating){
         <div class="Recipe">
-          <h3><a asp-action="Recipe" asp-controller="Recipes" asp-route-Title="@recipe.Title">@recipe.Title</a></h3>
+          <h3><a asp-action="UserRecipe" asp-controller="UserRecipes" asp-route-Title="@recipe.Title">@recipe.Title</a></h3>
           <h5>By @recipe.User.Username</h5>
           @if(recipe.PictureURL != null){
             <div class="RecipeListPicture" style="background-image: url(@recipe.PictureURL)";></div>
