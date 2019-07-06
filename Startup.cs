@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FoodForum.Models;
-using System.Data.SqlClient;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
 
-namespace FoodForum{
-    public class Startup{
+namespace FoodForum
+{
+  public class Startup{
         public Startup(IConfiguration configuration){
             Configuration = configuration;
         }
@@ -21,6 +19,10 @@ namespace FoodForum{
             services.AddDbContext<FoodForumContext>(options => options.UseSqlServer(Configuration["DBInfo:ConnectionString"]));
             services.AddSession();            
             services.AddMvc();
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env){
             if (env.IsDevelopment()){
@@ -30,6 +32,12 @@ namespace FoodForum{
             app.UseSession();
             app.UseStaticFiles();
             app.UseMvc();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+            app.UseAuthentication();
         }
     }
 }
