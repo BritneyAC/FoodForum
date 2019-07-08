@@ -56,18 +56,21 @@ namespace FoodForum.Controllers
     {
       if (ModelState.IsValid)
       {
-        PasswordHasher<User> Hasher = new PasswordHasher<User>();
-        User.Password = Hasher.HashPassword(User, User.Password);
-        dbContext.Add(User);
-        dbContext.SaveChanges();
-        if (User.UserId == 1)
-        {
-          User.AdminState = 1;
+        if (!dbContext.Users.Any(user => user.Username == User.Username)){
+          PasswordHasher<User> Hasher = new PasswordHasher<User>();
+          User.Password = Hasher.HashPassword(User, User.Password);
+          dbContext.Add(User);
+          dbContext.SaveChanges();
+          if (User.UserId == 1)
+          {
+            User.AdminState = 1;
+          }
+          dbContext.SaveChanges();
+          HttpContext.Session.Clear();
+          HttpContext.Session.SetInt32("UserId", User.UserId);
+          return RedirectToAction("Index", "Home");
         }
-        dbContext.SaveChanges();
-        HttpContext.Session.Clear();
-        HttpContext.Session.SetInt32("UserId", User.UserId);
-        return RedirectToAction("Index", "Home");
+        ModelState.AddModelError("Username", "A user already has that Username");
       }
       return View("Login");
     }
