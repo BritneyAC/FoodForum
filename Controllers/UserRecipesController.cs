@@ -7,19 +7,18 @@ using System.Collections.Generic;
 using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace FoodForum.Controllers
 {
   public class UserRecipesController : Controller
   {
-    private IConfiguration _config;
-    private string AzureConnectionString { get; }
+    private IConfiguration configuration;
     private FoodForumContext dbContext;
-    public UserRecipesController(FoodForumContext context, IConfiguration config)
+    public UserRecipesController(FoodForumContext context, IConfiguration iConfig)
     {
       dbContext = context;
-      _config = config;
-      AzureConnectionString = _config["AzureStorageConnectionString"];
+      configuration = iConfig;
     }
     [HttpGet("/UserRecipe/{Title}")]
     public IActionResult UserRecipe(string Title)
@@ -91,7 +90,7 @@ namespace FoodForum.Controllers
           }
           if(Recipe.UploadPicture != null)
           {
-            var container = Recipe.GetBlobContainer(AzureConnectionString, "foodforumpictures");
+            var container = Recipe.GetBlobContainer(configuration.GetSection("PictureBlobInfo:AzureStorageConnectionString").Value, "foodforumpictures");
             var Content = ContentDispositionHeaderValue.Parse(Recipe.UploadPicture.ContentDisposition);
             var FileName = Content.FileName.ToString().Trim('"');
             var blockBlob = container.GetBlockBlobReference(FileName);

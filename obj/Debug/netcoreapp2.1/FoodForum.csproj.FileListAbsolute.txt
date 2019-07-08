@@ -54,7 +54,6 @@ C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\R
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeUpdateRatePartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Admin\RecipeTitlePartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\UserRecipes\UserRecipeTitlePartial.g.cshtml.cs
-C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\User\ProfilePage.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexNewestPartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexOldestPartial.g.cshtml.cs

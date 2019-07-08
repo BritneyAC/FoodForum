@@ -7,19 +7,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
+using Microsoft.Extensions.Options;
 
 namespace FoodForum.Controllers
 {
   public class AdminController : Controller
   {
-    private IConfiguration _config;
-    private string AzureConnectionString { get; }
+    private IConfiguration configuration;
     private FoodForumContext dbContext;
-    public AdminController(FoodForumContext context, IConfiguration config)
+    public AdminController(FoodForumContext context, IConfiguration iConfig)
     {
       dbContext = context;
-      _config = config;
-      AzureConnectionString = _config["AzureStorageConnectionString"];
+      configuration = iConfig;
     }
     [HttpGet("/AdminPage")]
     public IActionResult AdminPage()
@@ -82,7 +81,7 @@ namespace FoodForum.Controllers
           }
           if(Recipe.UploadPicture != null)
           {
-            var container = Recipe.GetBlobContainer(AzureConnectionString, "foodforumpictures");
+            var container = Recipe.GetBlobContainer(configuration.GetSection("PictureBlobInfo:AzureStorageConnectionString").Value, "foodforumpictures");
             var Content = ContentDispositionHeaderValue.Parse(Recipe.UploadPicture.ContentDisposition);
             var FileName = Content.FileName.ToString().Trim('"');
             var blockBlob = container.GetBlockBlobReference(FileName);

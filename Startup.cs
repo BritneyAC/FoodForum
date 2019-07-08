@@ -13,6 +13,7 @@ namespace FoodForum
   public class Startup{
         public Startup(IConfiguration configuration){
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -20,10 +21,6 @@ namespace FoodForum
             services.AddDbContext<FoodForumContext>(options => options.UseSqlServer(Configuration["DBInfo:ConnectionString"]));
             services.AddSession();            
             services.AddMvc();
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-            });
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env){
             if (env.IsDevelopment()){
