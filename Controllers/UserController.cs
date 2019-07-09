@@ -28,10 +28,10 @@ namespace FoodForum.Controllers
       return View();
     }
     [HttpPost("/Username")]
-    public async Task<IActionResult> UserNameAsync(string Username)
+    public IActionResult UserName(string Username)
     {
       bool found = false;
-      User User = await dbContext.Users.FirstOrDefaultAsync(user => user.Username == Username);
+      User User = dbContext.Users.FirstOrDefault(user => user.Username == Username);
       if (User != null)
       {
         found = true;
@@ -40,10 +40,10 @@ namespace FoodForum.Controllers
       return View("UsernamePartial");
     }
     [HttpPost("/LoginUsername")]
-    public async Task<IActionResult> LoginUserName(string Username)
+    public IActionResult LoginUserName(string Username)
     {
       bool found = false;
-      User User = await dbContext.Users.FirstOrDefaultAsync(user => user.Username == Username);
+      User User = dbContext.Users.FirstOrDefault(user => user.Username == Username);
       if (User != null)
       {
         found = true;
