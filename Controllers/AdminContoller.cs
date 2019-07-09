@@ -53,10 +53,10 @@ namespace FoodForum.Controllers
       return RedirectToAction("Index", "Home");
     }
     [HttpPost("/RecipeTitle")]
-    public IActionResult RecipeTitle(string Title)
+    public async Task<IActionResult> RecipeTitleAsync(string Title)
     {
       bool found = false;
-      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.Title == Title);
+      AdminRecipe Recipe = await dbContext.AdminRecipes.FirstOrDefaultAsync(recipe => recipe.Title == Title);
       if (Recipe != null)
       {
         found = true;

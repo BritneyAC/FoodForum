@@ -6,13 +6,13 @@
     timeout = setTimeout(function(){
       $.ajax({
         method: "POST",
-        url: RootUrl + "Username",
+        url: PartialUrls.Username,
         data: data
       })
       .done(function(res){
         $('#UsernameMsg').html(res)
       })
-    }, 500);
+    }, 600);
   })
   $('#LoginUsername').keyup(function(){
     clearTimeout(timeout);
@@ -20,13 +20,13 @@
     timeout = setTimeout(function(){
       $.ajax({
         method: "POST",
-        url: RootUrl + "LoginUsername",
+        url: PartialUrls.LoginUsername,
         data: data
       })
       .done(function(res){
         $('#LoginUsernameMsg').html(res)
       })
-    }, 500);
+    }, 600);
   })
   $('#RecipeTitle').keyup(function(){
     clearTimeout(timeout);
@@ -34,13 +34,13 @@
     timeout = setTimeout(function(){
       $.ajax({
         method: "POST",
-        url: RootUrl + "RecipeTitle",
+        url: PartialUrls.RecipeTitle,
         data: data
       })
       .done(function(res){
         $('#RecipeTitleMsg').html(res)
       })
-    }, 400);
+    }, 600);
   })
   $('#UserRecipeTitle').keyup(function(){
     clearTimeout(timeout);
@@ -49,18 +49,18 @@
 
       $.ajax({
         method: "POST",
-        url: RootUrl + "UserRecipeTitle",
+        url: PartialUrls.UserRecipeTitle,
         data: data
       })
       .done(function(res){
         $('#UserRecipeTitleMsg').html(res)
       })
-    }, 400);
+    }, 600);
   })
   $('#IndexRating').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "IndexRating",
+      url: PartialUrls.IndexRating,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -69,7 +69,7 @@
   $('#UserRating').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "UserRating",
+      url: PartialUrls.UserRating,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -78,7 +78,7 @@
   $('#IndexRatingReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "IndexRatingReverse",
+      url: PartialUrls.IndexRatingReverse,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -87,7 +87,7 @@
   $('#UserRatingReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "UserRatingReverse",
+      url: PartialUrls.UserRatingReverse,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -96,7 +96,7 @@
   $('#IndexLikes').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "IndexLikes",
+      url: PartialUrls.IndexLikes,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -105,7 +105,7 @@
   $('#UserLikes').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "UserLikes",
+      url: PartialUrls.UserLikes,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -114,7 +114,7 @@
   $('#IndexLikesReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "IndexLikesReverse",
+      url: PartialUrls.IndexLikesReverse,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -123,7 +123,7 @@
   $('#UserLikesReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "UserLikesReverse",
+      url: PartialUrls.UserLikesReverse,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -132,7 +132,7 @@
   $('#IndexTime').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "IndexTime",
+      url: PartialUrls.IndexTime,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -141,7 +141,7 @@
   $('#IndexTimeReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "IndexTimeReverse",
+      url: PartialUrls.IndexTimeReverse,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -150,7 +150,7 @@
   $('#UserTime').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "UserTime",
+      url: PartialUrls.UserTime,
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -159,7 +159,7 @@
   $('#UserTimeReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "UserTimeReverse",
+      url: PartialUrls.UserTimeReverse,
     })
     .done(function(res){
       $('#Sorting').html(res)

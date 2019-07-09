@@ -69,7 +69,7 @@ using FoodForum.Models;
             WriteLiteral("        <p>");
             EndContext();
             BeginContext(235, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b4ab88b51424910ac5ecefb13266446", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "32eac15f10f84c61a03d1c3ff93350c4", async() => {
                 BeginContext(285, 22, true);
                 WriteLiteral("User Submitted Recipes");
                 EndContext();
@@ -93,7 +93,7 @@ using FoodForum.Models;
             WriteLiteral("  |  \r\n        ");
             EndContext();
             BeginContext(326, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b48f3c980a2c4dba9bf38057e34d8970", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6c2a198c2aef4257b5d678bba0c1c686", async() => {
                 BeginContext(370, 5, true);
                 WriteLiteral("Login");
                 EndContext();
@@ -134,7 +134,7 @@ using FoodForum.Models;
             WriteLiteral("        <p>");
             EndContext();
             BeginContext(523, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "187e439d16ff42ca9f5fd25048ca2706", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7590c6d545454c7c867658c1c1be7042", async() => {
                 BeginContext(573, 22, true);
                 WriteLiteral("User Submitted Recipes");
                 EndContext();
@@ -158,7 +158,7 @@ using FoodForum.Models;
             WriteLiteral("  |  \r\n        ");
             EndContext();
             BeginContext(614, 121, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "70c8a8b432784cdf83087ade815ea0e1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0145c4ce42844b4dbe0ee568382e6964", async() => {
                 BeginContext(708, 23, true);
                 WriteLiteral("Go To Your Profile Page");
                 EndContext();
@@ -195,7 +195,7 @@ using FoodForum.Models;
             WriteLiteral("  |  \r\n        ");
             EndContext();
             BeginContext(750, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d8cdadb4f1444f2c8c6f7f89f83bbe46", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "690f401c9da64ad2b72411f852b9c6e4", async() => {
                 BeginContext(795, 6, true);
                 WriteLiteral("Logout");
                 EndContext();
@@ -249,7 +249,7 @@ using FoodForum.Models;
             WriteLiteral("        <div class=\"Recipe\">\r\n          <h3>");
             EndContext();
             BeginContext(1515, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "92ea69b81a10453f8f3eb78e93b0d78c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42dd181dbeb240a29fef33453b131dfe", async() => {
                 BeginContext(1596, 12, false);
 #line 34 "C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\Views\Home\Index.cshtml"
                                                                                          Write(recipe.Title);

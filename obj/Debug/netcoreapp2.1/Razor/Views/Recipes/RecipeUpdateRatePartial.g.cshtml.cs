@@ -65,17 +65,17 @@ using FoodForum.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(34, 711, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3db20c9884004a21b5121a711aa3ee5c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "72132398ba104ac282cf2f97bd57fabb", async() => {
                 BeginContext(174, 4, true);
                 WriteLiteral("\r\n  ");
                 EndContext();
                 BeginContext(178, 507, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7a588dba60142f887aae44aed1e5e13", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a095739e890422cb0a6f2b779b569cc", async() => {
                     BeginContext(210, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
                     BeginContext(216, 61, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e13d5b2e3524478b748819caf6bbd1c", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "399e7685124a45c7a43f24b42302c8b9", async() => {
                         BeginContext(249, 19, false);
 #line 5 "C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\Views\Recipes\RecipeUpdateRatePartial.cshtml"
                                Write(ViewBag.Rating.Rate);
@@ -116,7 +116,7 @@ using FoodForum.Models;
                     WriteLiteral("      ");
                     EndContext();
                     BeginContext(321, 28, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6cfe8fa01f1842628a7c9f3d4c1bd710", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ff3747a3ff3046b9b068c6ac935f6e72", async() => {
                         BeginContext(339, 1, true);
                         WriteLiteral("1");
                         EndContext();
@@ -154,7 +154,7 @@ using FoodForum.Models;
                     WriteLiteral("      ");
                     EndContext();
                     BeginContext(400, 28, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f6cefaf9c0f41bdbeb439aa32bbf5f1", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ef1ed3097ea4a5abc720cd5ae5d399d", async() => {
                         BeginContext(418, 1, true);
                         WriteLiteral("2");
                         EndContext();
@@ -192,7 +192,7 @@ using FoodForum.Models;
                     WriteLiteral("      ");
                     EndContext();
                     BeginContext(479, 28, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6b6f52a159143ea9f1d2c15c14dfdba", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ac4b35236bc94cfc972a0e8120b1655d", async() => {
                         BeginContext(497, 1, true);
                         WriteLiteral("3");
                         EndContext();
@@ -230,7 +230,7 @@ using FoodForum.Models;
                     WriteLiteral("      ");
                     EndContext();
                     BeginContext(558, 28, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99ae979f66f8423daa22de8a5ca9e7c9", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82c0d11d08ea4b18b8559a75e3a5e733", async() => {
                         BeginContext(576, 1, true);
                         WriteLiteral("4");
                         EndContext();
@@ -268,7 +268,7 @@ using FoodForum.Models;
                     WriteLiteral("      ");
                     EndContext();
                     BeginContext(637, 28, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f14174eb425646a2809b9a59bc9f709c", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6cffd1d3e4542d1ad30726577ca0bb6", async() => {
                         BeginContext(655, 1, true);
                         WriteLiteral("5");
                         EndContext();
