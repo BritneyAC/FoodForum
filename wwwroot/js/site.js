@@ -4,64 +4,109 @@
     clearTimeout(timeout);
     var data = $("#RegForm").serialize()
     timeout = setTimeout(function(){
-      $('#Sorting').load(PartialUrls.Username, Username)
+      $.ajax({
+        method: "GET",
+        url: PartialUrls.Username,
+        data: data
+      })
+      .done(function(res){
+        $('#UsernameMsg').html(res)
+      })
     }, 600);
+    return false;
   })
   $('#LoginUsername').keyup(function(){
     clearTimeout(timeout);
     var data = $("#LoginForm").serialize()
     timeout = setTimeout(function(){
-      $('#Sorting').load(PartialUrls.LogingUsername, Username)
+      $.ajax({
+        method: "GET",
+        url: PartialUrls.LoginUsername,
+        data: data
+      })
+      .done(function(res){
+        $('#LoginUsernameMsg').html(res)
+      })
     }, 600);
+    return false;
   })
   $('#RecipeTitle').keyup(function(){
     clearTimeout(timeout);
     var data = $("#RecipeTitle").serialize()
     timeout = setTimeout(function(){
-      $('#Sorting').load(PartialUrls.RecipeTitle, Title)
+      $.ajax({
+        method: "GET",
+        url: PartialUrls.RecipeTitle,
+        data: data
+      })
+      .done(function(res){
+        $('#RecipeTitleMsg').html(res)
+      })
     }, 600);
+    return false;
   })
   $('#UserRecipeTitle').keyup(function(){
     clearTimeout(timeout);
     var data = $("#UserRecipeTitle").serialize()
     timeout = setTimeout(function(){
-      $('#Sorting').load(PartialUrls.UserRecipeTitle, Title)
+
+      $.ajax({
+        method: "GET",
+        url: PartialUrls.UserRecipeTitle,
+        data: data
+      })
+      .done(function(res){
+        $('#UserRecipeTitleMsg').html(res)
+      })
     }, 600);
+    return false;
   })
   $('#IndexRating').click(function(){
     $('#Sorting').load(PartialUrls.IndexRating)
+    return false;
   })
   $('#UserRating').click(function(){
-      $('#Sorting').load(PartialUrls.UserRating,)
+    $('#Sorting').load(PartialUrls.UserRating)
+    return false;
   })
   $('#IndexRatingReverse').click(function(){
-      $('#Sorting').load(PartialUrls.IndexRatingReverse)
+    $('#Sorting').load(PartialUrls.IndexRatingReverse)
+    return false;
   })
   $('#UserRatingReverse').click(function(){
     $('#Sorting').load(PartialUrls.UserRatingReverse)
+    return false;
   })
   $('#IndexLikes').click(function(){
     $('#Sorting').load(PartialUrls.IndexLikes)
+    return false;
   })
   $('#UserLikes').click(function(){
     $('#Sorting').load(PartialUrls.UserLikes)
+    return false;
   })
   $('#IndexLikesReverse').click(function(){
     $('#Sorting').load(PartialUrls.IndexLikesReverse)
+    return false;
   })
   $('#UserLikesReverse').click(function(){
     $('#Sorting').load(PartialUrls.UserLikesReverse)
+    return false;
   })
   $('#IndexTime').click(function(){
     $('#Sorting').load(PartialUrls.IndexTime)
+    return false;
   })
   $('#IndexTimeReverse').click(function(){
     $('#Sorting').load(PartialUrls.IndexTimeReverse)
+    return false;
   })
   $('#UserTime').click(function(){
     $('#Sorting').load(PartialUrls.UserTime)
+    return false;
   })
   $('#UserTimeReverse').click(function(){
     $('#Sorting').load(PartialUrls.UserTimeReverse)
+    return false;
   })
 })
