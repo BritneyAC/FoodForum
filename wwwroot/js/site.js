@@ -59,7 +59,7 @@
   })
   $('#IndexRating').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.IndexRating,
     })
     .done(function(res){
@@ -68,7 +68,7 @@
   })
   $('#UserRating').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.UserRating,
     })
     .done(function(res){
@@ -77,7 +77,7 @@
   })
   $('#IndexRatingReverse').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.IndexRatingReverse,
     })
     .done(function(res){
@@ -86,7 +86,7 @@
   })
   $('#UserRatingReverse').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.UserRatingReverse,
     })
     .done(function(res){
@@ -95,7 +95,7 @@
   })
   $('#IndexLikes').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.IndexLikes,
     })
     .done(function(res){
@@ -104,7 +104,7 @@
   })
   $('#UserLikes').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.UserLikes,
     })
     .done(function(res){
@@ -113,7 +113,7 @@
   })
   $('#IndexLikesReverse').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.IndexLikesReverse,
     })
     .done(function(res){
@@ -122,7 +122,7 @@
   })
   $('#UserLikesReverse').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.UserLikesReverse,
     })
     .done(function(res){
@@ -131,7 +131,7 @@
   })
   $('#IndexTime').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.IndexTime,
     })
     .done(function(res){
@@ -140,7 +140,7 @@
   })
   $('#IndexTimeReverse').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.IndexTimeReverse,
     })
     .done(function(res){
@@ -149,7 +149,7 @@
   })
   $('#UserTime').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.UserTime,
     })
     .done(function(res){
@@ -158,7 +158,7 @@
   })
   $('#UserTimeReverse').click(function(){
     $.ajax({
-      method: "GET",
+      method: "Post",
       url: PartialUrls.UserTimeReverse,
     })
     .done(function(res){
