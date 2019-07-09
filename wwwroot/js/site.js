@@ -6,7 +6,7 @@
     timeout = setTimeout(function(){
       $.ajax({
         method: "POST",
-        url: RootUrl + "/Username",
+        url: RootUrl + "Username",
         data: data
       })
       .done(function(res){
@@ -20,7 +20,7 @@
     timeout = setTimeout(function(){
       $.ajax({
         method: "POST",
-        url: RootUrl + "/LoginUsername",
+        url: RootUrl + "LoginUsername",
         data: data
       })
       .done(function(res){
@@ -34,7 +34,7 @@
     timeout = setTimeout(function(){
       $.ajax({
         method: "POST",
-        url: RootUrl + "/RecipeTitle",
+        url: RootUrl + "RecipeTitle",
         data: data
       })
       .done(function(res){
@@ -49,7 +49,7 @@
 
       $.ajax({
         method: "POST",
-        url: RootUrl + "/UserRecipeTitle",
+        url: RootUrl + "UserRecipeTitle",
         data: data
       })
       .done(function(res){
@@ -60,7 +60,7 @@
   $('#IndexRating').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/IndexRating",
+      url: RootUrl + "IndexRating",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -69,7 +69,7 @@
   $('#UserRating').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/UserRating",
+      url: RootUrl + "UserRating",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -78,7 +78,7 @@
   $('#IndexRatingReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/IndexRatingReverse",
+      url: RootUrl + "IndexRatingReverse",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -87,7 +87,7 @@
   $('#UserRatingReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/UserRatingReverse",
+      url: RootUrl + "UserRatingReverse",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -96,7 +96,7 @@
   $('#IndexLikes').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/IndexLikes",
+      url: RootUrl + "IndexLikes",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -105,7 +105,7 @@
   $('#UserLikes').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/UserLikes",
+      url: RootUrl + "UserLikes",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -114,7 +114,7 @@
   $('#IndexLikesReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/IndexLikesReverse",
+      url: RootUrl + "IndexLikesReverse",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -123,7 +123,7 @@
   $('#UserLikesReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/UserLikesReverse",
+      url: RootUrl + "UserLikesReverse",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -132,7 +132,7 @@
   $('#IndexTime').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/IndexTime",
+      url: RootUrl + "IndexTime",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -141,7 +141,7 @@
   $('#IndexTimeReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/IndexTimeReverse",
+      url: RootUrl + "IndexTimeReverse",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -150,7 +150,7 @@
   $('#UserTime').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/UserTime",
+      url: RootUrl + "UserTime",
     })
     .done(function(res){
       $('#Sorting').html(res)
@@ -159,7 +159,7 @@
   $('#UserTimeReverse').click(function(){
     $.ajax({
       method: "GET",
-      url: RootUrl + "/UserTimeReverse",
+      url: RootUrl + "UserTimeReverse",
     })
     .done(function(res){
       $('#Sorting').html(res)

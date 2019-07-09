@@ -77,9 +77,9 @@ namespace FoodForum.Controllers
     public async Task<IActionResult> PostUserRecipeAsync(UserRecipe Recipe)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
-      if (UserId != null)
+      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+      if (User != null)
       {
-        User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
         if (User.AdminState != 1)
         {
           Recipe.UserId = User.UserId;
