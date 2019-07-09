@@ -27,7 +27,7 @@ namespace FoodForum.Controllers
       }
       return View();
     }
-    [HttpPost("/Username")]
+    [HttpGet("/Username")]
     public async Task<IActionResult> UsernameAsync(string Username)
     {
       bool found = false;
@@ -39,7 +39,7 @@ namespace FoodForum.Controllers
       ViewBag.Found = found;
       return View("UsernamePartial");
     }
-    [HttpPost("/LoginUsername")]
+    [HttpGet("/LoginUsername")]
     public async Task<IActionResult> LoginUsernameAsync(string Username)
     {
       bool found = false;

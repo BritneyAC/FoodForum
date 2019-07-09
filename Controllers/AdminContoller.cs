@@ -52,7 +52,7 @@ namespace FoodForum.Controllers
       }
       return RedirectToAction("Index", "Home");
     }
-    [HttpPost("/RecipeTitle")]
+    [HttpGet("/RecipeTitle")]
     public async Task<IActionResult> RecipeTitleAsync(string Title)
     {
       bool found = false;

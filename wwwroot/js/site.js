@@ -4,165 +4,64 @@
     clearTimeout(timeout);
     var data = $("#RegForm").serialize()
     timeout = setTimeout(function(){
-      $.ajax({
-        method: "POST",
-        url: PartialUrls.Username,
-        data: data
-      })
-      .done(function(res){
-        $('#UsernameMsg').html(res)
-      })
+      $('#Sorting').load(PartialUrls.Username, Username)
     }, 600);
   })
   $('#LoginUsername').keyup(function(){
     clearTimeout(timeout);
     var data = $("#LoginForm").serialize()
     timeout = setTimeout(function(){
-      $.ajax({
-        method: "POST",
-        url: PartialUrls.LoginUsername,
-        data: data
-      })
-      .done(function(res){
-        $('#LoginUsernameMsg').html(res)
-      })
+      $('#Sorting').load(PartialUrls.LogingUsername, Username)
     }, 600);
   })
   $('#RecipeTitle').keyup(function(){
     clearTimeout(timeout);
     var data = $("#RecipeTitle").serialize()
     timeout = setTimeout(function(){
-      $.ajax({
-        method: "POST",
-        url: PartialUrls.RecipeTitle,
-        data: data
-      })
-      .done(function(res){
-        $('#RecipeTitleMsg').html(res)
-      })
+      $('#Sorting').load(PartialUrls.RecipeTitle, Title)
     }, 600);
   })
   $('#UserRecipeTitle').keyup(function(){
     clearTimeout(timeout);
     var data = $("#UserRecipeTitle").serialize()
     timeout = setTimeout(function(){
-
-      $.ajax({
-        method: "POST",
-        url: PartialUrls.UserRecipeTitle,
-        data: data
-      })
-      .done(function(res){
-        $('#UserRecipeTitleMsg').html(res)
-      })
+      $('#Sorting').load(PartialUrls.UserRecipeTitle, Title)
     }, 600);
   })
   $('#IndexRating').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.IndexRating,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.IndexRating)
   })
   $('#UserRating').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.UserRating,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+      $('#Sorting').load(PartialUrls.UserRating,)
   })
   $('#IndexRatingReverse').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.IndexRatingReverse,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+      $('#Sorting').load(PartialUrls.IndexRatingReverse)
   })
   $('#UserRatingReverse').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.UserRatingReverse,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.UserRatingReverse)
   })
   $('#IndexLikes').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.IndexLikes,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.IndexLikes)
   })
   $('#UserLikes').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.UserLikes,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.UserLikes)
   })
   $('#IndexLikesReverse').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.IndexLikesReverse,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.IndexLikesReverse)
   })
   $('#UserLikesReverse').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.UserLikesReverse,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.UserLikesReverse)
   })
   $('#IndexTime').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.IndexTime,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.IndexTime)
   })
   $('#IndexTimeReverse').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.IndexTimeReverse,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.IndexTimeReverse)
   })
   $('#UserTime').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.UserTime,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.UserTime)
   })
   $('#UserTimeReverse').click(function(){
-    $.ajax({
-      method: "Post",
-      url: PartialUrls.UserTimeReverse,
-    })
-    .done(function(res){
-      $('#Sorting').html(res)
-    })
+    $('#Sorting').load(PartialUrls.UserTimeReverse)
   })
 })
