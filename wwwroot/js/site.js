@@ -2,7 +2,7 @@
   var timeout = null;
   $('#Username').keyup(function(){
     clearTimeout(timeout);
-    var data = $("#RegForm").serialize()
+    var data = $("#Username").serialize()
     timeout = setTimeout(function(){
       $.ajax({
         method: "GET",
@@ -17,7 +17,7 @@
   })
   $('#LoginUsername').keyup(function(){
     clearTimeout(timeout);
-    var data = $("#LoginForm").serialize()
+    var data = $("#LoginUsername").serialize()
     timeout = setTimeout(function(){
       $.ajax({
         method: "GET",
