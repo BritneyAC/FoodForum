@@ -43,6 +43,14 @@ body{
     color: rgb(10, 100, 0);
 }
 
+input{
+    color: black;
+}
+
+textarea{
+    color: black;
+}
+
 .error{
     color: red;
 }
