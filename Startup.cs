@@ -5,8 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FoodForum.Models;
 using Microsoft.AspNetCore.HttpOverrides;
-using System.Net;
-using Microsoft.WindowsAzure.Storage;
 
 namespace FoodForum
 {
