@@ -61,51 +61,51 @@
     }, 600);
     return false;
   })
-  $('#IndexRating').click(function(){
+  $(document).on('click','#IndexRating',function(){
     $('#Sorting').load(PartialUrls.IndexRating)
     return false;
   })
-  $('#UserRating').click(function(){
+  $(document).on('click','#UserRating',function(){
     $('#Sorting').load(PartialUrls.UserRating)
     return false;
   })
-  $('#IndexRatingReverse').click(function(){
+  $(document).on('click','#IndexRatingReverse',function(){
     $('#Sorting').load(PartialUrls.IndexRatingReverse)
     return false;
   })
-  $('#UserRatingReverse').click(function(){
+  $(document).on('click','#UserRatingReverse',function(){
     $('#Sorting').load(PartialUrls.UserRatingReverse)
     return false;
   })
-  $('#IndexLikes').click(function(){
+  $(document).on('click','#IndexLikes',function(){
     $('#Sorting').load(PartialUrls.IndexLikes)
     return false;
   })
-  $('#UserLikes').click(function(){
+  $(document).on('click','#UserLikes',function(){
     $('#Sorting').load(PartialUrls.UserLikes)
     return false;
   })
-  $('#IndexLikesReverse').click(function(){
+  $(document).on('click','#IndexLikesReverse',function(){
     $('#Sorting').load(PartialUrls.IndexLikesReverse)
     return false;
   })
-  $('#UserLikesReverse').click(function(){
+  $(document).on('click','#UserLikesReverse',function(){
     $('#Sorting').load(PartialUrls.UserLikesReverse)
     return false;
   })
-  $('#IndexTime').click(function(){
+  $(document).on('click','#IndexTime',function(){
     $('#Sorting').load(PartialUrls.IndexTime)
     return false;
   })
-  $('#IndexTimeReverse').click(function(){
+  $(document).on('click','#IndexTimeReverse',function(){
     $('#Sorting').load(PartialUrls.IndexTimeReverse)
     return false;
   })
-  $('#UserTime').click(function(){
+  $(document).on('click','#UserTime',function(){
     $('#Sorting').load(PartialUrls.UserTime)
     return false;
   })
-  $('#UserTimeReverse').click(function(){
+  $(document).on('click', '#UserTimeReverse', function(){
     $('#Sorting').load(PartialUrls.UserTimeReverse)
     return false;
   })
