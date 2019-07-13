@@ -60,3 +60,4 @@ C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\R
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\UserNewestPartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Home\UserOldestPartial.g.cshtml.cs
 C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Admin\MakeRecipeAdminRecipe.g.cshtml.cs
+C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_PartialLayout.g.cshtml.cs

@@ -62,6 +62,7 @@ namespace FoodForum.Controllers
         found = true;
       }
       ViewBag.Found = found;
+      ViewBag.Partial = true;
       return View("RecipeTitlePartial");
     }
     [HttpPost("/PostAdminRecipe")]

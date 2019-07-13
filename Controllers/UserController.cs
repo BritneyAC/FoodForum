@@ -37,6 +37,7 @@ namespace FoodForum.Controllers
         found = true;
       }
       ViewBag.Found = found;
+      ViewBag.Partial = true;
       return View("UsernamePartial");
     }
     [HttpGet("/LoginUsername")]
@@ -49,6 +50,7 @@ namespace FoodForum.Controllers
         found = true;
       }
       ViewBag.Found = found;
+      ViewBag.Partial = true;
       return View("LoginUsernamePartial");
     }
     [HttpPost("/UserMaker")]
