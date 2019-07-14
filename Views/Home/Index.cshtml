@@ -18,8 +18,8 @@
     </div>
   </div>
   <div class="RecipeList">
-    <h2>Here you can find all of our recipes and recipes we choose as the best from the User Submissions</h2>
     <div id="Sorting">
+      <h2>Here you can find all of our recipes and recipes we choose from the User Submissions</h2>
       <table class="SortingTbl">
         <thead class="SortingThead">
           <tr class="SortingTR">
@@ -34,7 +34,9 @@
           <h3><a asp-action="Recipe" asp-controller="Recipes" asp-route-Title="@recipe.Title">@recipe.Title</a></h3>
           <h5>By @recipe.User.Username</h5>
           @if(recipe.PictureURL != null){
-            <div class="RecipeListPicture" style="background-image: url(@recipe.PictureURL)";></div>
+            <div class="RecipeListPictureBackground">
+              <div class="RecipeListPicture" style="background-image: url(@recipe.PictureURL)";></div>
+            </div>
           }
           <ul>
             @foreach(var ingredient in recipe.GetIngredients()){

@@ -9,10 +9,13 @@ namespace FoodForum.Models
     [Required]
     public int UserId{get;set;}
     [Required]
+    [MinLength(3, ErrorMessage="Password must be 3 characters or longer")]
+    [MaxLength(16, ErrorMessage="Password must be less than 17 characters long")]
     public string Username{get;set;}
     [DataType(DataType.Password)]
     [Required]
-    [MinLength(8, ErrorMessage="Password must be 8 characters or longer!")]
+    [MinLength(8, ErrorMessage="Password must be 8 characters or longer")]
+    [MaxLength(18, ErrorMessage="Password must be less than 19 characters long")]
     public string Password{get;set;}
     [Required]
     public int AdminState{get;set;}

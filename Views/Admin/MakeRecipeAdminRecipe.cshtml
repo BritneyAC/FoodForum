@@ -10,7 +10,7 @@
 <form asp-action="AdminifyRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" class="FormSection">
   <input asp-for="Title" readonly required hidden value="@ViewBag.Recipe.Title">
   <span asp-validation-for="Note"></span><br>
-  <label asp-for="Note"></label><br>
+  <label asp-for="Note">Admin Note</label><br>
   <textarea asp-for="Note" required minlength="4" maxlength="255"></textarea><br>
   <input type="submit" value="Post"><br><br>
 </form> 

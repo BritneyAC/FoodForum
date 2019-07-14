@@ -1,36 +1,26 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
-body {
-    padding-top: 50px;
+﻿body {
+    padding-top: 30px;
     padding-bottom: 20px;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.container.body-content{
+    padding: 0px 5px;
 }
 
-/* Carousel */
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%;
 }
 
-/* QR code generator */
 #qrCode {
     margin: 15px;
 }
 
-/* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
-    /* Hide captions */
     .carousel-caption {
         display: none;
     }
@@ -45,7 +35,12 @@ body{
 
 input{
     color: black;
+    max-width: 90%;
 }
+
+    input[type="File"]{
+        color: rgb(10, 100, 0);
+    }
 
 textarea{
     color: black;
@@ -64,6 +59,7 @@ textarea{
 
 h1{
     text-align: center;
+    padding-top: 5px;
 }
 
 h2{
@@ -99,6 +95,10 @@ h5{
         margin: 0px auto;
     }
 
+    .Header h5{
+        margin: 0px auto;
+    }
+
 .HeaderLinks{
     display: inline-block;
     text-align: right;
@@ -119,37 +119,47 @@ h5{
 
 #Sorting{
     width: 100%;
-    margin: 0px auto;
-    padding: 0px;
+    margin: -15px auto 0px auto;
+    padding-top: -5px;
 }
 
     #Sorting .container.body-content{
         width: 100%;
-        margin: 0px auto;
+        height: 5vh;
+        margin: auto;
         padding: 0px;
+    }
+
+    #Sorting h1{
+        padding-top: -5px;
+        margin: 0px;
     }
 
     .SortingTbl{
         width: 100%;
-        margin: 0px auto;
+        height: 3vh;
+        margin: auto;
         padding: 0px;
     }    
 
     .SortingThead{
         width: 100%;
-        margin: 0px auto;
+        height: 3vh;
+        margin: auto;
         padding: 0px;
     }
 
     .SortingTR{
         width: 100%;
-        margin: 0px auto;
+        height: 3vh;
+        margin: auto;
         padding: 0px;
     }
 
 .SortingBtn{
     width: 33%;
-    margin: 0px auto;
+    height: 3vh;
+    margin: auto;
     padding: 2px;
     border: 1px solid black;
     text-align: center;
@@ -164,20 +174,30 @@ h5{
     padding: 10px 0px;
 }
 
+.RecipeListPictureBackground{
+    text-align: center;
+    max-width: 95%;
+    min-height: 40vh;
+    max-height: 70vh;
+    margin: 10px auto;
+}
+
 .RecipeListPicture{
     text-align: center;
-    width: 85%;
-    min-height: 50vh;
-    margin: 10px auto;
+    max-width: 95%;
+    min-width: 40%;
+    min-height: 40vh;
+    margin: 0px auto;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 
 .Recipe{
     width: 95%;
     margin: 5px auto;
-    padding: 0px 30px;
+    padding: 0px 20px;
     border: 1px solid black;
     border-radius: 4px;
     background-color: rgba(17, 17, 17, 0.95);
@@ -185,7 +205,8 @@ h5{
 
 
 .UserList{
-    width: 70%;
+    margin: 0px auto;
+    width: 90%;
 }
 
     .UserList td{
@@ -266,7 +287,7 @@ h5{
 
 .FormSection{
     display: inline-block;
-    width: 30%;
+    min-width: 32%;
     vertical-align: top;
     margin: 5px auto;
     text-align: center;
@@ -288,7 +309,7 @@ h5{
 
 .MiddleFormSection{
     display: inline-block;
-    width: 38%;
+    min-width: 35%;
     vertical-align: top;
     margin: 5px auto;
     text-align: center;
@@ -305,7 +326,7 @@ h5{
 }
 
     .RecipeStatsTable thead tr td{
-        width: 33%;
+        max-width: 33%;
         text-align: center;
         margin: 10px auto;
         vertical-align: top;
@@ -324,7 +345,8 @@ h5{
 }
 
 .PostAComment textarea{
-    width: 40%;
+    max-width: 80;
+    min-width: 60%;
     resize: vertical;
 }
 
