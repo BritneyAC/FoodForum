@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 
 namespace FoodForum.Controllers
 {
@@ -26,24 +25,28 @@ namespace FoodForum.Controllers
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.Include(user => user.Ratings).FirstOrDefault(user => user.UserId == UserId);
       UserRecipe Recipe = dbContext.UserRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Ratings).Include(recipe => recipe.Likes).Include(recipe => recipe.Comments).FirstOrDefault(recipe => recipe.Title == Title);
-      if(User != null)
-      {
-        Rating Rating = User.Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId);
-        ViewBag.Rating = Rating;
-      }
       bool Liked = false;
-      if (Recipe.Likes.FirstOrDefault(like => like.UserId == UserId) != null)
+      if(Recipe != null)
       {
-        Liked = true;
-        ViewBag.Like = Recipe.Likes.FirstOrDefault(like => like.UserId == UserId);
+        if(User != null)
+        {
+          Rating Rating = User.Ratings.FirstOrDefault(rating => rating.RecipeId == Recipe.RecipeId);
+          ViewBag.Rating = Rating;
+          if (Recipe.Likes.FirstOrDefault(like => like.UserId == UserId) != null)
+          {
+            Liked = true;
+            ViewBag.Like = Recipe.Likes.FirstOrDefault(like => like.UserId == UserId);
+          }
+        }
+        List<Comment> Comments = dbContext.Comments.Include(comment => comment.Recipe).Include(comment => comment.User).Where(comment => comment.RecipeId == Recipe.RecipeId).ToList();
+        Comments.Reverse();
+        ViewBag.Comments = Comments;
+        ViewBag.User = User;
+        ViewBag.Liked = Liked;
+        ViewBag.Recipe = Recipe;
+        return View();
       }
-      List<Comment> Comments = dbContext.Comments.Include(comment => comment.Recipe).Include(comment => comment.User).Where(comment => comment.RecipeId == Recipe.RecipeId).ToList();
-      Comments.Reverse();
-      ViewBag.Comments = Comments;
-      ViewBag.User = User;
-      ViewBag.Liked = Liked;
-      ViewBag.Recipe = Recipe;
-      return View();
+      return RedirectToAction("UserRecipes", "Home");
     }
     [HttpGet("/NewUserRecipe")]
     public IActionResult NewUserRecipe()
@@ -65,7 +68,7 @@ namespace FoodForum.Controllers
     public async Task<IActionResult> UserRecipeTitleAsync(string Title)
     {
       bool found = false;
-      UserRecipe Recipe = await dbContext.UserRecipes.FirstOrDefaultAsync(recipe => recipe.Title == Title);
+      Recipe Recipe = await dbContext.Recipes.FirstOrDefaultAsync(recipe => recipe.Title == Title);
       if (Recipe != null)
       {
         found = true;
@@ -84,7 +87,7 @@ namespace FoodForum.Controllers
         if (User.AdminState != 1)
         {
           Recipe.UserId = User.UserId;
-          if (dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title) || dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
+          if (dbContext.Recipes.Any(recipe => recipe.Title == Recipe.Title))
           {
             ModelState.AddModelError("Title", "A recipe already has that title");
             return View("NewUserRecipe");
@@ -100,7 +103,7 @@ namespace FoodForum.Controllers
           }
           if (ModelState.IsValid)
           {
-            if(!dbContext.AdminRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL) || !dbContext.UserRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
+            if(!dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
             {
               dbContext.Add(Recipe);
               dbContext.SaveChanges();
@@ -125,7 +128,7 @@ namespace FoodForum.Controllers
         {
           dbContext.Remove(Recipe);
           dbContext.SaveChanges();
-          return RedirectToAction("UserRecipes");
+          return RedirectToAction("UserRecipes", "Home");
         }
       }
       return RedirectToAction("UserRecipe", new { Title = Recipe.Title });

@@ -9,7 +9,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace FoodForum.Models
 {
-  public abstract class Recipe{
+  public class Recipe{
         private FoodForumContext dbContext;
         public Recipe(FoodForumContext context)
         {

@@ -44,8 +44,8 @@
             }
             <td><partial name="UserRecipeLikePartial" view-data="ViewData"/></td>
           }
-          @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
-            <td><partial name="UserRecipeDeleteParTial" view-data="ViewData"/></td>
+          @if((ViewBag.User != null && ViewBag.User.AdminState == 1) || (ViewBag.User != null && ViewBag.User.UserId == ViewBag.Recipe.UserId)){
+            <td><partial name="UserRecipeDeletePartial" view-data="ViewData"/></td>
           }
           </tr>
         </tbody>
