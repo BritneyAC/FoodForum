@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -59,11 +58,12 @@ textarea{
 
 h1{
     text-align: center;
-    padding-top: 5px;
 }
 
 h2{
     text-align: center;
+    padding-top: 5px;
+    margin-bottom: -5px;
 }
 
 h3{
@@ -85,9 +85,14 @@ h5{
 }
 
 .Header{
-    background-color: rgba(17, 17, 17, 0.95);
+    background:
+        linear-gradient(-45deg rgba(17,17,17,0.95), transparent),
+        repeating-linear-gradient(-45deg rgba(17, 17, 17, 0.95) 0%, rgba(17, 17, 17, 0.95) 2%,transparent 2%, transparent 4%,rgba(10,10,10,0.95) 4%, rgba(10, 10, 10, 0.95) 6%),
+        rgba(45,45,45,0.55) repeating-linear-gradient(45deg rgba(17, 17, 17, 0.95) 0%, rgba(17, 17, 17, 0.95) 2%,transparent 2%, transparent 4%,rgba(10,10,10,0.95) 4%, rgba(10, 10, 10, 0.95) 6%);
+    background-color: rgba(17,17,17,0.95);
     border-radius: 4px;
     width: 100%;
+    min-height: 5%;
     
 }
 
@@ -161,7 +166,8 @@ h5{
     max-height: 2vh;
     margin: -5px auto;
     padding: -5px 0px;
-    border: 1px solid black;
+    border: 1px solid rgb(10, 100, 0);
+    border-top: 0px;
     text-align: center;
 }
 
