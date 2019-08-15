@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
-using Microsoft.Extensions.Options;
 
 namespace FoodForum.Controllers
 {
@@ -75,7 +74,7 @@ namespace FoodForum.Controllers
         if (User.AdminState == 1)
         {
           Recipe.UserId = User.UserId;
-          if (dbContext.AdminRecipes.Any(recipe => recipe.Title == Recipe.Title) || dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
+          if (dbContext.Recipes.Any(recipe => recipe.Title == Recipe.Title))
           {
             ModelState.AddModelError("Title", "A recipe already has that title");
             return View("NewAdminRecipe");
@@ -91,7 +90,7 @@ namespace FoodForum.Controllers
           }
           if (ModelState.IsValid)
           {
-            if(!dbContext.AdminRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL) || !dbContext.UserRecipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
+            if(!dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
             {
               dbContext.Add(Recipe);
               dbContext.SaveChanges();
@@ -110,16 +109,17 @@ namespace FoodForum.Controllers
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
       AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
-      if (User != null)
+      if(Recipe != null)
       {
-        if (User.AdminState == 1)
+        if (User != null && User.AdminState == 1)
         {
           dbContext.Remove(Recipe);
           dbContext.SaveChanges();
           return RedirectToAction("Index", "Home");
         }
+        return RedirectToAction("Recipe", "Recipes", new { Title = Recipe.Title });
       }
-      return RedirectToAction("Recipe", "Recipes", new { Title = Recipe.Title });
+      return RedirectToAction("Index", "Home");
     }
     [HttpGet("/MakeRecipeAdminRecipe/{Title}")]
     public IActionResult MakeRecipeAdminRecipe(string Title)

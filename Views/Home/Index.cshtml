@@ -2,7 +2,7 @@
 
 <div class="Wrapper">
   <div class="Header">
-    <h1>Welcome To Britney, Sam, and Hank's Food Blog/Recipe Forum</h1>
+    <h2>Welcome To Britney, Sam, and Hank's Mostly Vegan Food Blog/Forum</h2>
     <div class="HeaderLinks">
       @if(ViewBag.User == null){
         <p><a asp-action="UserRecipes" asp-controller="Home">User Submitted Recipes</a>  |  
@@ -12,6 +12,7 @@
           <p><a href="/AdminPage">AdminPage</a>  |  </p>
         }
         <p><a asp-action="UserRecipes" asp-controller="Home">User Submitted Recipes</a>  |  
+        <a asp-action="NewUserRecipe" asp-controller="UserRecipes">Post A New Recipe</a>  |  
         <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.User.Username">Go To Your Profile Page</a>  |  
         <a asp-action="Logout" asp-controller="User">Logout</a></p>
       }
@@ -19,12 +20,12 @@
   </div>
   <div class="RecipeList">
     <div id="Sorting">
-      <h2>Here you can find all of our recipes and recipes we choose from the User Submissions</h2>
+      <h3>Here you can find all of our recipes and recipes we choose from the User Submissions</h3>
       <table class="SortingTbl">
         <thead class="SortingThead">
           <tr class="SortingTR">
             <td class="SortingBtn" id="IndexRatingReverse"><h4>Sort By Rating ↑</h4></td>
-            <td class="SortingBtn" id="IndexLikes"><h4>Sort by Likes ↓</h4></td>
+            <td class="SortingBtn" id="IndexLikes"><h4>Sort By Likes ↓</h4></td>
             <td class="SortingBtn" id="IndexTime"><h4>Sort By Newest</h4></td>
           </tr>
         </thead>
