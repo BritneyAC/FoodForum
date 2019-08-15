@@ -109,4 +109,64 @@
     $('#Sorting').load(PartialUrls.UserTimeReverse)
     return false;
   })
+  $(document).on('click', '.IngredientFourBtn', function(){
+    $('.IngredientFourBtn').hide();
+    $('#IngredientFourShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientFiveBtn', function(){
+    $('.IngredientFiveBtn').hide();
+    $('#IngredientFiveShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientSixBtn', function(){
+    $('.IngredientSixBtn').hide();
+    $('#IngredientSixShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientSevenBtn', function(){
+    $('.IngredientSevenBtn').hide();
+    $('#IngredientSevenShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientEightBtn', function(){
+    $('.IngredientEightBtn').hide();
+    $('#IngredientEightShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientNineBtn', function(){
+    $('.IngredientNineBtn').hide();
+    $('#IngredientNineShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientTenBtn', function(){
+    $('.IngredientTenBtn').hide();
+    $('#IngredientTenShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientElevenBtn', function(){
+    $('.IngredientElevenBtn').hide();
+    $('#IngredientElevenShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientTwelveBtn', function(){
+    $('.IngredientTwelveBtn').hide();
+    $('#IngredientTwelveShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientThirteenBtn', function(){
+    $('.IngredientThirteenBtn').hide();
+    $('#IngredientThirteenShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientFourteenBtn', function(){
+    $('.IngredientFourteenBtn').hide();
+    $('#IngredientFourteenShow').show();
+    return false;
+  })
+  $(document).on('click', '.IngredientFifteenBtn', function(){
+    $('.IngredientFifteenBtn').hide();
+    $('#IngredientFifteenShow').show();
+    return false;
+  })
 })

@@ -252,5 +252,22 @@ namespace FoodForum.Controllers
       }
       return RedirectToAction("UserSubmissions", "Home");
     }
+    [HttpGet("/DeleteUser/{UserId}")]
+    public IActionResult DeleteUser(int UserId)
+    {
+      int? AdminId = HttpContext.Session.GetInt32("UserId");
+      User Admin = dbContext.Users.FirstOrDefault(user => user.UserId == AdminId);
+      if (Admin != null)
+      {
+        User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+        if (User.AdminState != 1)
+        {
+          dbContext.Remove(User);
+          dbContext.SaveChanges();
+          return RedirectToAction("AdminPage");
+        }
+      }
+      return RedirectToAction("Index", "Home");
+    }
   }
 }

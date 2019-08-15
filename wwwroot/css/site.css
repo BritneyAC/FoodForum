@@ -288,6 +288,7 @@ h5{
 .FormSection{
     display: inline-block;
     min-width: 32%;
+    max-width: 100%;
     vertical-align: top;
     margin: 5px auto;
     text-align: center;
@@ -371,3 +372,51 @@ h5{
         padding-right: 20px;
         text-align: right;
     }
+
+#IngredientFourShow{
+    display: none;
+}
+
+#IngredientFiveShow{
+    display: none;
+}
+
+#IngredientSixShow{
+    display: none;
+}
+
+#IngredientSevenShow{
+    display: none;
+}
+
+#IngredientEightShow{
+    display: none;
+}
+
+#IngredientNineShow{
+    display: none;
+}
+
+#IngredientTenShow{
+    display: none;
+}
+
+#IngredientElevenShow{
+    display: none;
+}
+
+#IngredientTwelveShow{
+    display: none;
+}
+
+#IngredientThirteenShow{
+    display: none;
+}
+
+#IngredientFourteenShow{
+    display: none;
+}
+
+#IngredientFifteenShow{
+    display: none;
+}
