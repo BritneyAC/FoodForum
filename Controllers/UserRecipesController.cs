@@ -57,7 +57,7 @@ namespace FoodForum.Controllers
       {
         if (User.AdminState == 1)
         {
-          return RedirectToAction("AdminNewRecipe", "Admin");
+          return RedirectToAction("NewAdminRecipe", "Admin");
         }
         ViewBag.User = User;
         return View();
@@ -115,6 +115,22 @@ namespace FoodForum.Controllers
         }
       }
       return RedirectToAction("UserRecipes", "Home");
+    }
+    [HttpGet("/UserRecipe/{Title}/Update")]
+    public IActionResult UserRecipeUpdate(string Title)
+    {
+      int? UserId = HttpContext.Session.GetInt32("UserId");
+      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+      if (User != null)
+      {
+        UserRecipe Recipe = dbContext.UserRecipes.FirstOrDefault(recipe => recipe.Title == Title);
+        if (Recipe != null && Recipe.UserId == UserId || User.AdminState == 1)
+        {
+          ViewBag.Recipe = Recipe;
+          return View();
+        }
+      }
+      return RedirectToAction("UserRecipes");
     }
     [HttpPost("/UserRecipe/{RecipeId}/Delete")]
     public IActionResult DeleteUserRecipe(int RecipeId)

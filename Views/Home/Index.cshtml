@@ -44,10 +44,10 @@
               <li>@ingredient</li>
             }
           </ul>
-          <p>@recipe.Content</p>
+          <p class="Content">@recipe.Content</p><br>
           <p class="Rating">Rating: @recipe.GetRating()</p>
           <p class="Likes">Likes: @recipe.Likes.Count</p>
-          <p class="postDate">Date Posted: @recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
+          <p class="PostDate">Date Posted: @recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
         </div>  
       }
     </div>

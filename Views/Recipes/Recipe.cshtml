@@ -1,18 +1,20 @@
 @model FoodForum.Models.AdminRecipe
 
-<div class="Header">
-  <h1>@ViewBag.Recipe.Title</h1>
-  <h5>By <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.Recipe.User.Username">@ViewBag.Recipe.User.Username</a></h5>
-  <div class="HeaderLinks">
-    <a asp-action="Index" asp-controller="Home">Home</a>  |  
-    @if(ViewBag.User == null){
-      <a asp-action="Login" asp-controller="User">Login</a>
-    } else{
-      <a asp-action="Logout" asp-controller="User">Logout</a>
-    }
+<div class="Wrapper">
+  <div class="Header">
+    <h1>@ViewBag.Recipe.Title</h1>
+    <h5>By <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.Recipe.User.Username">@ViewBag.Recipe.User.Username</a></h5>
+    <div class="HeaderLinks">
+      <a asp-action="Index" asp-controller="Home">Home</a>  |  
+      @if(ViewBag.User == null){
+        <a asp-action="Login" asp-controller="User">Login</a>
+      } else{
+        <a asp-action="Logout" asp-controller="User">Logout</a>
+      }
+    </div>
   </div>
-</div>
-<div class="Recipe">
+  <div class="Recipe">
+    <br>
     @if(ViewBag.Recipe.PictureURL != null){
       <div class="RecipeListPicture" style="background-image: url(@ViewBag.Recipe.PictureURL)";></div>
     }
@@ -21,7 +23,7 @@
         <li>@ingredient</li>
       }
     </ul>
-    <p>@ViewBag.Recipe.Content</p>
+    <p class="Content">@ViewBag.Recipe.Content</p><br>
     @if(ViewBag.User != null && ViewBag.User.AdminState == 1 && ViewBag.Recipe.User.AdminState != 1){
       <a asp-action="UnAdminifyRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId">Remove this recipe from the curated list</a>
     }
@@ -72,4 +74,5 @@
         </div>
       }
     </div>
+  </div>
 </div>

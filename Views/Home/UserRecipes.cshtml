@@ -1,20 +1,21 @@
 @model FoodForum.Models.UserRecipe
 
-<div class="Header">
-  <h2>Welcome To Britney, Sam, and Hank's Mostly Vegan Food Blog/Forum</h2>
-  <div class="HeaderLinks">
-    <p>
-      <a asp-action="Index" asp-controller="Home">Back to our curated list</a>  |  
-      @if (ViewBag.User != null){
-        <p><a asp-action="NewUserRecipe" asp-controller="UserRecipes">Post A New Recipe</a>  |  
-        <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.User.Username">Go To Your Profile Page</a>  |  
-        <a asp-action="Logout" asp-controller="User">Logout</a></p>
-      } else{
-        <a asp-action="Login" asp-controller="User">Login</a>
-      }
-    </p>
+<div class="Wrapper">
+  <div class="Header">
+    <h2>Welcome To Britney, Sam, and Hank's Mostly Vegan Food Blog/Forum</h2>
+    <div class="HeaderLinks">
+      <p>
+        <a asp-action="Index" asp-controller="Home">Back to our curated list</a>  |  
+        @if (ViewBag.User != null){
+          <p><a asp-action="NewUserRecipe" asp-controller="UserRecipes">Post A New Recipe</a>  |  
+            <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.User.Username">Go To Your Profile Page</a>  |  
+            <a asp-action="Logout" asp-controller="User">Logout</a></p>
+          } else{
+            <a asp-action="Login" asp-controller="User">Login</a>
+          }
+        </p>
+      </div>
   </div>
-</div>
   <div class="RecipeList">
     <div id="Sorting">
       <h3>Here you can find all of the User Submitted Recipes</h3>
@@ -41,11 +42,12 @@
               <li>@ingredient</li>
             }
           </ul>
-          <p>@recipe.Content</p>
+          <p class="Content">@recipe.Content</p><br>
           <p class="Rating">Rating: @recipe.GetRating()</p>
           <p class="Likes">Likes: @recipe.Likes.Count</p>
-          <p class="postDate">Date Posted: @recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
+          <p class="PostDate">Date Posted: @recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
         </div>  
       }
+    </div>
   </div>
 </div>

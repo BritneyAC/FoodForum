@@ -1,19 +1,21 @@
 @model FoodForum.Models.UserRecipe
 
-<div class="Header">
-  <h1>@ViewBag.Recipe.Title</h1>
-  <h5>By <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.Recipe.User.Username">@ViewBag.Recipe.User.Username</a></h5>
-  <div class="HeaderLinks">
-    <a asp-action="Index" asp-controller="Home">Home</a>  |
-    <a asp-action="UserRecipes" asp-controller="Home">Back To User Submitted Recipes</a>  |  
-    @if(ViewBag.User == null){
-      <a asp-action="Login" asp-controller="User">Login</a>
-    } else{
-      <a asp-action="Logout" asp-controller="User">Logout</a>
-    }
+<div class="Wrapper">
+  <div class="Header">
+    <h1>@ViewBag.Recipe.Title</h1>
+    <h5>By <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@ViewBag.Recipe.User.Username">@ViewBag.Recipe.User.Username</a></h5>
+    <div class="HeaderLinks">
+      <a asp-action="Index" asp-controller="Home">Home</a>  |
+      <a asp-action="UserRecipes" asp-controller="Home">Back To User Submitted Recipes</a>  |  
+      @if(ViewBag.User == null){
+        <a asp-action="Login" asp-controller="User">Login</a>
+      } else{
+        <a asp-action="Logout" asp-controller="User">Logout</a>
+      }
+    </div>
   </div>
-</div>
-<div class="Recipe">
+  <div class="Recipe">
+    <br>
     @if(ViewBag.Recipe.PictureURL != null){
       <div class="RecipeListPicture" style="background-image: url(@ViewBag.Recipe.PictureURL)";></div>
     }
@@ -22,7 +24,7 @@
         <li>@ingredient</li>
       }
     </ul>
-    <p>@ViewBag.Recipe.Content</p>
+    <p class="Content">@ViewBag.Recipe.Content</p><br>
     @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
       <a asp-action="MakeRecipeAdminRecipe" asp-controller="Admin" asp-route-Title="@ViewBag.Recipe.Title">Add this recipe to the curated list</a>
     }
@@ -35,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-          <tr>
+        <tr>
           @if(ViewBag.User != null  &&  ViewBag.User != ViewBag.Recipe.User){
             @if (ViewBag.Rating == null){
               <td><partial name="UserRecipeRatePartial" view-data="ViewData"/></td>
@@ -47,8 +49,8 @@
           @if((ViewBag.User != null && ViewBag.User.AdminState == 1) || (ViewBag.User != null && ViewBag.User.UserId == ViewBag.Recipe.UserId)){
             <td><partial name="UserRecipeDeletePartial" view-data="ViewData"/></td>
           }
-          </tr>
-        </tbody>
+        </tr>
+      </tbody>
     </table>
     @if(ViewBag.User != null){
       <div class="PostAComment">
@@ -73,4 +75,5 @@
         </div>
       }
     </div>
+  </div>
 </div>

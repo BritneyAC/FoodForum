@@ -1,16 +1,18 @@
 @model FoodForum.Models.AdminRecipe
 
-<div class="Header">
-  <h1>Add An Admin Note To The Recipe</h1>
-  <div class="HeaderLinks">
-    <a asp-action="AdminPage" asp-controller="Admin">Back to Admin Page</a>  |  
-    <a asp-action="Index" asp-controller="Home">Home</a>
+<div class="Wrapper">
+  <div class="Header">
+    <h1>Add An Admin Note To The Recipe</h1>
+    <div class="HeaderLinks">
+      <a asp-action="AdminPage" asp-controller="Admin">Back to Admin Page</a>  |  
+      <a asp-action="Index" asp-controller="Home">Home</a>
+    </div>
   </div>
+  <form asp-action="AdminifyRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" class="FormSection">
+    <input asp-for="Title" readonly required hidden value="@ViewBag.Recipe.Title">
+    <span asp-validation-for="Note"></span><br>
+    <label asp-for="Note">Admin Note</label><br>
+    <textarea asp-for="Note" required minlength="4" maxlength="255"></textarea><br>
+    <input type="submit" value="Post"><br><br>
+  </form> 
 </div>
-<form asp-action="AdminifyRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" class="FormSection">
-  <input asp-for="Title" readonly required hidden value="@ViewBag.Recipe.Title">
-  <span asp-validation-for="Note"></span><br>
-  <label asp-for="Note">Admin Note</label><br>
-  <textarea asp-for="Note" required minlength="4" maxlength="255"></textarea><br>
-  <input type="submit" value="Post"><br><br>
-</form> 

@@ -1,35 +1,37 @@
-<div class="Header">
-  <h1>Welcome @ViewBag.User.Username to the Admin Page</h1>
-  <div class="HeaderLinks">
-    <a href="/NewAdminRecipe">Post A New Recipe</a>  |  
-    <a href="/">Home</a>
+<div class="Wrapper">
+  <div class="Header">
+    <h1>Welcome @ViewBag.User.Username to the Admin Page</h1>
+    <div class="HeaderLinks">
+      <a href="/NewAdminRecipe">Post A New Recipe</a>  |  
+      <a href="/">Home</a>
+    </div>
   </div>
-</div>
-<table class="UserList">
-  <thead>
-    <tr>
-      <td>UserName</td>
-      <td>Actions</td>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach(var user in ViewBag.Users){
+  <table class="UserList">
+    <thead>
       <tr>
-        <td>
-          <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@user.Username">@user.Username</a>
-        </td>
-        <td class="AdminActions">
-          @if(user.UserId != 1){
-            @if(user.AdminState == 1 && user.UserId != ViewBag.User.UserId){
-              <p><a asp-action="UnAdminifyUser" asp-controller="Admin" asp-route-UserId="@user.UserId">UnAdmin User</a></p>
-            } @if(user.AdminState == 0 && user.UserId != ViewBag.User.UserId){
-              <p><a asp-action="AdminifyUser" asp-controller="Admin" asp-route-UserId="@user.UserId">Admin User</a>  |  </p>
-            } @if(user.AdminState != 1){
-              <a asp-action="DeleteUser" asp-controller="Admin" asp-route-UserId="@user.UserId">Delete User</a>
-            }
-          }
-        </td>
+        <td>UserName</td>
+        <td>Actions</td>
       </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      @foreach(var user in ViewBag.Users){
+        <tr>
+          <td>
+            <a asp-action="ProfilePage" asp-controller="User" asp-route-Username="@user.Username">@user.Username</a>
+          </td>
+          <td class="AdminActions">
+            @if(user.UserId != 1){
+              @if(user.AdminState == 1 && user.UserId != ViewBag.User.UserId){
+                <p><a asp-action="UnAdminifyUser" asp-controller="Admin" asp-route-UserId="@user.UserId">UnAdmin User</a></p>
+              } @if(user.AdminState == 0 && user.UserId != ViewBag.User.UserId){
+                <p><a asp-action="AdminifyUser" asp-controller="Admin" asp-route-UserId="@user.UserId">Admin User</a>  |  </p>
+              } @if(user.AdminState != 1){
+                <a asp-action="DeleteUser" asp-controller="Admin" asp-route-UserId="@user.UserId">Delete User</a>
+              }
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
