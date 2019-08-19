@@ -66,7 +66,7 @@ using FoodForum.Models;
             WriteLiteral("  ");
             EndContext();
             BeginContext(55, 178, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee6fda43e5774da1a6e9b23e359ed2b6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d715ac7816ba49fa9156f98996e5132f", async() => {
                 BeginContext(180, 46, true);
                 WriteLiteral("\r\n    <input type=\"submit\" value=\"UnLike\">\r\n  ");
                 EndContext();
@@ -115,7 +115,7 @@ using FoodForum.Models;
             WriteLiteral("  ");
             EndContext();
             BeginContext(246, 174, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f695e1014a224ef798e9a6c2a8664f1e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "317b77f8e0ef45c893f501e93d39167c", async() => {
                 BeginContext(369, 44, true);
                 WriteLiteral("\r\n    <input type=\"submit\" value=\"Like\">\r\n  ");
                 EndContext();

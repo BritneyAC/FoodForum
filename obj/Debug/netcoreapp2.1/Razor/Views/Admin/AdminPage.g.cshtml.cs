@@ -91,7 +91,7 @@ using FoodForum.Models;
             WriteLiteral("        <tr>\r\n          <td>\r\n            ");
             EndContext();
             BeginContext(483, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3ac29e9e629b4e728dbf53817f37fa6b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7effcbf1ac294b3a87be2ddf6d683fe7", async() => {
                 BeginContext(570, 13, false);
 #line 20 "C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\Views\Admin\AdminPage.cshtml"
                                                                                              Write(user.Username);
@@ -146,7 +146,7 @@ using FoodForum.Models;
             WriteLiteral("                <p>");
             EndContext();
             BeginContext(778, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb89306a4ca2431e894f01921d66120d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b777fc077188442d87c65e6c566ab6ff", async() => {
                 BeginContext(864, 12, true);
                 WriteLiteral("UnAdmin User");
                 EndContext();
@@ -196,7 +196,7 @@ using FoodForum.Models;
             WriteLiteral("                <p>");
             EndContext();
             BeginContext(987, 98, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8306c2ca4e9b42f1b848d4bb8ee23746", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a4cfe113c1ad4e91b71c90ef0786b3c7", async() => {
                 BeginContext(1071, 10, true);
                 WriteLiteral("Admin User");
                 EndContext();
@@ -246,7 +246,7 @@ using FoodForum.Models;
             WriteLiteral("                ");
             EndContext();
             BeginContext(1156, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f90d030e32cb48ffbc58cc448ff8bbc2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "354f76eb6c454597b193f7b0a8818358", async() => {
                 BeginContext(1238, 11, true);
                 WriteLiteral("Delete User");
                 EndContext();

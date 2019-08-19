@@ -13,12 +13,12 @@
       <span asp-validation-for="Title" id="RecipeTitleMsg"></span><br>
       <label asp-for="Title">Title</label><br>
       <input asp-for="Title" required minlength="2" maxlength="45" id="RecipeTitle"><br>
-      <span asp-validation-for="Note"><br></span>
+      <span asp-validation-for="Note"></span><br>
       <label asp-for="Note">Admin Note</label><br>
       <textarea asp-for="Note" required minlength="4" maxlength="255"></textarea>
     </div>
     <div class="MiddleFormSection">
-      <span asp-validation-for="IngredientOne"><br></span>
+      <span asp-validation-for="IngredientOne"></span><br>
       <label asp-for="IngredientOne">Ingredient #1 (Required): </label><br>
       <input asp-for="IngredientOne" required minlength="2" maxlength="45"><br>
       <span asp-validation-for="IngredientTwo"></span><br>

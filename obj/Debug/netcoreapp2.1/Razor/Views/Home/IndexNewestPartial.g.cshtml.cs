@@ -73,7 +73,7 @@ using FoodForum.Models;
             WriteLiteral("  <div class=\"Recipe\">\r\n    <h3>");
             EndContext();
             BeginContext(533, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d92db61b448d46d48dce3ad6bd229376", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39c883e47370425886bbf04641c9f2ac", async() => {
                 BeginContext(614, 12, false);
 #line 13 "C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\Views\Home\IndexNewestPartial.cshtml"
                                                                                    Write(recipe.Title);

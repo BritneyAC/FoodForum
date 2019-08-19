@@ -3068,5 +3068,6 @@
       "TargetPath": "Views\\User\\LoginPartial.cshtml",
       "FileKind": "mvc"
     }
-  ]
+  ],
+  "SerializationFormat": "0.1"
 }

@@ -16,50 +16,98 @@
     </div>
     <div class="MiddleFormSection">
       <span asp-validation-for="IngredientOne"></span><br>
-      <label asp-for="IngredientOne">Ingredient #1(Required): </label>
+      <label asp-for="IngredientOne">Ingredient #1 (Required): </label><br>
       <input asp-for="IngredientOne" required minlength="2" maxlength="45"><br>
       <span asp-validation-for="IngredientTwo"></span><br>
-      <label asp-for="IngredientTwo">Ingredient #2(Required): </label>
+      <label asp-for="IngredientTwo">Ingredient #2 (Required): </label><br>
       <input asp-for="IngredientTwo" required minlength="2" maxlength="45"><br>
       <span asp-validation-for="IngredientThree"></span><br>
-      <label asp-for="IngredientThree">Ingredient #3(Required): </label>
+      <label asp-for="IngredientThree">Ingredient #3 (Required): </label><br>
       <input asp-for="IngredientThree" required minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientFour"></span><br>
-      <label asp-for="IngredientFour">Ingredient #4(Optional): </label>
-      <input asp-for="IngredientFour" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientFive"></span><br>
-      <label asp-for="IngredientFive">Ingredient #5(Optional): </label>
-      <input asp-for="IngredientFive" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientSix"></span><br>
-      <label asp-for="IngredientSix">Ingredient #6(Optional): </label>
-      <input asp-for="IngredientSix" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientSeven"></span><br>
-      <label asp-for="IngredientSeven">Ingredient #7(Optional): </label>
-      <input asp-for="IngredientSeven" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientEight"></span><br>
-      <label asp-for="IngredientEight">Ingredient #8(Optional): </label>
-      <input asp-for="IngredientEight" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientNine"></span><br>
-      <label asp-for="IngredientNine">Ingredient #9(Optional): </label>
-      <input asp-for="IngredientNine" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientTen"></span><br>
-      <label asp-for="IngredientTen">Ingredient #10(Optional): </label>
-      <input asp-for="IngredientTen" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientEleven"></span><br>
-      <label asp-for="IngredientEleven">Ingredient #11(Optional): </label>
-      <input asp-for="IngredientEleven" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientTwelve"></span><br>
-      <label asp-for="IngredientTwelve">Ingredient #12(Optional): </label>
-      <input asp-for="IngredientTwelve" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientThirteen"></span><br>
-      <label asp-for="IngredientThirteen">Ingredient #13(Optional): </label>
-      <input asp-for="IngredientThirteen" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientFourteen"></span><br>
-      <label asp-for="IngredientFourteen">Ingredient #14(Optional): </label>
-      <input asp-for="IngredientFourteen" minlength="2" maxlength="45"><br>
-      <span asp-validation-for="IngredientFifteen"></span><br>
-      <label asp-for="IngredientFifteen">Ingredient #15(Optional): </label>
-      <input asp-for="IngredientFifteen" minlength="2" maxlength="45">
+      <br class="IngredientFourBtn">
+      <button class="IngredientFourBtn">Add Another Ingredient</button><br class="IngredientFourBtn"><br class="IngredientFourBtn">
+      <div id="IngredientFourShow">
+        <span asp-validation-for="IngredientFour"></span><br>
+        <label asp-for="IngredientFour">Ingredient #4 (Optional): </label><br>
+        <input asp-for="IngredientFour" minlength="2" maxlength="45"><br>
+        <br class="IngredientFiveBtn">
+        <button class="IngredientFiveBtn">Add Another Ingredient</button><br class="IngredientFiveBtn"><br class="IngredientFiveBtn">
+      </div>
+      <div id="IngredientFiveShow">
+        <span asp-validation-for="IngredientFive"></span><br>
+        <label asp-for="IngredientFive">Ingredient #5 (Optional): </label><br>
+        <input asp-for="IngredientFive" minlength="2" maxlength="45"><br>
+        <br class="IngredientSixBtn">
+        <button class="IngredientSixBtn">Add Another Ingredient</button><br class="IngredientSixBtn"><br class="IngredientSixBtn">
+      </div>
+      <div id="IngredientSixShow">
+        <span asp-validation-for="IngredientSix"></span><br>
+        <label asp-for="IngredientSix">Ingredient #6 (Optional): </label><br>
+        <input asp-for="IngredientSix" minlength="2" maxlength="45"><br>
+        <br class="IngredientSevenBtn">
+        <button class="IngredientSevenBtn">Add Another Ingredient</button><br class="IngredientSevenBtn"><br class="IngredientSevenBtn">
+      </div>
+      <div id="IngredientSevenShow">
+        <span asp-validation-for="IngredientSeven"></span><br>
+        <label asp-for="IngredientSeven">Ingredient #7 (Optional): </label><br>
+        <input asp-for="IngredientSeven" minlength="2" maxlength="45"><br>
+        <br class="IngredientEightBtn">
+        <button class="IngredientEightBtn">Add Another Ingredient</button><br class="IngredientEightBtn"><br class="IngredientEightBtn">
+      </div>
+      <div id="IngredientEightShow">
+        <span asp-validation-for="IngredientEight"></span><br>
+        <label asp-for="IngredientEight">Ingredient #8 (Optional): </label><br>
+        <input asp-for="IngredientEight" minlength="2" maxlength="45"><br>
+        <br class="IngredientNineBtn">
+        <button class="IngredientNineBtn">Add Another Ingredient</button><br class="IngredientNineBtn"><br class="IngredientNineBtn">
+      </div>
+      <div id="IngredientNineShow">
+        <span asp-validation-for="IngredientNine"></span><br>
+        <label asp-for="IngredientNine">Ingredient #9 (Optional): </label><br>
+        <input asp-for="IngredientNine" minlength="2" maxlength="45"><br>
+        <br class="IngredientTenBtn">
+        <button class="IngredientTenBtn">Add Another Ingredient</button><br class="IngredientTenBtn"><br class="IngredientTenBtn">
+      </div>
+      <div id="IngredientTenShow">
+        <span asp-validation-for="IngredientTen"></span><br>
+        <label asp-for="IngredientTen">Ingredient #10 (Optional): </label><br>
+        <input asp-for="IngredientTen" minlength="2" maxlength="45"><br>
+        <br class="IngredientElevenBtn">
+        <button class="IngredientElevenBtn">Add Another Ingredient</button><br class="IngredientElevenBtn"><br class="IngredientElevenBtn">
+      </div>
+      <div id="IngredientElevenShow">
+        <span asp-validation-for="IngredientEleven"></span><br>
+        <label asp-for="IngredientEleven">Ingredient #11 (Optional): </label><br>
+        <input asp-for="IngredientEleven" minlength="2" maxlength="45"><br>
+        <br class="IngredientTwelveBtn">
+        <button class="IngredientTwelveBtn">Add Another Ingredient</button><br class="IngredientTwelveBtn"><br class="IngredientTwelveBtn">
+      </div>
+      <div id="IngredientTwelveShow">
+        <span asp-validation-for="IngredientTwelve"></span><br>
+        <label asp-for="IngredientTwelve">Ingredient #12 (Optional): </label><br>
+        <input asp-for="IngredientTwelve" minlength="2" maxlength="45"><br>
+        <br class="IngredientThirteenBtn">
+        <button class="IngredientThirteenBtn">Add Another Ingredient</button><br class="IngredientThirteenBtn"><br class="IngredientThirteenBtn">
+      </div>
+      <div id="IngredientThirteenShow">
+        <span asp-validation-for="IngredientThirteen"></span><br>
+        <label asp-for="IngredientThirteen">Ingredient #13 (Optional): </label><br>
+        <input asp-for="IngredientThirteen" minlength="2" maxlength="45"><br>
+        <br class="IngredientFourteenBtn">
+        <button class="IngredientFourteenBtn">Add Another Ingredient</button><br class="IngredientFourteenBtn"><br class="IngredientFourteenBtn">
+      </div>
+      <div id="IngredientFourteenShow">
+        <span asp-validation-for="IngredientFourteen"></span><br>
+        <label asp-for="IngredientFourteen">Ingredient #14 (Optional): </label><br>
+        <input asp-for="IngredientFourteen" minlength="2" maxlength="45"><br>
+        <br class="IngredientFifteenBtn">
+        <button class="IngredientFifteenBtn">Add Another Ingredient</button><br class="IngredientFifteenBtn"><br class="IngredientFifteenBtn">
+      </div>
+      <div id="IngredientFifteenShow">
+        <span asp-validation-for="IngredientFifteen"></span><br>
+        <label asp-for="IngredientFifteen">Ingredient #15 (Optional): </label><br>
+        <input asp-for="IngredientFifteen" minlength="2" maxlength="45"><br><br>
+      </div>
     </div>
     <div class="FormSection">
       <span asp-validation-for="Content"></span><br>
@@ -68,7 +116,7 @@
       <span asp-validation-for="UploadPicture"></span>
       <label asp-for="UploadPicture">Picture(Optional)</label>
       <input asp-for="UploadPicture">
-    </div>
+    </div><br>
     <input type="submit" value="Post">
   </form>
 </div>
