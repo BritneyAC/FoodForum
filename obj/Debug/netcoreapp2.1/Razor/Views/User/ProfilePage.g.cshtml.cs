@@ -70,7 +70,7 @@ using FoodForum.Models;
             WriteLiteral("\'s Account Page</h1>\r\n    <div class=\"HeaderLinks\">\r\n      ");
             EndContext();
             BeginContext(136, 52, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c3a640cb5fc42949d0da5bd696fe7d9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a7416c04e8249ea8f801b756b4b45b7", async() => {
                 BeginContext(180, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -102,7 +102,7 @@ using FoodForum.Models;
             WriteLiteral("        ");
             EndContext();
             BeginContext(244, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c9e76bda43341dca88c4c2341aa0ac9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ad64e1de47048abb3a053fd99f8131e", async() => {
                 BeginContext(288, 5, true);
                 WriteLiteral("Login");
                 EndContext();
@@ -134,7 +134,7 @@ using FoodForum.Models;
             WriteLiteral("        ");
             EndContext();
             BeginContext(322, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "35d81e59419e49f6b1d7caa977d72a03", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f16d19cc78a541b9a9e0140b069e60aa", async() => {
                 BeginContext(367, 6, true);
                 WriteLiteral("Logout");
                 EndContext();
@@ -174,7 +174,7 @@ using FoodForum.Models;
             WriteLiteral("      <div class=\"Recipe\">\r\n        <h3>");
             EndContext();
             BeginContext(640, 111, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86d1cc49abc9426d9dc5864971f139a5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9847156eb7ed427a9e32ce3be75d7b36", async() => {
                 BeginContext(728, 19, false);
 #line 17 "C:\Users\Britney\Documents\CodingDojoWork\C#\FoodForum\Views\User\ProfilePage.cshtml"
                                                                                               Write(recipe.Recipe.Title);

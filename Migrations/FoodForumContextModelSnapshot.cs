@@ -156,7 +156,8 @@ namespace FoodForum.Migrations
                         .IsRequired();
 
                     b.Property<string>("Username")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(16);
 
                     b.HasKey("UserId");
 

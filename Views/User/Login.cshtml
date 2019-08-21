@@ -14,10 +14,10 @@
       <input asp-for="Username" required id="Username" maxlength="16" minlength="2"><br>
       <span asp-validation-for="Password"></span><br>
       <label asp-for="Password">Password</label><br>
-      <input asp-for="Password" required><br>
+      <input asp-for="Password" required minlength="8" maxlength="32"><br>
       <span asp-validation-for="ConfirmPassword"></span><br>
       <label asp-for="ConfirmPassword">Confirm Password</label><br>
-      <input asp-for="ConfirmPassword"><br><br>
+      <input asp-for="ConfirmPassword" required minlength="8" maxlength="32"><br><br>
       <input type="submit" value="Submit"><br><br>
     </form>
   </div>

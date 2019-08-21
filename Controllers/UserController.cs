@@ -60,12 +60,11 @@ namespace FoodForum.Controllers
         if (!dbContext.Users.Any(user => user.Username == User.Username)){
           PasswordHasher<User> Hasher = new PasswordHasher<User>();
           User.Password = Hasher.HashPassword(User, User.Password);
-          dbContext.Add(User);
-          dbContext.SaveChanges();
           if (User.UserId == 1)
           {
             User.AdminState = 1;
           }
+          dbContext.Add(User);
           dbContext.SaveChanges();
           HttpContext.Session.Clear();
           HttpContext.Session.SetInt32("UserId", User.UserId);
