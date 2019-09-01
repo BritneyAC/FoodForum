@@ -24,7 +24,7 @@
       }
     </ul>
     <p>
-      <pre class="Content">@recipe.Content</pre>
+      <pre class="Content">@ViewBag.Recipe.Content</pre>
     </p>
     @if(ViewBag.User != null && ViewBag.User.AdminState == 1 && ViewBag.Recipe.User.AdminState != 1){
       <a asp-action="UnAdminifyRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId">Remove this recipe from the curated list</a>

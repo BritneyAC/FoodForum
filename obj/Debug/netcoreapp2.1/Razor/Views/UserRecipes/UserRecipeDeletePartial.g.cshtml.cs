@@ -54,7 +54,7 @@ using FoodForum.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             BeginContext(0, 174, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a594d8381aa44fa6a2a51a6e08f68680", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8623b809e4744ee387d554ca60ed3042", async() => {
                 BeginContext(125, 42, true);
                 WriteLiteral("\r\n  <input type=\"submit\" value=\"Delete\">\r\n");
                 EndContext();

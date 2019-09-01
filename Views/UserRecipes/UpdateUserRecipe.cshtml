@@ -21,7 +21,7 @@
       }
     </ul>
     <p>
-      <pre class="Content">@recipe.Content</pre>
+      <pre class="Content">@ViewBag.Recipe.Content</pre>
     </p>
   </div>
   <form asp-action="UpdatingUserRecipeAsync" asp-controller="UserRecipes" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" id="RecipeForm" enctype="multipart/form-data">
