@@ -9,7 +9,8 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace FoodForum.Models
 {
-  public class Recipe{
+  public class Recipe
+  {
         private FoodForumContext dbContext;
         public Recipe(FoodForumContext context)
         {
@@ -19,8 +20,12 @@ namespace FoodForum.Models
         [Required]
         public int RecipeId{get;set;}
         [Required]
+        [MinLength(3)]
+        [MaxLength(55)]
         public string Title{get;set;}
         [Required]
+        [MinLength(8)]
+        [MaxLength(2555)]
         public string Content{get;set;}
         [DataType(DataType.Upload)]
         [NotMapped]
@@ -28,22 +33,52 @@ namespace FoodForum.Models
         [FileExtensions(Extensions = "jpg, png, jpeg, bmp")]
         public string PictureURL{get;set;}
         [Required]
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientOne{get;set;}
         [Required]
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientTwo{get;set;}
         [Required]
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientThree{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientFour{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientFive{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientSix{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientSeven{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientEight{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientNine{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientTen{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientEleven{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientTwelve{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientThirteen{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientFourteen{get;set;}
+        [MinLength(2)]
+        [MaxLength(65)]
         public string IngredientFifteen{get;set;}
         [NotMapped]
         public List<string> Ingredients{get;set;}
@@ -53,9 +88,11 @@ namespace FoodForum.Models
         public List<Like> Likes{get;set;}
         public List<Comment> Comments{get;set;}
         public List<Rating> Ratings{get;set;}
-        public double GetRating(){
+        public double GetRating()
+        {
             double avg = 0;
-            foreach(var rating in Ratings){
+            foreach(var rating in Ratings)
+            {
                 avg += rating.Rate;
             } 
             avg = avg / Ratings.Count;
@@ -78,7 +115,8 @@ namespace FoodForum.Models
             User User = dbContext.Users.FirstOrDefault(user => user.UserId == this.UserId);
             return User;
         }
-        public List<String> GetIngredients(){
+        public List<String> GetIngredients()
+        {
             Ingredients.Add(IngredientOne);
             Ingredients.Add(IngredientTwo);
             Ingredients.Add(IngredientThree);

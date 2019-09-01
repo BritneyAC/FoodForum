@@ -23,7 +23,9 @@
         <li>@ingredient</li>
       }
     </ul>
-    <p class="Content">@ViewBag.Recipe.Content</p><br>
+    <p>
+      <pre class="Content">@recipe.Content</pre>
+    </p>
     @if(ViewBag.User != null && ViewBag.User.AdminState == 1 && ViewBag.Recipe.User.AdminState != 1){
       <a asp-action="UnAdminifyRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId">Remove this recipe from the curated list</a>
     }
@@ -45,10 +47,13 @@
             }
             <td><partial name="RecipeLikePartial" view-data="ViewData"/></td>
           }
-          @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
-            <td><partial name="RecipeDeletePartial" view-data="ViewData"/></td>
-          }
         </tr>
+        @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
+          <tr>
+            <td><partial name="RecipeDeletePartial" view-data="ViewData"/></td>
+            <td><partial name="UpdateRecipePartial" view-data="ViewData"/></td>
+          </tr>
+        }
       </tbody>
     </table>
     @if(ViewBag.User != null){

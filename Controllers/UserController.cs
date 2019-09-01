@@ -60,7 +60,7 @@ namespace FoodForum.Controllers
         if (!dbContext.Users.Any(user => user.Username == User.Username)){
           PasswordHasher<User> Hasher = new PasswordHasher<User>();
           User.Password = Hasher.HashPassword(User, User.Password);
-          if (User.UserId == 1)
+          if (dbContext.Users.FirstOrDefault(user => user.UserId == 1) == null)
           {
             User.AdminState = 1;
           }
@@ -112,11 +112,15 @@ namespace FoodForum.Controllers
       User CurrentUser = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
       ViewBag.CurrentUser = CurrentUser;
       User User = dbContext.Users.FirstOrDefault(user => user.Username == Username);
-      List<Like> LikedRecipes = dbContext.Likes.Where(like => like.UserId == User.UserId).Include(like => like.User).Include(like => like.Recipe).ThenInclude(recipe => recipe.Ratings).ToList();
-      ViewBag.User = User;
-      LikedRecipes.OrderByDescending(recipe => recipe.User.Ratings.OrderByDescending(rating => rating.Rate));
-      ViewBag.LikedRecipes = LikedRecipes;
-      return View();
+      if (CurrentUser == User || CurrentUser.AdminState == 1)
+      {
+        List<Like> LikedRecipes = dbContext.Likes.Where(like => like.UserId == User.UserId).Include(like => like.User).Include(like => like.Recipe).ThenInclude(recipe => recipe.Ratings).ToList();
+        ViewBag.User = User;
+        LikedRecipes.OrderByDescending(recipe => recipe.User.Ratings.OrderByDescending(rating => rating.Rate));
+        ViewBag.LikedRecipes = LikedRecipes;
+        return View();
+      }
+      return RedirectToAction("Index", "Home");
     }
   }
 }

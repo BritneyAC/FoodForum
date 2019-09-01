@@ -2,7 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodForum.Models
 {
-  public class Rating{
+  public class Rating
+  {
     [Key]
     public int RatingId{get;set;}
     [Required]

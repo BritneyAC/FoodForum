@@ -103,6 +103,88 @@ namespace FoodForum.Controllers
       }
       return RedirectToAction("UserRecipes", "Home");
     }
+    [HttpGet("/Recipe/{Title}/Update")]
+    public IActionResult UpdateRecipe(string Title)
+    {
+      int? UserId = HttpContext.Session.GetInt32("UserId");
+      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+      if (User != null && User.AdminState == 1)
+      {
+        AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.User).FirstOrDefault(recipe => recipe.Title == Title);
+        ViewBag.Recipe = Recipe;
+        return View();
+      }
+      return RedirectToAction("Index", "Home");
+    }
+    // Not Implemented do to it requiring model mapping/ not finding it necessary at this time
+    [HttpPost("/Recipe/{RecipeId}/Updating")]
+    public async Task<IActionResult> UpdatingRecipeAsync(int RecipeId, UpdateRecipe UpdateRecipe, string Content)
+    {
+      int? UserId = HttpContext.Session.GetInt32("UserId");
+      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+      if (User != null)
+      {
+        AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.User).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+        if (User.AdminState == 1)
+        {
+          if (UpdateRecipe.UploadPicture != null)
+          {
+            var container = Recipe.GetBlobContainer(configuration.GetSection("PictureBlobInfo:AzureStorageConnectionString").Value, "foodforumpictures");
+            var PictureContent = ContentDispositionHeaderValue.Parse(UpdateRecipe.UploadPicture.ContentDisposition);
+            var FileName = PictureContent.FileName.ToString().Trim('"');
+            var blockBlob = container.GetBlockBlobReference(FileName);
+            await blockBlob.UploadFromStreamAsync(UpdateRecipe.UploadPicture.OpenReadStream());
+            UpdateRecipe.PictureURL = blockBlob.Uri.AbsoluteUri;
+          }
+          if (UpdateRecipe.PictureURL != null && !dbContext.Recipes.Any(recipe => recipe.PictureURL == UpdateRecipe.PictureURL))
+          {
+            Recipe.PictureURL = UpdateRecipe.PictureURL;
+          }
+          Recipe.Title = UpdateRecipe.Title;
+          Recipe TitleCheck = dbContext.Recipes.FirstOrDefault(recipe => recipe.Title == Recipe.Title);
+          if (TitleCheck != null && TitleCheck.RecipeId != Recipe.RecipeId)
+          {
+            ViewBag.Recipe = Recipe;
+            ModelState.AddModelError("Title", "A recipe already has that title");
+            return View("UpdateRecipe");
+          }
+          Recipe.Note = UpdateRecipe.Note;
+          Recipe.Content = Content;
+          Recipe.IngredientOne = UpdateRecipe.IngredientOne;
+          Recipe.IngredientTwo = UpdateRecipe.IngredientTwo;
+          Recipe.IngredientThree = UpdateRecipe.IngredientThree;
+          Recipe.IngredientFour = UpdateRecipe.IngredientFour;
+          Recipe.IngredientFive = UpdateRecipe.IngredientFive;
+          Recipe.IngredientSix = UpdateRecipe.IngredientSix;
+          Recipe.IngredientSeven = UpdateRecipe.IngredientSeven;
+          Recipe.IngredientEight = UpdateRecipe.IngredientEight;
+          Recipe.IngredientNine = UpdateRecipe.IngredientNine;
+          Recipe.IngredientTen = UpdateRecipe.IngredientTen;
+          Recipe.IngredientEleven = UpdateRecipe.IngredientEleven;
+          Recipe.IngredientTwelve = UpdateRecipe.IngredientTwelve;
+          Recipe.IngredientThirteen = UpdateRecipe.IngredientThirteen;
+          Recipe.IngredientFourteen = UpdateRecipe.IngredientFourteen;
+          Recipe.IngredientFifteen = UpdateRecipe.IngredientFifteen;
+          Recipe.UpdatedAt = UpdateRecipe.CreatedAt;
+          Recipe.User.ConfirmPassword = null;
+          TryValidateModel(Recipe);
+          ModelState.Remove("User.ConfirmPassword");
+          if (dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
+          {
+            ModelState.AddModelError("UploadPicture", "A recipe already has a picture with that file name, please rename it and try again");
+          }
+          if (ModelState.IsValid)
+          {
+            dbContext.SaveChanges();
+            return RedirectToAction("Index", "Home");
+          }
+          ViewBag.Recipe = Recipe;
+          return View("UpdateRecipe");
+        }
+        return RedirectToAction("Recipe", "Recipes", new { Title = Recipe.Title});
+      }
+      return RedirectToAction("Index", "Home");
+    }
     [HttpPost("/Recipe/{RecipeId}/Delete")]
     public IActionResult DeleteRecipe(int RecipeId)
     {

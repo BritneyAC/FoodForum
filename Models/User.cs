@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodForum.Models
 {
-  public class User{
+  public class User
+  {
     [Key]
     [Required]
     public int UserId{get;set;}

@@ -2,7 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodForum.Models
 {
-  public class Like{
+  public class Like
+  {
     [Key]
     public int LikeId{get;set;}
     [Required]

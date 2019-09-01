@@ -2,7 +2,7 @@
 
 <div class="Wrapper">
   <div class="Header">
-    <h2>Welcome To Britney, Sam, and Hank's Mostly Vegan Food Blog/Forum</h2>
+    <h2>Welcome To Lazy Vegan Recipes</h2>
     <div class="HeaderLinks">
       @if(ViewBag.User == null){
         <p><a asp-action="UserRecipes" asp-controller="Home">User Submitted Recipes</a>  |  
@@ -44,7 +44,9 @@
               <li>@ingredient</li>
             }
           </ul>
-          <p class="Content">@recipe.Content</p><br>
+          <p>
+            <pre class="Content">@recipe.Content</pre>
+          </p>
           <p class="Rating">Rating: @recipe.GetRating()</p>
           <p class="Likes">Likes: @recipe.Likes.Count</p>
           <p class="PostDate">Date Posted: @recipe.CreatedAt.ToString("MM/dd/yyyy")</p>

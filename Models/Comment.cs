@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodForum.Models
 {
-  public class Comment{
+  public class Comment
+  {
     [Key]
     public int CommentId{get;set;}
     [Required]

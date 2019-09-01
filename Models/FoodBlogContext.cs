@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodForum.Models{
-  public class FoodForumContext : DbContext{
+namespace FoodForum.Models
+{
+  public class FoodForumContext : DbContext
+  {
     public FoodForumContext(DbContextOptions options) : base(options){}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

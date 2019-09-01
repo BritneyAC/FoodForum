@@ -8,6 +8,7 @@
 
 .container.body-content{
     padding: 0px 5px;
+    width: 80%;
 }
 
 .carousel-caption p {
@@ -203,6 +204,9 @@ p{
 
     .Content{
         margin: 5px auto;
+        background-color: rgba(17,17,17,0.95);
+        color: rgb(10, 100, 0);
+        border-color: black;
     }
 
     .Rating{

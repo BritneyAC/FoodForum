@@ -86,50 +86,67 @@ namespace FoodForum.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(2555);
 
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
-                    b.Property<string>("IngredientEight");
+                    b.Property<string>("IngredientEight")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientEleven");
+                    b.Property<string>("IngredientEleven")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientFifteen");
+                    b.Property<string>("IngredientFifteen")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientFive");
+                    b.Property<string>("IngredientFive")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientFour");
+                    b.Property<string>("IngredientFour")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientFourteen");
+                    b.Property<string>("IngredientFourteen")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientNine");
+                    b.Property<string>("IngredientNine")
+                        .HasMaxLength(65);
 
                     b.Property<string>("IngredientOne")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientSeven");
+                    b.Property<string>("IngredientSeven")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientSix");
+                    b.Property<string>("IngredientSix")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientTen");
+                    b.Property<string>("IngredientTen")
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientThirteen");
+                    b.Property<string>("IngredientThirteen")
+                        .HasMaxLength(65);
 
                     b.Property<string>("IngredientThree")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(65);
 
-                    b.Property<string>("IngredientTwelve");
+                    b.Property<string>("IngredientTwelve")
+                        .HasMaxLength(65);
 
                     b.Property<string>("IngredientTwo")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(65);
 
                     b.Property<string>("PictureURL");
 
                     b.Property<string>("Title")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(55);
 
                     b.Property<DateTime>("UpdatedAt");
 
@@ -169,7 +186,8 @@ namespace FoodForum.Migrations
                     b.HasBaseType("FoodForum.Models.Recipe");
 
                     b.Property<string>("Note")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(255);
 
                     b.ToTable("AdminRecipe");
 

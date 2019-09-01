@@ -8,11 +8,31 @@
       <a asp-action="Index" asp-controller="Home">Home</a>
     </div>
   </div>
+  <div class="Recipe">
+    <h3>@ViewBag.Recipe.Title</h3>
+    <h5>By @ViewBag.Recipe.User.Username</h5>
+    @if(ViewBag.Recipe.PictureURL != null){
+      <div class="RecipeListPictureBackground">
+        <div class="RecipeListPicture" style="background-image: url(@ViewBag.Recipe.PictureURL)";></div>
+      </div>
+    }
+    <ul>
+      @foreach(var ingredient in ViewBag.Recipe.GetIngredients()){
+        <li>@ingredient</li>
+      }
+    </ul>
+    <p>
+      <pre class="Content">@recipe.Content</pre>
+    </p>
+    <p class="Rating">Rating: @ViewBag.Recipe.GetRating()</p>
+    <p class="Likes">Likes: @ViewBag.Recipe.Likes.Count</p>
+    <p class="PostDate">Date Posted: @ViewBag.Recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
+  </div>
   <form asp-action="AdminifyRecipe" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" class="FormSection">
     <input asp-for="Title" readonly required hidden value="@ViewBag.Recipe.Title">
     <span asp-validation-for="Note"></span><br>
     <label asp-for="Note">Admin Note</label><br>
-    <textarea asp-for="Note" required minlength="4" maxlength="255"></textarea><br>
+    <textarea asp-for="Note" required minlength="8" maxlength="255"></textarea><br>
     <input type="submit" value="Post"><br><br>
   </form> 
 </div>

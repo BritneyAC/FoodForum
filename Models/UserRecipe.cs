@@ -1,5 +1,6 @@
 namespace FoodForum.Models
 {
-  public class UserRecipe : Recipe{
-    }
+  public class UserRecipe : Recipe
+  {
+  }
 }

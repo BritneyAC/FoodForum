@@ -117,13 +117,13 @@ namespace FoodForum.Controllers
       return RedirectToAction("UserRecipes", "Home");
     }
     [HttpGet("/UserRecipe/{Title}/Update")]
-    public IActionResult UserRecipeUpdate(string Title)
+    public IActionResult UpdateUserRecipe(string Title)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
       if (User != null)
       {
-        UserRecipe Recipe = dbContext.UserRecipes.FirstOrDefault(recipe => recipe.Title == Title);
+        UserRecipe Recipe = dbContext.UserRecipes.Include(recipe => recipe.User).FirstOrDefault(recipe => recipe.Title == Title);
         if (Recipe != null && Recipe.UserId == UserId || User.AdminState == 1)
         {
           ViewBag.Recipe = Recipe;
@@ -131,6 +131,73 @@ namespace FoodForum.Controllers
         }
       }
       return RedirectToAction("UserRecipes");
+    }
+    [HttpPost("/UserRecipe/{RecipeId}/Updating")]
+    public async Task<IActionResult> UpdatingUserRecipeAsync(int RecipeId, UpdateUserRecipe UpdateUserRecipe, string Content)
+    {
+      int? UserId = HttpContext.Session.GetInt32("UserId");
+      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
+      if (User != null)
+      {
+        UserRecipe Recipe = dbContext.UserRecipes.Include(recipe => recipe.User).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+        if (User.AdminState == 1 || User.UserId == Recipe.User.UserId)
+        {
+          if (UpdateUserRecipe.UploadPicture != null)
+          {
+            var container = Recipe.GetBlobContainer(configuration.GetSection("PictureBlobInfo:AzureStorageConnectionString").Value, "foodforumpictures");
+            var PictureContent = ContentDispositionHeaderValue.Parse(UpdateUserRecipe.UploadPicture.ContentDisposition);
+            var FileName = PictureContent.FileName.ToString().Trim('"');
+            var blockBlob = container.GetBlockBlobReference(FileName);
+            await blockBlob.UploadFromStreamAsync(UpdateUserRecipe.UploadPicture.OpenReadStream());
+            UpdateUserRecipe.PictureURL = blockBlob.Uri.AbsoluteUri;
+          }
+          if (UpdateUserRecipe.PictureURL != null && !dbContext.Recipes.Any(recipe => recipe.PictureURL == UpdateUserRecipe.PictureURL))
+          {
+            Recipe.PictureURL = UpdateUserRecipe.PictureURL;
+          }
+          Recipe.Title = UpdateUserRecipe.Title;
+          Recipe TitleCheck = dbContext.Recipes.FirstOrDefault(recipe => recipe.Title == Recipe.Title);
+          if (TitleCheck != null && TitleCheck.RecipeId != Recipe.RecipeId)
+          {
+            ViewBag.Recipe = Recipe;
+            ModelState.AddModelError("Title", "A recipe already has that title");
+            return View("UpdateUserRecipe");
+          }
+          Recipe.Content = Content;
+          Recipe.IngredientOne = UpdateUserRecipe.IngredientOne;
+          Recipe.IngredientTwo = UpdateUserRecipe.IngredientTwo;
+          Recipe.IngredientThree = UpdateUserRecipe.IngredientThree;
+          Recipe.IngredientFour = UpdateUserRecipe.IngredientFour;
+          Recipe.IngredientFive = UpdateUserRecipe.IngredientFive;
+          Recipe.IngredientSix = UpdateUserRecipe.IngredientSix;
+          Recipe.IngredientSeven = UpdateUserRecipe.IngredientSeven;
+          Recipe.IngredientEight = UpdateUserRecipe.IngredientEight;
+          Recipe.IngredientNine = UpdateUserRecipe.IngredientNine;
+          Recipe.IngredientTen = UpdateUserRecipe.IngredientTen;
+          Recipe.IngredientEleven = UpdateUserRecipe.IngredientEleven;
+          Recipe.IngredientTwelve = UpdateUserRecipe.IngredientTwelve;
+          Recipe.IngredientThirteen = UpdateUserRecipe.IngredientThirteen;
+          Recipe.IngredientFourteen = UpdateUserRecipe.IngredientFourteen;
+          Recipe.IngredientFifteen = UpdateUserRecipe.IngredientFifteen;
+          Recipe.UpdatedAt = UpdateUserRecipe.CreatedAt;
+          Recipe.User.ConfirmPassword = null;
+          TryValidateModel(Recipe);
+          ModelState.Remove("User.ConfirmPassword");
+          if (dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
+          {
+            ModelState.AddModelError("UploadPicture", "A recipe already has a picture with that file name, please rename it and try again");
+          }
+          if (ModelState.IsValid)
+          {
+            dbContext.SaveChanges();
+            return RedirectToAction("UserRecipe", new {Title = Recipe.Title});
+          }
+          ViewBag.Recipe = Recipe;
+          return View("UpdateUserRecipe");
+        }
+        return RedirectToAction("UserRecipe", "UserRecipes", new { Title = Recipe.Title});
+      }
+      return RedirectToAction("UserRecipes", "Home");
     }
     [HttpPost("/UserRecipe/{RecipeId}/Delete")]
     public IActionResult DeleteUserRecipe(int RecipeId)

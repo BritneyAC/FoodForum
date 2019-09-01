@@ -24,10 +24,9 @@
         <li>@ingredient</li>
       }
     </ul>
-    <p class="Content">@ViewBag.Recipe.Content</p><br>
-    @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
-      <a asp-action="MakeRecipeAdminRecipe" asp-controller="Admin" asp-route-Title="@ViewBag.Recipe.Title">Add this recipe to the curated list</a>
-    }
+    <p>
+      <pre class="Content">@recipe.Content</pre>
+    </p>
     <table class="RecipeStatsTable">
       <thead>
         <tr>
@@ -46,10 +45,16 @@
             }
             <td><partial name="UserRecipeLikePartial" view-data="ViewData"/></td>
           }
-          @if((ViewBag.User != null && ViewBag.User.AdminState == 1) || (ViewBag.User != null && ViewBag.User.UserId == ViewBag.Recipe.UserId)){
-            <td><partial name="UserRecipeDeletePartial" view-data="ViewData"/></td>
-          }
         </tr>
+        @if((ViewBag.User != null && ViewBag.User.AdminState == 1) || (ViewBag.User != null && ViewBag.User.UserId == ViewBag.Recipe.UserId)){
+          <tr>
+            <td><partial name="UserRecipeDeletePartial" view-data="ViewData"/></td>
+            <td><partial name="UpdateUserRecipePartial" view-data="ViewData"/></td>
+            @if(ViewBag.User.AdminState == 1){
+              <td><partial name="AdminRecipePartial" view-data="ViewData"/></td>
+            }
+          </tr>
+        }
       </tbody>
     </table>
     @if(ViewBag.User != null){

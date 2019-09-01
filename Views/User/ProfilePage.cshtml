@@ -24,7 +24,9 @@
             <li>@ingredient</li>
           }
         </ul>
-        <p>@recipe.Recipe.Content</p>
+        <p>
+          <pre class="Content">@recipe.Content</pre>
+        </p>
         <p class="Rating">Rating: @recipe.Recipe.GetRating()</p>
         <p class="Likes">Likes: @recipe.Recipe.Likes.Count</p>
         <p class="postDate">Date Posted: @recipe.Recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
