@@ -1,6 +1,6 @@
 appsettings.json
-Migrations/
+/Migrations
 .vs/
-bin/
-obj/
+/bin
+/obj
 .vscode/
