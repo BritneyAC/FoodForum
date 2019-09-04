@@ -114,6 +114,9 @@
     $('#IngredientFourShow').show();
     return false;
   })
+  $(document).on('keyup', '#IngredientThree', function(event){
+    $('.')
+  })
   $(document).on('click', '.IngredientFiveBtn', function(){
     $('.IngredientFiveBtn').hide();
     $('#IngredientFiveShow').show();

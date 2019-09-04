@@ -37,7 +37,7 @@
       </thead>
       <tbody>
         <tr>
-          @if(ViewBag.User != null  &&  ViewBag.User != ViewBag.Recipe.User){
+          @if(ViewBag.User != null){
             @if (ViewBag.Rating == null){
               <td><partial name="UserRecipeRatePartial" view-data="ViewData"/></td>
             } else {

@@ -186,7 +186,6 @@ namespace FoodForum.Migrations
                     b.HasBaseType("FoodForum.Models.Recipe");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasMaxLength(255);
 
                     b.ToTable("AdminRecipe");
@@ -246,7 +245,7 @@ namespace FoodForum.Migrations
             modelBuilder.Entity("FoodForum.Models.Recipe", b =>
                 {
                     b.HasOne("FoodForum.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Recipes")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

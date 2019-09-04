@@ -91,7 +91,6 @@ namespace FoodForum.Models
     [MinLength(2)]
     [MaxLength(65)]
     public List<string> Ingredients{get;set;}
-    [Required]
     [NotMapped]
     [MinLength(8)]
     [MaxLength(255)]

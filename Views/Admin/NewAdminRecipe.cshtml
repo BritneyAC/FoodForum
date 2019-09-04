@@ -4,7 +4,6 @@
   <div class="Header">
     <h1>Post A New Recipe</h1>
     <div class="HeaderLinks">
-      <a asp-action="AdminPage" asp-controller="Admin">Back To Admin Page</a>  |  
       <a asp-action="Index" asp-controller="Home">Home</a>
     </div>
   </div>
@@ -15,7 +14,7 @@
       <input asp-for="Title" required minlength="3" maxlength="55" id="RecipeTitle"><br>
       <span asp-validation-for="Note"></span><br>
       <label asp-for="Note">Admin Note</label><br>
-      <textarea asp-for="Note" required minlength="8" maxlength="255"></textarea>
+      <textarea asp-for="Note" minlength="8" maxlength="255"></textarea>
     </div>
     <div class="MiddleFormSection">
       <span asp-validation-for="IngredientOne"></span><br>
@@ -26,7 +25,7 @@
       <input asp-for="IngredientTwo" required minlength="2" maxlength="65"><br>
       <span asp-validation-for="IngredientThree"></span><br>
       <label asp-for="IngredientThree">Ingredient #3 (Required): </label><br>
-      <input asp-for="IngredientThree" required minlength="2" maxlength="65"><br>
+      <input asp-for="IngredientThree" required minlength="2" maxlength="65" id="IngredientThree"><br>
       <br class="IngredientFourBtn">
       <button class="IngredientFourBtn">Add Another Ingredient</button><br class="IngredientFourBtn"><br class="IngredientFourBtn">
       <div id="IngredientFourShow">

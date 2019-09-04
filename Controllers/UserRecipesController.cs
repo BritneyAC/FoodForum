@@ -150,10 +150,10 @@ namespace FoodForum.Controllers
             var blockBlob = container.GetBlockBlobReference(FileName);
             await blockBlob.UploadFromStreamAsync(UpdateUserRecipe.UploadPicture.OpenReadStream());
             UpdateUserRecipe.PictureURL = blockBlob.Uri.AbsoluteUri;
-          }
-          if (UpdateUserRecipe.PictureURL != null && !dbContext.Recipes.Any(recipe => recipe.PictureURL == UpdateUserRecipe.PictureURL))
-          {
-            Recipe.PictureURL = UpdateUserRecipe.PictureURL;
+            if (UpdateUserRecipe.PictureURL != null && !dbContext.Recipes.Any(recipe => recipe.PictureURL == UpdateUserRecipe.PictureURL))
+            {
+              Recipe.PictureURL = UpdateUserRecipe.PictureURL;
+            }
           }
           Recipe.Title = UpdateUserRecipe.Title;
           Recipe TitleCheck = dbContext.Recipes.FirstOrDefault(recipe => recipe.Title == Recipe.Title);
@@ -183,7 +183,7 @@ namespace FoodForum.Controllers
           Recipe.User.ConfirmPassword = null;
           TryValidateModel(Recipe);
           ModelState.Remove("User.ConfirmPassword");
-          if (dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
+          if (UpdateUserRecipe.PictureURL != null && dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
           {
             ModelState.AddModelError("UploadPicture", "A recipe already has a picture with that file name, please rename it and try again");
           }

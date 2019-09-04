@@ -24,8 +24,16 @@ namespace FoodForum.Models
     [MaxLength(32, ErrorMessage="Password must be 32 or less characters long")]
     [DataType(DataType.Password)]
     public string ConfirmPassword{get;set;}
+    public List<Recipe> Recipes{get;set;}
     public List<Like> Likes{get;set;}
     public List<Comment> Comments{get;set;}
     public List<Rating> Ratings{get;set;}
+
+    public User(){
+      Recipes = new List<Recipe>();
+      Likes = new List<Like>();
+      Comments = new List<Comment>();
+      Ratings = new List<Rating>();
+    }
   }
 }

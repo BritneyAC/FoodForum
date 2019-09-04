@@ -96,15 +96,23 @@ namespace FoodForum.Controllers
     public IActionResult CommentOnRecipe(int RecipeId, Comment Comment)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
-      User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
-      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+      User User = dbContext.Users.Include(user => user.Recipes).Include(user => user.Comments).FirstOrDefault(user => user.UserId == UserId);
+      AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.User).Include(recipe => recipe.Comments).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
       if (UserId != null)
       {
-        Comment.UserId = UserId.Value;
+        Comment.UserId = User.UserId;
         Comment.User = User;
         Comment.Recipe = Recipe;
-        dbContext.Add(Comment);
-        dbContext.SaveChanges();
+        Comment.RecipeId = Recipe.RecipeId;
+        TryValidateModel(Comment);
+        ModelState.Remove("User.ConfirmPassword");
+        ModelState.Remove("Recipe.User.ConfirmPassword");
+        ModelState.Remove("User");
+        ModelState.Remove("Recipe");
+        if (ModelState.IsValid){
+          dbContext.Add(Comment);
+          dbContext.SaveChanges();
+        }
       }
       return RedirectToAction("Recipe", new { Title = Recipe.Title });
     }
@@ -113,9 +121,9 @@ namespace FoodForum.Controllers
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
       User User = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
-      AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
+      AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.Comments).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
       Comment Comment = dbContext.Comments.FirstOrDefault(comment => comment.CommentId == CommentId);
-      if (UserId != Comment.UserId || User.AdminState != 1)
+      if (UserId != Comment.UserId || User.AdminState == 1)
       {
         dbContext.Remove(Comment);
         dbContext.SaveChanges();
