@@ -35,9 +35,27 @@ input{
     max-width: 90%;
 }
 
+    input[type="submit"]{
+        background-color: rgba(55,55,55,0.95);
+        border-color: rgba(75,75,75,0.95);
+        color: rgb(10, 150, 0);
+    }
+
     input[type="File"]{
         color: rgb(10, 100, 0);
     }
+    
+    #UploadPicture{
+        max-width: 75%;
+        margin: 0px auto;
+        padding: 0px;
+    }
+
+button{
+    background-color: rgba(55,55,55,0.95);
+    border-color: rgba(75,75,75,0.95);
+    color: rgb(10, 150, 0);
+}
 
 textarea{
     color: black;
@@ -312,15 +330,23 @@ p{
         display: inline-block;
     }
 
+.Forms{
+    width: 100%;
+    display: inline-block;
+    margin: 0px auto;
+    padding: 10px;
+    background-color: rgba(5, 5, 5, 0.966);
+}
+
 .FormSection{
     display: inline-block;
-    min-width: 32%;
+    min-width: 31%;
     max-width: 100%;
     vertical-align: top;
     margin: 5px auto;
     text-align: center;
     padding: 10px;
-    background-color: rgba(17, 17, 17, 0.95);
+    background-color: rgba(25, 25, 25, 0.95);
     border-radius: 4px;
 }
 
@@ -342,7 +368,7 @@ p{
     margin: 5px auto;
     text-align: center;
     padding: 5px;
-    background-color: rgba(17, 17, 17, 0.95);
+    background-color: rgba(25, 25, 25, 0.95);
     border-radius: 4px;
 }
 

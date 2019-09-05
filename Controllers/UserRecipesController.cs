@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace FoodForum.Controllers
 {
@@ -98,6 +99,8 @@ namespace FoodForum.Controllers
             var Content = ContentDispositionHeaderValue.Parse(Recipe.UploadPicture.ContentDisposition);
             var FileName = Content.FileName.ToString().Trim('"');
             var blockBlob = container.GetBlockBlobReference(FileName);
+            BlobRequestOptions options = new BlobRequestOptions();
+            options.SingleBlobUploadThresholdInBytes = 16777216;
             await blockBlob.UploadFromStreamAsync(Recipe.UploadPicture.OpenReadStream());
             Recipe.PictureURL = blockBlob.Uri.AbsoluteUri;
           }
@@ -148,6 +151,8 @@ namespace FoodForum.Controllers
             var PictureContent = ContentDispositionHeaderValue.Parse(UpdateUserRecipe.UploadPicture.ContentDisposition);
             var FileName = PictureContent.FileName.ToString().Trim('"');
             var blockBlob = container.GetBlockBlobReference(FileName);
+            BlobRequestOptions options = new BlobRequestOptions();
+            options.SingleBlobUploadThresholdInBytes = 16777216;
             await blockBlob.UploadFromStreamAsync(UpdateUserRecipe.UploadPicture.OpenReadStream());
             UpdateUserRecipe.PictureURL = blockBlob.Uri.AbsoluteUri;
             if (UpdateUserRecipe.PictureURL != null && !dbContext.Recipes.Any(recipe => recipe.PictureURL == UpdateUserRecipe.PictureURL))
