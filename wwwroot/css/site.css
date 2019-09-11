@@ -221,10 +221,12 @@ p{
 }
 
     .Content{
-        margin: 5px auto;
+        margin: 15px auto;
         background-color: rgba(17,17,17,0.95);
         color: rgb(10, 100, 0);
-        border-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        padding: 10px;
     }
 
     .Rating{
@@ -336,6 +338,7 @@ p{
     margin: 0px auto;
     padding: 10px;
     background-color: rgba(5, 5, 5, 0.966);
+    border-radius: 4px;
 }
 
 .FormSection{
