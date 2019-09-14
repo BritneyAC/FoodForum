@@ -20,8 +20,8 @@
         <li>@ingredient</li>
       }
     </ul>
-    <p>
-      <pre class="Content">@ViewBag.Recipe.Content</pre>
+    <p class="Content">
+      @Html.Raw(ViewBag.Recipe.Content.Replace(Environment.NewLine, "<br/>"))
     </p>
   </div>
   <div class="Forms">
