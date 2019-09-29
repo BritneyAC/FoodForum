@@ -1,486 +1,318 @@
-﻿body {
-    background-image: url('../images/FoodBG.png');
-    width: 100%;
-    height: 100%;
-    color: rgb(10, 100, 0);
-    padding-bottom: 10px;
+.centered-inline-block {
+  display: inline-block;
+  margin: 0px auto;
 }
-
-.container.body-content{
-    padding: 0px 5px;
-    min-width: 80%;
+.Msg {
+  width: 100%;
+  padding: 0px;
+  display: inline-block;
+  margin: 0px auto;
 }
-
+body {
+  background-image: url('../images/FoodBG.png');
+  width: 100%;
+  height: 100%;
+  color: #0a6400;
+  padding-bottom: 10px;
+}
+.container.body-content {
+  padding: 0px 5px;
+  min-width: 80%;
+}
 .carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+  font-size: 20px;
+  line-height: 1.4;
 }
-
 .carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+  width: 100%;
 }
-
 #qrCode {
-    margin: 15px;
+  margin: 15px;
 }
-
 @media screen and (max-width: 767px) {
-    .carousel-caption {
-        display: none;
-    }
-}
-
-input{
-    color: black;
-    max-width: 90%;
-}
-
-    input[type="submit"]{
-        background-color: rgba(55,55,55,0.95);
-        border-color: rgba(75,75,75,0.95);
-        color: rgb(10, 150, 0);
-    }
-
-    input[type="File"]{
-        color: rgb(10, 100, 0);
-    }
-    
-    #UploadPicture{
-        max-width: 75%;
-        margin: 0px auto;
-        padding: 0px;
-    }
-
-button{
-    background-color: rgba(55,55,55,0.95);
-    border-color: rgba(75,75,75,0.95);
-    color: rgb(10, 150, 0);
-}
-
-textarea{
-    color: black;
-}
-
-.error{
-    color: red;
-}
-
-.success{
-    color: lightgreen;
-    width: 100%;
-    margin: 0px auto;
-    display: inline-block;
-}
-
-h1{
-    text-align: center;
-}
-
-h2{
-    text-align: center;
-    padding: 5px auto;
-    margin: 0px auto 5px auto;
-}
-
-h3{
-    text-align: center;
-}
-
-    h3 a{
-        text-align: center;
-    }
-
-h4{
-    text-align: center;
-    margin: 5px auto;
-    padding: 5px;
-}
-
-h5{
-    text-align: center;
-}
-
-p{
-    margin: 0px;
-}
-
-.Header{
-    background:
-        linear-gradient(-45deg rgba(17,17,17,0.95), transparent),
-        repeating-linear-gradient(-45deg rgba(17, 17, 17, 0.95) 0%, rgba(17, 17, 17, 0.95) 2%,transparent 2%, transparent 4%,rgba(10,10,10,0.95) 4%, rgba(10, 10, 10, 0.95) 6%),
-        rgba(45,45,45,0.55) repeating-linear-gradient(45deg rgba(17, 17, 17, 0.95) 0%, rgba(17, 17, 17, 0.95) 2%,transparent 2%, transparent 4%,rgba(10,10,10,0.95) 4%, rgba(10, 10, 10, 0.95) 6%);
-    background-color: rgba(17,17,17,0.95);
-    border-radius: 4px;
-    width: 100%;
-    min-height: 5%;
-    margin: 10px auto;
-    
-}
-
-    .Header h1{
-        margin: 0px auto;
-    }
-
-    .Header h5{
-        margin: 0px auto;
-    }
-
-.HeaderLinks{
-    display: inline-block;
-    text-align: right;
-    width: 100%;
-    margin: 0px auto;
-    padding-right: 30px;
-}
-    
-    .HeaderLinks a{
-        display: inline;
-        text-align: right;
-    }
-
-    .HeaderLinks p{
-        display: inline;
-        text-align: right;
-    }
-
-#Sorting{
-    width: 100%;
-    margin: -15px auto 0px auto;
-    padding-top: -5px;
-}
-
-    #Sorting .container.body-content{
-        width: 100%;
-        height: 5vh;
-        margin: auto;
-        padding: 0px;
-    }
-
-    #Sorting h3{
-        padding-top: 5px;
-        margin: 5px;
-    }
-
-    .SortingTbl{
-        width: 100%;
-        max-height: 2vh;
-        margin: 0px auto;
-        padding: 0px;
-    }    
-
-    .SortingThead{
-        width: 100%;
-        max-height: 2vh;
-        margin: 0px auto;
-        padding: 0px;
-    }
-
-    .SortingTR{
-        width: 100%;
-        max-height: 2vh;
-        margin: 0px auto;
-        padding: 0px;
-    }
-
-.SortingBtn{
-    width: 33%;
-    max-height: 2vh;
-    margin: -5px auto;
-    padding: -5px 0px;
-    border: 1px solid rgb(10, 100, 0);
-    border-top: 0px;
-    text-align: center;
-}
-
-.RecipeList{
-    width: 95%;
-    margin: 5px auto;
-    border: 1px solid black;
-    background-color: rgba(17, 17, 17, 0.95);
-    border-radius: 4px;
-    padding: 10px 0px;
-}
-
-.RecipeListPictureBackground{
-    text-align: center;
-    max-width: 95%;
-    min-height: 40vh;
-    max-height: 70vh;
-    margin: 10px auto;
-}
-
-.RecipeListPicture{
-    text-align: center;
-    max-width: 95%;
-    min-width: 40%;
-    min-height: 40vh;
-    margin: 0px auto;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-    .Content{
-        margin: 15px auto;
-        background-color: rgba(17,17,17,0.95);
-        color: rgb(10, 100, 0);
-        border: 1px solid black;
-        border-radius: 4px;
-        padding: 10px;
-    }
-
-    .Rating{
-        margin: 5px auto;
-    }
-
-    .Likes{
-        margin: 5px auto;
-    }
-
-    .PostDate{
-        margin: 5px auto;
-    }
-
-.Recipe{
-    width: 95%;
-    margin: 5px auto;
-    padding: 0px 20px;
-    border: 1px solid black;
-    border-radius: 4px;
-    background-color: rgba(17, 17, 17, 0.95);
-}
-
-
-.UserList{
-    margin: 0px auto;
-    width: 90%;
-}
-
-    .UserList td{
-        border: solid 1px black;
-        width: 50%;
-        text-align: center;
-        background-color: rgba(17, 17, 17, 0.95); 
-    }
-
-.AdminActions p{
-    display: inline;
-}
-
-.LoginSection{
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-}
-
-    .LoginSection form{
-        background-color: rgba(8, 8, 8, 0.966);
-        width: 40%;
-        margin: 5px auto;
-        border-radius: 4px;
-    }
-
-#UsernameMsg{
-    width: 100%;
-    margin: 0px auto;
-    display: inline-block;
-}
-
-    #UsernameMsg .container.body-content{
-        width: 100%;
-        margin: 0px auto;
-        padding: 0px;
-        display: inline-block;
-    }
-
-#LoginUsernameMsg{
-    width: 100%;
-    margin: 0px auto;
-    display: inline-block;
-}
-
-    #LoginUsernameMsg .container.body-content{
-        width: 100%;
-        margin: 0px auto;
-        padding: 0px;
-        display: inline-block;
-    }
-
-#RecipeTitleMsg{
-    width: 100%;
-    margin: 0px auto;
-    display: inline-block;
-}
-
-    #RecipeTitleMsg .container.body-content{
-        width: 100%;
-        margin: 0px auto;
-        padding: 0px;
-        display: inline-block;
-    }
-
-#UserRecipeTitleMsg{
-    width: 100%;
-    margin: 0px auto;
-    display: inline-block;
-}
-
-    #UserRecipeTitleMsg .container.body-content{
-        width: 100%;
-        margin: 0px auto;
-        padding: 0px;
-        display: inline-block;
-    }
-
-.Forms{
-    width: 100%;
-    display: inline-block;
-    margin: 0px auto;
-    padding: 10px;
-    background-color: rgba(5, 5, 5, 0.966);
-    border-radius: 4px;
-}
-
-.FormSection{
-    display: inline-block;
-    min-width: 31%;
-    max-width: 100%;
-    vertical-align: top;
-    margin: 5px auto;
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(25, 25, 25, 0.95);
-    border-radius: 4px;
-}
-
-    .FormSection textarea{
-        width: 90%;
-        resize: vertical;
-        margin: 5px auto;
-    }
-
-    .FormSection input{
-        width: 90%;
-        margin: 5px auto;
-    }
-
-.MiddleFormSection{
-    display: inline-block;
-    min-width: 35%;
-    vertical-align: top;
-    margin: 5px auto;
-    text-align: center;
-    padding: 5px;
-    background-color: rgba(25, 25, 25, 0.95);
-    border-radius: 4px;
-}
-
-    .MiddleFormSection span{
-        width: 80%;
-    }
-
-    .MiddleFormSection input{
-        width: 80%;
-    }
-
-.RecipeStatsTable{
-    width: 100%;
-    border-top: rgb(10, 100, 0) 1px solid;
-    border-bottom: rgb(10, 100, 0) 1px solid;
-
-}
-
-    .RecipeStatsTable thead tr td{
-        max-width: 33%;
-        text-align: center;
-        margin: 10px auto;
-        vertical-align: top;
-    }
-
-    .RecipeStatsTable tbody tr td{
-        width: 33%;
-        text-align: center;
-        margin: 10px auto;
-        padding: 10px;
-        vertical-align: top;
-    }
-
-.LikeBtn{
-    vertical-align: top;
-}
-
-.PostAComment textarea{
-    max-width: 80;
-    min-width: 60%;
-    resize: vertical;
-}
-
-.PostAComment input{
-    vertical-align: text-bottom;
-}
-
-.Comments{
-    margin: 10px auto;
-}
-
-.Comment{
-    border: rgb(10, 100, 0) 1px solid;
-    margin: 10px auto;
-}
-
-    .Comment p{
-        padding-left: 20px; 
-    }
-
-    .CommentCreatedAt{
-        padding-right: 20px;
-        text-align: right;
-    }
-
-#IngredientFourShow{
+  .carousel-caption {
     display: none;
+  }
 }
-
-#IngredientFiveShow{
-    display: none;
+input {
+  color: black;
+  max-width: 90%;
 }
-
-#IngredientSixShow{
-    display: none;
+input[type="submit"],
+button {
+  background-color: rgba(55, 55, 55, 0.95);
+  border-color: rgba(75, 75, 75, 0.95);
+  color: #0a9600;
 }
-
-#IngredientSevenShow{
-    display: none;
+input[type="File"] {
+  color: #0a6400;
 }
-
-#IngredientEightShow{
-    display: none;
+#UploadPicture {
+  max-width: 75%;
+  margin: 0px auto;
+  padding: 0px;
 }
-
-#IngredientNineShow{
-    display: none;
+textarea {
+  color: black;
 }
-
-#IngredientTenShow{
-    display: none;
+.error {
+  color: red;
 }
-
-#IngredientElevenShow{
-    display: none;
+.success {
+  color: lightgreen;
+  width: 100%;
+  margin: 0px auto;
+  display: inline-block;
 }
-
-#IngredientTwelveShow{
-    display: none;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-align: center;
+  margin: 0px auto;
 }
-
-#IngredientThirteenShow{
-    display: none;
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  text-align: center;
 }
-
-#IngredientFourteenShow{
-    display: none;
+h2 {
+  padding: 5px auto;
+  margin: 0px auto 5px auto;
 }
-
-#IngredientFifteenShow{
-    display: none;
+h4 {
+  margin: 5px auto;
+  padding: 5px;
 }
+p {
+  margin: 0px;
+}
+.Header {
+  background-color: rgba(17, 17, 17, 0.95);
+  border-radius: 4px;
+  width: 100%;
+  min-height: 5%;
+  margin: 10px auto;
+}
+.HeaderLinks {
+  display: inline-block;
+  margin: 0px auto;
+  text-align: right;
+  width: 100%;
+  padding-right: 30px;
+}
+.HeaderLinks a,
+.HeaderLinks p {
+  display: inline;
+  text-align: right;
+}
+#Sorting {
+  width: 100%;
+  margin: -15px auto 0px auto;
+  padding-top: -5px;
+}
+#Sorting .container.body-content {
+  width: 100%;
+  height: 5vh;
+  margin: auto;
+  padding: 0px;
+}
+#Sorting h3 {
+  padding-top: 5px;
+  margin: 5px;
+}
+.SortingTbl {
+  width: 100%;
+  max-height: 2vh;
+  margin: 0px auto;
+  padding: 0px;
+}
+.SortingBtn {
+  width: 33%;
+  max-height: 2vh;
+  margin: -5px auto;
+  padding: -5px 0px;
+  border: 1px solid #0a6400;
+  border-top: 0px;
+  text-align: center;
+}
+.RecipeList {
+  width: 95%;
+  margin: 5px auto;
+  border: 1px solid black;
+  background-color: rgba(17, 17, 17, 0.95);
+  border-radius: 4px;
+  padding: 10px 0px;
+}
+.RecipeListPictureBackground {
+  text-align: center;
+  max-width: 95%;
+  min-height: 40vh;
+  max-height: 70vh;
+  margin: 10px auto;
+}
+.RecipeListPicture {
+  text-align: center;
+  max-width: 95%;
+  min-width: 40%;
+  min-height: 40vh;
+  margin: 0px auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.Content {
+  margin: 15px auto;
+  background-color: rgba(17, 17, 17, 0.95);
+  color: #0a6400;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+}
+.Rating,
+.Likes,
+.PostDate {
+  margin: 5px auto;
+}
+.Recipe {
+  width: 95%;
+  margin: 5px auto;
+  padding: 0px 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgba(17, 17, 17, 0.95);
+}
+.UserList {
+  margin: 0px auto;
+  width: 90%;
+}
+.UserList td {
+  border: solid 1px black;
+  width: 50%;
+  text-align: center;
+  background-color: rgba(17, 17, 17, 0.95);
+}
+.AdminActions p {
+  display: inline;
+}
+.LoginSection {
+  display: inline-block;
+  margin: 0px auto;
+  width: 100%;
+  text-align: center;
+}
+.LoginSection form {
+  background-color: rgba(8, 8, 8, 0.966);
+  width: 40%;
+  margin: 5px auto;
+  border-radius: 4px;
+}
+#UsernameMsg,
+#LoginUsernameMsg,
+#RecipeTitleMsg,
+#UserRecipeTitleMsg {
+  width: 100%;
+  padding: 0px;
+  display: inline-block;
+  margin: 0px auto;
+}
+#UsernameMsg .container.body-content,
+#LoginUsernameMsg .container.body-content,
+#RecipeTitleMsg .container.body-content,
+#UserRecipeTitleMsg .container.body-content {
+  width: 100%;
+  padding: 0px;
+  display: inline-block;
+  margin: 0px auto;
+}
+.Forms {
+  width: 100%;
+  display: inline-block;
+  margin: 0px auto;
+  padding: 10px;
+  background-color: rgba(5, 5, 5, 0.966);
+  border-radius: 4px;
+}
+.FormSection,
+.MiddleFormSection {
+  display: inline-block;
+  min-width: 33%;
+  max-width: 100%;
+  vertical-align: top;
+  margin: 5px auto;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(25, 25, 25, 0.95);
+  border-radius: 4px;
+}
+.FormSection input,
+.MiddleFormSection input,
+.FormSection span,
+.MiddleFormSection span,
+.FormSection textarea,
+.MiddleFormSection textarea {
+  width: 90%;
+  margin: 5px auto;
+}
+.FormSection textarea,
+.MiddleFormSection textarea {
+  resize: vertical;
+}
+.RecipeStatsTable {
+  width: 100%;
+  border-top: #0a6400 1px solid;
+  border-bottom: #0a6400 1px solid;
+}
+.RecipeStatsTable thead tr td,
+.RecipeStatsTable tbody tr td {
+  max-width: 33%;
+  text-align: center;
+  margin: 10px auto;
+  vertical-align: top;
+}
+.RecipeStatsTable tbody tr td {
+  padding: 10px;
+}
+.LikeBtn {
+  vertical-align: top;
+}
+.PostAComment textarea {
+  max-width: 80;
+  min-width: 60%;
+  resize: vertical;
+}
+.PostAComment input {
+  vertical-align: text-bottom;
+}
+.Comments {
+  margin: 10px auto;
+}
+.Comment {
+  border: #0a6400 1px solid;
+  margin: 10px auto;
+}
+.Comment p {
+  padding-left: 20px;
+}
+.CommentCreatedAt {
+  padding-right: 20px;
+  text-align: right;
+}
+#IngredientFourShow,
+#IngredientFiveShow,
+#IngredientSixShow,
+#IngredientSevenShow,
+#IngredientEightShow,
+#IngredientNineShow,
+#IngredientTenShow,
+#IngredientElevenShow,
+#IngredientTwelveShow,
+#IngredientThirteenShow,
+#IngredientFourteenShow,
+#IngredientFifteenShow {
+  display: none;
+}
+/*# sourceMappingURL=./site.css.map */

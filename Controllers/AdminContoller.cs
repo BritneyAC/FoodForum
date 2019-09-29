@@ -93,7 +93,7 @@ namespace FoodForum.Controllers
           }
           if (ModelState.IsValid)
           {
-            if(!dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL))
+            if(!dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL)||Recipe.UploadPicture == null)
             {
               dbContext.Add(Recipe);
               dbContext.SaveChanges();

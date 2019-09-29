@@ -10,7 +10,7 @@ namespace FoodForum.Models
         modelBuilder.Entity<Comment>()
             .HasOne(u => u.User).WithMany(u => u.Comments).IsRequired().OnDelete(DeleteBehavior.Restrict);
         modelBuilder.Entity<Comment>()
-            .HasKey(t => new { t.RecipeId, t.UserId });
+            .HasKey(t => new { t.CommentId});
         modelBuilder.Entity<Comment>()
             .HasOne(pt => pt.User)
             .WithMany(p => p.Comments)
@@ -18,7 +18,7 @@ namespace FoodForum.Models
         modelBuilder.Entity<Like>()
             .HasOne(u => u.User).WithMany(u => u.Likes).IsRequired().OnDelete(DeleteBehavior.Restrict);
         modelBuilder.Entity<Like>()
-            .HasKey(t => new { t.RecipeId, t.UserId });
+            .HasKey(t => new { t.LikeId });
         modelBuilder.Entity<Like>()
             .HasOne(pt => pt.User)
             .WithMany(p => p.Likes)
@@ -26,7 +26,7 @@ namespace FoodForum.Models
         modelBuilder.Entity<Rating>()
             .HasOne(u => u.User).WithMany(u => u.Ratings).IsRequired().OnDelete(DeleteBehavior.Restrict);
         modelBuilder.Entity<Rating>()
-            .HasKey(t => new { t.RecipeId, t.UserId });
+            .HasKey(t => new { t.RatingId });
         modelBuilder.Entity<Rating>()
             .HasOne(pt => pt.User)
             .WithMany(p => p.Ratings)

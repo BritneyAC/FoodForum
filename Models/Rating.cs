@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodForum.Models
 {
@@ -10,8 +11,10 @@ namespace FoodForum.Models
     [Range(1,5)]
     public int Rate{get;set;}
     [Required]
+    [ForeignKey("Recipe")]
     public int RecipeId{get;set;}
     [Required]
+    [ForeignKey("User")]
     public int UserId{get;set;}
     [Required]
     public Recipe Recipe{get;set;}

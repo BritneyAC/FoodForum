@@ -22,8 +22,8 @@
         <li>@ingredient</li>
       }
     </ul>
-    <p>
-      <pre class="Content">@recipe.Content</pre>
+    <p class="Content">
+      @Html.Raw(recipe.Content.Replace(Environment.NewLine, "<br/>"))
     </p>
     <p class="Rating">Rating: @recipe.GetRating()</p>
     <p class="Likes">Likes: @recipe.Likes.Count</p>
