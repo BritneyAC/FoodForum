@@ -133,6 +133,10 @@ namespace FoodForum.Controllers
         AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.User).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
         if (User.AdminState == 1)
         {
+          if (Request.Form["deletePicture"] == "on"){
+            UpdateRecipe.UploadPicture = null;
+            Recipe.PictureURL = null;
+          }
           if (UpdateRecipe.UploadPicture != null)
           {
             var container = Recipe.GetBlobContainer(configuration.GetSection("PictureBlobInfo:AzureStorageConnectionString").Value, "foodforumpictures");

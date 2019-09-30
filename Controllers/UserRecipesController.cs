@@ -147,6 +147,10 @@ namespace FoodForum.Controllers
         UserRecipe Recipe = dbContext.UserRecipes.Include(recipe => recipe.User).FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
         if (User.AdminState == 1 || User.UserId == Recipe.User.UserId)
         {
+          if (Request.Form["deletePicture"] == "on"){
+            UpdateUserRecipe.UploadPicture = null;
+            Recipe.PictureURL = null;
+          }
           if (UpdateUserRecipe.UploadPicture != null)
           {
             var container = Recipe.GetBlobContainer(configuration.GetSection("PictureBlobInfo:AzureStorageConnectionString").Value, "foodforumpictures");

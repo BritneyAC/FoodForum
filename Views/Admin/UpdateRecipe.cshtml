@@ -32,7 +32,7 @@
         <input asp-for="Title" required minlength="3" maxlength="55" id="RecipeTitle" value="@ViewBag.Recipe.Title"><br>
         <span asp-validation-for="Note"></span><br>
         <label for="Note">Admin Note</label><br>
-        <textarea name="Note" required minlength="8" maxlength="255">@ViewBag.Recipe.Note</textarea>
+        <textarea name="Note" minlength="8" maxlength="255">@ViewBag.Recipe.Note</textarea>
       </div>
       <div class="MiddleFormSection">
         <span asp-validation-for="IngredientOne"></span><br>
@@ -135,6 +135,8 @@
         <span asp-validation-for="UploadPicture"></span><br>
         <label asp-for="UploadPicture">Picture (Optional)</label><br>
         <input asp-for="UploadPicture">
+        <label for="deletePicture">Delete the picture?</label>
+        <input type="checkbox" name="deletePicture">
       </div><br>
       <input type="submit" value="Update">
     </form>
