@@ -1,7 +1,7 @@
 @model FoodForum.Models.Rating
 
 <form asp-action="UpdateRateRecipe" asp-controller="Recipes" asp-route-RecipeID="@ViewBag.Recipe.RecipeId" method="post" class="RatingForm">
-  <select asp-for="Rate" required>
+  <select asp-for="Rate" required title="Rating Selection" size="1">
     <option value="@ViewBag.Rating">@ViewBag.Rating.Rate</option>
     @if(ViewBag.Rating.Rate != 1){
       <option value="1">1</option>

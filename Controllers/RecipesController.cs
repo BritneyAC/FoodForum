@@ -36,9 +36,8 @@ namespace FoodForum.Controllers
       Comments.Reverse();
       ViewBag.Comments = Comments;
       ViewBag.User = User;
-      
       ViewBag.Recipe = Recipe;
-      
+      ViewBag.Title = Recipe.Title;
       return View();
     }
     [HttpPost("/PostRecipe")]

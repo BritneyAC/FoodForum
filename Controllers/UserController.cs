@@ -24,6 +24,7 @@ namespace FoodForum.Controllers
       {
         return RedirectToAction("Index", "Home");
       }
+      ViewBag.Title = "Login Page";
       return View();
     }
     [HttpGet("/Username")]
@@ -112,15 +113,12 @@ namespace FoodForum.Controllers
       User CurrentUser = dbContext.Users.FirstOrDefault(user => user.UserId == UserId);
       ViewBag.CurrentUser = CurrentUser;
       User User = dbContext.Users.FirstOrDefault(user => user.Username == Username);
-      if (CurrentUser == User || CurrentUser.AdminState == 1)
-      {
-        List<Like> LikedRecipes = dbContext.Likes.Where(like => like.UserId == User.UserId).Include(like => like.User).Include(like => like.Recipe).ThenInclude(recipe => recipe.Ratings).ToList();
-        ViewBag.User = User;
-        LikedRecipes.OrderByDescending(recipe => recipe.User.Ratings.OrderByDescending(rating => rating.Rate));
-        ViewBag.LikedRecipes = LikedRecipes;
-        return View();
-      }
-      return RedirectToAction("Index", "Home");
+      List<Like> LikedRecipes = dbContext.Likes.Include(like  => like.Recipe).Include(like => like.User).Where(like => like.UserId == User.UserId).Include(like => like.User).Include(like => like.Recipe).ThenInclude(recipe => recipe.Ratings).ToList();
+      ViewBag.User = User;
+      LikedRecipes.OrderByDescending(recipe => recipe.User.Ratings.OrderByDescending(rating => rating.Rate));
+      ViewBag.LikedRecipes = LikedRecipes;
+      ViewBag.Title = $"{User.Username}'s Profile Page";
+      return View();
     }
   }
 }

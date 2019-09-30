@@ -45,6 +45,7 @@ namespace FoodForum.Controllers
         ViewBag.User = User;
         ViewBag.Liked = Liked;
         ViewBag.Recipe = Recipe;
+        ViewBag.Title = Recipe.Title;
         return View();
       }
       return RedirectToAction("UserRecipes", "Home");
@@ -61,6 +62,7 @@ namespace FoodForum.Controllers
           return RedirectToAction("NewAdminRecipe", "Admin");
         }
         ViewBag.User = User;
+        ViewBag.Title = "Make A New Recipe";
         return View();
       }
       return RedirectToAction("Index", "Home");

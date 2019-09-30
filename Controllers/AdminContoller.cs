@@ -32,6 +32,7 @@ namespace FoodForum.Controllers
           List<User> Users = dbContext.Users.ToList();
           ViewBag.Users = Users;
           ViewBag.User = User;
+          ViewBag.Title = "Admin Page";
           return View();
         }
       }
@@ -48,6 +49,7 @@ namespace FoodForum.Controllers
         {
           return RedirectToAction("NewRecipe", "Home");
         }
+        ViewBag.Title = "New Admin Recipe";
         return View();
       }
       return RedirectToAction("Index", "Home");
@@ -115,6 +117,7 @@ namespace FoodForum.Controllers
       {
         AdminRecipe Recipe = dbContext.AdminRecipes.Include(recipe => recipe.User).FirstOrDefault(recipe => recipe.Title == Title);
         ViewBag.Recipe = Recipe;
+        ViewBag.Title = "Updating Admin Recipe";
         return View();
       }
       return RedirectToAction("Index", "Home");
@@ -217,6 +220,7 @@ namespace FoodForum.Controllers
       {
         UserRecipe Recipe = dbContext.UserRecipes.FirstOrDefault(recipe => recipe.Title == Title);
         ViewBag.Recipe = Recipe;
+        ViewBag.Title = "Make Recipe Into an Admin Recipe";
         return View();
       }
       return RedirectToAction("Index", "Home");

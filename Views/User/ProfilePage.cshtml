@@ -24,9 +24,9 @@
             <li>@ingredient</li>
           }
         </ul>
-        <p>
-          <pre class="Content">@recipe.Content</pre>
-        </p>
+        <p class="Content">
+            @Html.Raw(recipe.Recipe.Content.Replace(Environment.NewLine, "<br/>"))
+          </p>
         <p class="Rating">Rating: @recipe.Recipe.GetRating()</p>
         <p class="Likes">Likes: @recipe.Recipe.Likes.Count</p>
         <p class="postDate">Date Posted: @recipe.Recipe.CreatedAt.ToString("MM/dd/yyyy")</p>
