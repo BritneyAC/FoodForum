@@ -69,7 +69,8 @@ input[type="File"] {
 textarea {
   color: black;
 }
-.field-validation-error {
+.field-validation-error,
+.error {
   color: red;
   width: 90%;
   display: inline-block;
