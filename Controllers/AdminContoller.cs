@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using FoodForum.Models;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +21,49 @@ namespace FoodForum.Controllers
       dbContext = context;
       configuration = iConfig;
     }
+    string RegEx = @"^[a-zA-Z0-9.,:;!\""_\-&+' ]+$";
+    public string RegexCheck(AdminRecipe Recipe, string pattern){
+      if (!Regex.IsMatch(Recipe.Title, pattern)){
+        return "Title";
+      }if (Recipe.Note != null && !Regex.IsMatch(Recipe.Note, pattern)){
+        return "Note";
+      }if (!Regex.IsMatch(Recipe.IngredientOne, pattern)){
+        return "IngredientOne";
+      }if (!Regex.IsMatch(Recipe.IngredientTwo, pattern)){
+        return "IngredientTwo";
+      }if (!Regex.IsMatch(Recipe.IngredientThree, pattern)){
+        return "IngredientThree";
+      }if (Recipe.IngredientFour != null && !Regex.IsMatch(Recipe.IngredientFour, pattern)){
+        return "IngredientFour";
+      }if (Recipe.IngredientFive != null && !Regex.IsMatch(Recipe.IngredientFive, pattern)){
+        return "IngredientFive";
+      }if (Recipe.IngredientSix != null && !Regex.IsMatch(Recipe.IngredientSix, pattern)){
+        return "IngredientSix";
+      }if (Recipe.IngredientSeven != null && !Regex.IsMatch(Recipe.IngredientSeven, pattern)){
+        return "IngredientSeven";
+      }if (Recipe.IngredientEight != null && !Regex.IsMatch(Recipe.IngredientEight, pattern)){
+        return "IngredientEight";
+      }if (Recipe.IngredientNine != null && !Regex.IsMatch(Recipe.IngredientNine, pattern)){
+        return "IngredientNine";
+      }if (Recipe.IngredientTen != null && !Regex.IsMatch(Recipe.IngredientTen, pattern)){
+        return "IngredientTen";
+      }if (Recipe.IngredientEleven != null && !Regex.IsMatch(Recipe.IngredientEleven, pattern)){
+        return "IngredientEleven";
+      }if (Recipe.IngredientTwelve != null && !Regex.IsMatch(Recipe.IngredientTwelve, pattern)){
+        return "IngredientTwelve";
+      }if (Recipe.IngredientThirteen != null && !Regex.IsMatch(Recipe.IngredientThirteen, pattern)){
+        return "IngredientThirteen";
+      }if (Recipe.IngredientFourteen != null && !Regex.IsMatch(Recipe.IngredientFourteen, pattern)){
+        return "IngredientFourteen";
+      }if (Recipe.IngredientFifteen != null && !Regex.IsMatch(Recipe.IngredientFifteen, pattern)){
+        return "IngredientFifteen";
+      }if (!Regex.IsMatch(Recipe.Content, pattern)){
+        return "Content";
+      }if (Recipe.PictureURL != null && !Regex.IsMatch(Recipe.PictureURL, pattern)){
+        return "PictureUrl";
+      }
+      return null;
+    }
     [HttpGet("/AdminPage")]
     public IActionResult AdminPage()
     {
@@ -38,7 +82,7 @@ namespace FoodForum.Controllers
       }
       return RedirectToAction("Index", "Home");
     }
-    [HttpGet("/NewAdminRecipe")]
+    [HttpGet("/Recipe/new")]
     public IActionResult NewAdminRecipe()
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
@@ -67,7 +111,7 @@ namespace FoodForum.Controllers
       ViewBag.Partial = true;
       return View("RecipeTitlePartial");
     }
-    [HttpPost("/PostAdminRecipe")]
+    [HttpPost("/Recipe")]
     public async Task<IActionResult> PostAdminRecipeAsync(AdminRecipe Recipe)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
@@ -93,6 +137,10 @@ namespace FoodForum.Controllers
             await blockBlob.UploadFromStreamAsync(Recipe.UploadPicture.OpenReadStream());
             Recipe.PictureURL = blockBlob.Uri.AbsoluteUri;
           }
+          string check = RegexCheck(Recipe,RegEx);
+          if (check != null){
+            ModelState.AddModelError(check, "Please use only letters, numbers, periods, commas, hyphens, or exclamation points");
+          }
           if (ModelState.IsValid)
           {
             if(!dbContext.Recipes.Any(recipe => recipe.PictureURL == Recipe.PictureURL)||Recipe.UploadPicture == null)
@@ -108,7 +156,7 @@ namespace FoodForum.Controllers
       }
       return RedirectToAction("UserRecipes", "Home");
     }
-    [HttpGet("/Recipe/{Title}/Update")]
+    [HttpGet("/Recipe/{Title}/edit")]
     public IActionResult UpdateRecipe(string Title)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
@@ -123,7 +171,7 @@ namespace FoodForum.Controllers
       return RedirectToAction("Index", "Home");
     }
     // Not Implemented do to it requiring model mapping/ not finding it necessary at this time
-    [HttpPost("/Recipe/{RecipeId}/Updating")]
+    [HttpPost("/Recipe/{RecipeId}")]
     public async Task<IActionResult> UpdatingRecipeAsync(int RecipeId, UpdateRecipe UpdateRecipe, string Content)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
@@ -185,6 +233,10 @@ namespace FoodForum.Controllers
           {
             ModelState.AddModelError("UploadPicture", "A recipe already has a picture with that file name, please rename it and try again");
           }
+          string check = RegexCheck(Recipe,RegEx);
+          if (check != null){
+            ModelState.AddModelError(check, "Please use only letters, numbers, periods, commas, hyphens, or exclamation points");
+          }
           if (ModelState.IsValid)
           {
             dbContext.SaveChanges();
@@ -197,7 +249,7 @@ namespace FoodForum.Controllers
       }
       return RedirectToAction("Index", "Home");
     }
-    [HttpPost("/Recipe/{RecipeId}/Delete")]
+    [HttpPost("/Recipe/{RecipeId}/delete")]
     public IActionResult DeleteRecipe(int RecipeId)
     {
       int? UserId = HttpContext.Session.GetInt32("UserId");
@@ -205,7 +257,7 @@ namespace FoodForum.Controllers
       AdminRecipe Recipe = dbContext.AdminRecipes.FirstOrDefault(recipe => recipe.RecipeId == RecipeId);
       if(Recipe != null)
       {
-        if (User != null && User.AdminState == 1)
+        if (User != null && User.AdminState == 1 || User.UserId == Recipe.UserId)
         {
           dbContext.Remove(Recipe);
           dbContext.SaveChanges();

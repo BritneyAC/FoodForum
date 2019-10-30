@@ -4,6 +4,7 @@ using FoodForum.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace FoodForum.Controllers
 {
@@ -13,6 +14,13 @@ namespace FoodForum.Controllers
     public RecipesController(FoodForumContext context)
     {
       dbContext = context;
+    }
+    string RegEx = @"^[a-zA-Z0-9.,:;!\""_\-&+' ]+$";
+    public string RegexCheck(Comment Comment, string pattern){
+      if (!Regex.IsMatch(Comment.Content, pattern)){
+        return "Content";
+      }
+      return null;
     }
     [HttpGet("/Recipe/{Title}")]
     public IActionResult Recipe(string Title)
@@ -39,22 +47,6 @@ namespace FoodForum.Controllers
       ViewBag.Recipe = Recipe;
       ViewBag.Title = Recipe.Title;
       return View();
-    }
-    [HttpPost("/PostRecipe")]
-    public IActionResult PostRecipe(Recipe Recipe)
-    {
-
-      if (ModelState.IsValid)
-      {
-        if (dbContext.AdminRecipes.Any(recipe => recipe.Title == Recipe.Title) || dbContext.UserRecipes.Any(recipe => recipe.Title == Recipe.Title))
-        {
-          dbContext.Add(Recipe);
-          dbContext.SaveChanges();
-          return RedirectToAction("Index");
-        }
-        ModelState.AddModelError("Title", "A recipe already has that title");
-      }
-      return View("NewAdminRecipe");
     }
     [HttpPost("/Recipe/Like/{RecipeId}")]
     public IActionResult LikeRecipe(int RecipeId)
@@ -108,6 +100,10 @@ namespace FoodForum.Controllers
         ModelState.Remove("Recipe.User.ConfirmPassword");
         ModelState.Remove("User");
         ModelState.Remove("Recipe");
+        string check = RegexCheck(Comment,RegEx);
+          if (check != null){
+            ModelState.AddModelError(check, "Please use only letters, numbers, periods, commas, hyphens, or exclamation points");
+          }
         if (ModelState.IsValid){
           dbContext.Add(Comment);
           dbContext.SaveChanges();

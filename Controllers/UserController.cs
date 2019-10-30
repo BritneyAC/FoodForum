@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace FoodForum.Controllers
 {
@@ -15,6 +16,13 @@ namespace FoodForum.Controllers
     public UserController(FoodForumContext context)
     {
       dbContext = context;
+    }
+    string RegEx = @"^[a-zA-Z0-9.,:;!\""_\-&+' ]+$";
+    public string RegexCheck(User User, string pattern){
+      if (!Regex.IsMatch(User.Username, pattern)){
+        return "Username";
+      }
+      return null;
     }
     [HttpGet("/Login")]
     public IActionResult Login()
@@ -56,6 +64,10 @@ namespace FoodForum.Controllers
     [HttpPost("/UserMaker")]
     public IActionResult UserMaker(User User)
     {
+      string check = RegexCheck(User,RegEx);
+      if (check != null){
+        ModelState.AddModelError(check, "Please use only letters, numbers, periods, commas, hyphens, or exclamation points");
+      }
       if (ModelState.IsValid)
       {
         if (!dbContext.Users.Any(user => user.Username == User.Username)){

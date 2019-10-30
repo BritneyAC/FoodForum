@@ -1,11 +1,11 @@
 @model FoodForum.Models.Like
 
 @if(ViewBag.Liked){
-  <form asp-action="UnLikeUserRecipe" asp-controller="UserRecipes" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post">
+  <form asp-action="UnLikeUserRecipe" asp-controller="UserRecipes" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" class="Like">
     <input type="submit" value="UnLike">
   </form>
 } else{
-  <form asp-action="LikeUserRecipe" asp-controller="UserRecipes" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post">
+  <form asp-action="LikeUserRecipe" asp-controller="UserRecipes" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" class="Like">
     <input type="submit" value="Like">
   </form>
 }

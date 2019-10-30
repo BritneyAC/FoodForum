@@ -1,4 +1,4 @@
-@model FoodForum.Models.UpdateUserRecipe
+@model FoodForum.Models.UpdateRecipe
 
 <div class="Wrapper">
   <div class="Header">
@@ -25,7 +25,7 @@
     </p>
   </div>
   <div class="Forms">
-    <form asp-action="UpdatingUserRecipeAsync" asp-controller="UserRecipes" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" id="RecipeForm" enctype="multipart/form-data">
+    <form asp-action="UpdatingRecipeAsync" asp-controller="Admin" asp-route-RecipeId="@ViewBag.Recipe.RecipeId" method="post" id="RecipeForm" enctype="multipart/form-data">
       <div class="FormSection">
         <span asp-validation-for="Title" id="RecipeTitleMsg"></span><br>
         <label asp-for="Title">Title</label><br>
@@ -132,6 +132,8 @@
         <span asp-validation-for="UploadPicture"></span><br>
         <label asp-for="UploadPicture">Picture (Optional)</label><br>
         <input asp-for="UploadPicture">
+        <label for="deletePicture">Delete the picture?</label>
+        <input type="checkbox" name="deletePicture">
       </div><br>
       <input type="submit" value="Update">
     </form>

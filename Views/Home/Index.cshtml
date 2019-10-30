@@ -9,7 +9,7 @@
         <a asp-action="Login" asp-controller="User">Login</a></p>
       } else{
         if(ViewBag.User.AdminState == 1){
-          <p><a href="/AdminPage">AdminPage</a>  |  </p>
+          <p><a asp-action="AdminPage" asp-controller="Admin">AdminPage</a>  |  </p>
         }
         <p><a asp-action="UserRecipes" asp-controller="Home">User Submitted Recipes</a>  |  
         <a asp-action="NewUserRecipe" asp-controller="UserRecipes">Post A New Recipe</a>  |  

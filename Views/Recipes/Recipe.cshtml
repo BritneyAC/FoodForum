@@ -18,6 +18,9 @@
     @if(ViewBag.Recipe.PictureURL != null){
       <div class="RecipeListPicture" style="background-image: url(@ViewBag.Recipe.PictureURL)";></div>
     }
+    @if(ViewBag.Recipe.Note != null){
+      <p class="AdminNote">Note from the Admin: "@ViewBag.Recipe.Note"</p>
+    }
     <ul>
       @foreach(var ingredient in ViewBag.Recipe.GetIngredients()){
         <li>@ingredient</li>
@@ -45,13 +48,13 @@
             } else {
               <td><partial name="RecipeUpdateRatePartial" view-data="ViewData"/></td>
             }
-            <td><partial name="RecipeLikePartial" view-data="ViewData"/></td>
+            <td class="Like"><partial name="RecipeLikePartial" view-data="ViewData"/></td>
           }
         </tr>
         @if(ViewBag.User != null && ViewBag.User.AdminState == 1){
           <tr>
-            <td><partial name="RecipeDeletePartial" view-data="ViewData"/></td>
-            <td><partial name="UpdateRecipePartial" view-data="ViewData"/></td>
+            <td><partial name="RecipeDeletePartial" view-data="ViewData" class="Delete"/></td>
+            <td><partial name="UpdateRecipePartial" view-data="ViewData" class="Update"/></td>
           </tr>
         }
       </tbody>

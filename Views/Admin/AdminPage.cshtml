@@ -2,8 +2,8 @@
   <div class="Header">
     <h1>Welcome @ViewBag.User.Username to the Admin Page</h1>
     <div class="HeaderLinks">
-      <a href="/NewAdminRecipe">Post A New Recipe</a>  |  
-      <a href="/">Home</a>
+      <a asp-action="NewAdminRecipe" asp-controller="Admin">Post A New Recipe</a>  |  
+      <a asp-action="Index" asp-controller="Home">Home</a>
     </div>
   </div>
   <table class="UserList">

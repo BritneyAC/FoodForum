@@ -1,19 +1,9 @@
-.centered-inline-block {
-  display: inline-block;
-  margin: 0px auto;
-}
-.Msg {
-  width: 100%;
-  padding: 0px;
-  display: inline-block;
-  margin: 0px auto;
-}
 body {
   background-image: url('../images/FoodBG.png');
   width: 100%;
   height: 100%;
   color: #0DBD00;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: "Quicksand";
   padding-bottom: 10px;
 }
 a {
@@ -41,23 +31,31 @@ a:focus {
     display: none;
   }
 }
-input {
+input,
+.btn.btn-primary {
   color: black;
   max-width: 90%;
 }
-input:focus {
+input:focus,
+.btn.btn-primary:focus {
   border: 1px #00EEFB dotted;
 }
 select,
 input[type="submit"],
-button {
+button,
+.btn.btn-primary {
   background-color: rgba(55, 55, 55, 0.95);
   border-color: rgba(75, 75, 75, 0.95);
   color: #00EEFB;
+  height: 2em;
+  padding: 0.25em 1em;
+  margin: auto;
+  vertical-align: top;
 }
 select:focus,
 input[type="submit"]:focus,
-button:focus {
+button:focus,
+.btn.btn-primary:focus {
   border: 1px #00EEFB dotted;
 }
 input[type="File"] {
@@ -71,20 +69,23 @@ input[type="File"] {
 textarea {
   color: black;
 }
-.error {
+.field-validation-error {
   color: red;
+  width: 90%;
+  display: inline-block;
+  padding: 0px;
 }
 .success {
-  color: lightgreen;
-  width: 100%;
-  margin: 0px auto;
   display: inline-block;
+  margin: 0px auto;
+  color: lightgreen;
 }
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+.AdminNote {
   text-align: center;
   margin: 0px auto;
 }
@@ -92,7 +93,8 @@ h1 a,
 h2 a,
 h3 a,
 h4 a,
-h5 a {
+h5 a,
+.AdminNote a {
   text-align: center;
 }
 h2 {
@@ -175,7 +177,7 @@ p {
   max-width: 95%;
   min-width: 40%;
   min-height: 40vh;
-  margin: 0px auto;
+  margin: 10px auto;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -190,7 +192,11 @@ p {
 }
 .Rating,
 .Likes,
-.PostDate {
+.PostDate,
+.RatingForm,
+.LikeBtn,
+.Delete,
+.Update {
   margin: 5px auto;
 }
 .Recipe {
@@ -230,7 +236,7 @@ p {
 #LoginUsernameMsg,
 #RecipeTitleMsg,
 #UserRecipeTitleMsg {
-  width: 100%;
+  max-width: 70%;
   padding: 0px;
   display: inline-block;
   margin: 0px auto;
@@ -239,14 +245,13 @@ p {
 #LoginUsernameMsg .container.body-content,
 #RecipeTitleMsg .container.body-content,
 #UserRecipeTitleMsg .container.body-content {
-  width: 100%;
+  max-width: 70%;
   padding: 0px;
   display: inline-block;
   margin: 0px auto;
 }
 .Forms {
   width: 100%;
-  display: inline-block;
   margin: 0px auto;
   padding: 10px;
   background-color: rgba(5, 5, 5, 0.966);
@@ -255,12 +260,11 @@ p {
 .FormSection,
 .MiddleFormSection {
   display: inline-block;
-  min-width: 33%;
+  min-width: 31%;
   max-width: 100%;
   vertical-align: top;
-  margin: 5px auto;
+  margin: 5px 0.5%;
   text-align: center;
-  padding: 10px;
   background-color: rgba(25, 25, 25, 0.95);
   border-radius: 4px;
 }
@@ -281,16 +285,18 @@ p {
   width: 100%;
   border-top: #0DBD00 1px solid;
   border-bottom: #0DBD00 1px solid;
+  margin: 10px auto;
 }
 .RecipeStatsTable thead tr td,
 .RecipeStatsTable tbody tr td {
   max-width: 33%;
   text-align: center;
   margin: 10px auto;
-  vertical-align: top;
+  padding: 10px;
+  vertical-align: middle;
 }
 .RecipeStatsTable tbody tr td {
-  padding: 10px;
+  padding-top: 0px;
 }
 .LikeBtn {
   vertical-align: top;
