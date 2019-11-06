@@ -228,6 +228,21 @@ p{
   background-color: @background-color;
 }
 
+#BackToTop{
+  position: fixed;
+  bottom: 3em;
+  right: 3em;
+  opacity: 0;
+  display: inline-block;
+  background-color: #000;
+  border-radius: 4px;
+  padding: 4px;
+
+  &.visible{
+    opacity: 1;
+  }
+}
+
 .UserList{
   margin: 0px auto;
   width: 90%;

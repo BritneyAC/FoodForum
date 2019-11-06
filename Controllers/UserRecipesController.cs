@@ -184,6 +184,7 @@ namespace FoodForum.Controllers
         if (Recipe != null && Recipe.UserId == UserId || User.AdminState == 1)
         {
           ViewBag.Recipe = Recipe;
+          ViewBag.Title = "Update User Recipe";
           return View();
         }
       }

@@ -1,4 +1,10 @@
-﻿@if (ViewBag.Partial == null || ViewBag.Partial == false){
+﻿@if (ViewBag.Title != null){
+    if (ViewBag.Title == "New Admin Recipe" || ViewBag.Title == "Updating Admin Recipe" || ViewBag.Title == "Make A New Recipe" || ViewBag.Title == "Update User Recipe"){
+        Layout = "_FormsLayout";
+    } else if (ViewBag.Title == "Login Page"){
+        Layout = "_LoginLayout";
+    }
+} else if (ViewBag.Partial == null || ViewBag.Partial == false){
     Layout = "_Layout";
 } else{
     Layout = "_PartialLayout";

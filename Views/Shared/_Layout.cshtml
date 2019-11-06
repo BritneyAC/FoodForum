@@ -44,10 +44,6 @@
         <script type="text/javascript">
             var RootUrl = '@Url.Content("~/")';
             var PartialUrls = PartialUrls || {};
-            PartialUrls.Username = '@Url.Action("UsernameAsync", "User")';
-            PartialUrls.LoginUsername = '@Url.Action("LoginUsernameAsync", "User")';
-            PartialUrls.RecipeTitle = '@Url.Action("RecipeTitleAsync", "Admin")';
-            PartialUrls.UserRecipeTitle = '@Url.Action("UserRecipeTitleAsync", "UserRecipes")';
             PartialUrls.IndexRating = '@Url.Action("IndexRatingAsync", "Home")';
             PartialUrls.IndexRatingReverse = '@Url.Action("IndexRatingReverseAsync", "Home")';
             PartialUrls.UserRating = '@Url.Action("UserRatingAsync", "Home")';
@@ -83,5 +79,9 @@
 
     
 
+    <footer>
+        <a href="#" id="BackToTop">Back to Top</a>
+        <script src="~/js/Index.js" asp-append-version="true"></script>
+    </footer>
 </body>
 </html>
