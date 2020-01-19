@@ -12,3 +12,4 @@ let BackToTop = document.querySelector("#BackToTop"),
 
     BackToTop.className = ( scrollPos > offset ) ? "visible" : "";
   } );
+  

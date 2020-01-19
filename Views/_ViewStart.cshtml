@@ -3,6 +3,8 @@
         Layout = "_FormsLayout";
     } else if (ViewBag.Title == "Login Page"){
         Layout = "_LoginLayout";
+    } else{
+        Layout = "_Layout";
     }
 } else if (ViewBag.Partial == null || ViewBag.Partial == false){
     Layout = "_Layout";

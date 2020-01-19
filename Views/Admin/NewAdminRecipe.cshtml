@@ -7,8 +7,8 @@
       <a asp-action="Index" asp-controller="Home">Home</a>
     </div>
   </div>
-  <div class="Forms">
-    <form asp-action="PostAdminRecipeAsync" asp-controller="Admin" method="post" id="RecipeForm" enctype="multipart/form-data" class="Form">
+  <form asp-action="PostAdminRecipeAsync" asp-controller="Admin" method="post" id="RecipeForm" enctype="multipart/form-data" class="Form">
+    <div class="Forms">
       <div class="FormSection">
         <span asp-validation-for="Title" id="RecipeTitleMsg"></span><br>
         <label asp-for="Title">Title</label><br>
@@ -17,7 +17,7 @@
         <label asp-for="Note">Admin Note</label><br>
         <textarea asp-for="Note" minlength="8" maxlength="255"></textarea>
       </div>
-      <div class="MiddleFormSection">
+      <div class="FormSection">
         <span asp-validation-for="IngredientOne"></span><br>
         <label asp-for="IngredientOne">Ingredient #1 (Required): </label><br>
         <input asp-for="IngredientOne" required minlength="2" maxlength="65"><br>
@@ -112,7 +112,7 @@
           <input asp-for="IngredientFifteen" minlength="2" maxlength="65"><br><br>
         </div>
       </div>
-      <div class="FormSection">
+      <div class="RecipeFormSection">
         <span asp-validation-for="Content"></span><br>
         <Label asp-for="Content">Recipe</Label><br>
         <textarea asp-for="Content" cols="30" rows="10" required minlength="8" maxlength="2555"></textarea>
@@ -121,6 +121,6 @@
         <input asp-for="UploadPicture">
       </div><br>
       <input type="submit" value="Post">
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

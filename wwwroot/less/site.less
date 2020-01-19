@@ -9,7 +9,7 @@
 }
 
 .Msg() {
-  max-width: 70%;
+  max-width: 100%;
   padding: 0px;
   .centered-inline-block();
 }
@@ -91,8 +91,7 @@ textarea{
 
 .field-validation-error, .error{
   color: red;
-  width: 90%;
-  display: inline-block;
+  .Msg();
   padding: 0px;
 }
 
@@ -288,9 +287,9 @@ p{
   border-radius: 4px;
 }
 
-.FormSection, .MiddleFormSection{
+.FormSection {
   display: inline-block;
-  min-width: 31%;
+  min-width: 30%;
   max-width: 100%;
   vertical-align: top;
   margin: 5px 0.5%;
@@ -307,6 +306,21 @@ p{
     resize: vertical;
   }
 }
+.RecipeFormSection:extend(.FormSection){
+  min-width: 35%;
+  max-width: 100%;
+  padding: 0px;
+  input, span{
+    width: 90%;
+    margin: 5px auto;
+  }
+  textarea:extend(.FormSection input){
+    resize: vertical;
+  }
+}
+
+
+
 
 .RecipeStatsTable{
   width: 100%;

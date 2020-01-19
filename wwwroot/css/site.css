@@ -72,8 +72,9 @@ textarea {
 .field-validation-error,
 .error {
   color: red;
-  width: 90%;
+  max-width: 100%;
   display: inline-block;
+  margin: 0px auto;
   padding: 0px;
 }
 .success {
@@ -250,7 +251,7 @@ p {
 #LoginUsernameMsg,
 #RecipeTitleMsg,
 #UserRecipeTitleMsg {
-  max-width: 70%;
+  max-width: 100%;
   padding: 0px;
   display: inline-block;
   margin: 0px auto;
@@ -259,7 +260,7 @@ p {
 #LoginUsernameMsg .container.body-content,
 #RecipeTitleMsg .container.body-content,
 #UserRecipeTitleMsg .container.body-content {
-  max-width: 70%;
+  max-width: 100%;
   padding: 0px;
   display: inline-block;
   margin: 0px auto;
@@ -272,9 +273,9 @@ p {
   border-radius: 4px;
 }
 .FormSection,
-.MiddleFormSection {
+.RecipeFormSection {
   display: inline-block;
-  min-width: 31%;
+  min-width: 30%;
   max-width: 100%;
   vertical-align: top;
   margin: 5px 0.5%;
@@ -283,16 +284,26 @@ p {
   border-radius: 4px;
 }
 .FormSection input,
-.MiddleFormSection input,
 .FormSection span,
-.MiddleFormSection span,
 .FormSection textarea,
-.MiddleFormSection textarea {
+.RecipeFormSection textarea {
   width: 90%;
   margin: 5px auto;
 }
-.FormSection textarea,
-.MiddleFormSection textarea {
+.FormSection textarea {
+  resize: vertical;
+}
+.RecipeFormSection {
+  min-width: 35%;
+  max-width: 100%;
+  padding: 0px;
+}
+.RecipeFormSection input,
+.RecipeFormSection span {
+  width: 90%;
+  margin: 5px auto;
+}
+.RecipeFormSection textarea {
   resize: vertical;
 }
 .RecipeStatsTable {

@@ -31,7 +31,7 @@
         <label asp-for="Title">Title</label><br>
         <input asp-for="Title" required minlength="3" maxlength="55" id="RecipeTitle" value="@ViewBag.Recipe.Title"><br>
       </div>
-      <div class="MiddleFormSection">
+      <div class="FormSection">
         <span asp-validation-for="IngredientOne"></span><br>
         <label asp-for="IngredientOne">Ingredient #1 (Required): </label><br>
         <input asp-for="IngredientOne" required minlength="2" maxlength="65" value="@ViewBag.Recipe.IngredientOne"><br>
@@ -126,7 +126,7 @@
           <input asp-for="IngredientFifteen" minlength="2" maxlength="65" value="@ViewBag.Recipe.IngredientFifteen"><br><br>
         </div>
       </div>
-      <div class="FormSection">
+      <div class="RecipeFormSection">
         <Label for="Content">Recipe</Label><br>
         <textarea name="Content" cols="30" rows="10" required minlength="8" maxlength="2555">@ViewBag.Recipe.Content</textarea><br>
         <span asp-validation-for="UploadPicture"></span><br>

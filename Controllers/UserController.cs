@@ -36,7 +36,7 @@ namespace FoodForum.Controllers
       return View();
     }
     [HttpGet("/Username")]
-    public async Task<IActionResult> UsernameAsync(string Username)
+    public async Task<string> UsernameAsync(string Username)
     {
       bool found = false;
       User User = await dbContext.Users.FirstOrDefaultAsync(user => user.Username == Username);
@@ -46,7 +46,10 @@ namespace FoodForum.Controllers
       }
       ViewBag.Found = found;
       ViewBag.Partial = true;
-      return View("UsernamePartial");
+      if (found){
+        return "<p class='error'>This username is already taken</p>";
+      }
+      return "<p class='success'>This username is available</p>";;
     }
     [HttpGet("/LoginUsername")]
     public async Task<IActionResult> LoginUsernameAsync(string Username)

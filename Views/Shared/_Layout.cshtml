@@ -34,7 +34,6 @@
         </script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -56,6 +55,7 @@
             PartialUrls.IndexTimeReverse = '@Url.Action("IndexTimeReverseAsync", "Home")';
             PartialUrls.UserTime = '@Url.Action("UserTimeAsync", "Home")';
             PartialUrls.UserTimeReverse = '@Url.Action("UserTimeReverseAsync", "Home")';
+            
         </script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -69,13 +69,13 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
 </head>
 <body>
     <div class="container body-content">
         @RenderBody()
     </div>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
     
 
